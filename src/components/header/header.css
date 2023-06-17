@@ -20,7 +20,7 @@
   font-family: "Circular Std Book";
 }
 
-a:hover {
+.navbar-link:hover {
   color: #ffd800 !important;
 }
 
