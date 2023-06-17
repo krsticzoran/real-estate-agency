@@ -1,0 +1,29 @@
+.dropdown-indicator::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  color: #5c0282;
+}
+
+.navbar-padding {
+  padding: 16px 0px 16px 64px;
+}
+.navbar-link {
+  color: #d3d3d3 !important;
+  padding-right: 0.5rem;
+  font-weight: 600;
+  font-family: "Circular Std Book";
+}
+
+a:hover {
+  color: #ffd800 !important;
+}
+
+.header-background {
+  background-color: #272727 !important;
+}
