@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface MyComponentProps {
   onData: string[];
@@ -10,9 +11,9 @@ const DropdownMenu: React.FC<MyComponentProps> = ({ onData, page }) => {
     <ul className="dropdown-menu position-absolute">
       {onData.map((item) => (
         <li key={item}>
-          <a className="dropdown-item" href={`/${page}/${item}`}>
+          <Link className="dropdown-item" to={`/${page}/${item}`}>
             {item}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
