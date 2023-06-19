@@ -11,19 +11,22 @@
 }
 
 .navbar-padding {
-  padding: 16px 0px 16px 64px;
+  padding: 16px 0px 16px 64px !important;
 }
-.navbar-link {
+.navbar--color-white {
   color: #d3d3d3 !important;
-  padding-right: 0.5rem;
-  font-weight: 600;
+  font-weight: 600 !important;
   font-family: "Circular Std Book";
+  margin-left: 1rem;
 }
 
-.navbar-link:hover {
+.navbar--color-white:hover {
   color: #ffd800 !important;
 }
 
 .header-background {
   background-color: #272727 !important;
+}
+#navbarScrollingDropdown::after {
+  color: #5c0282;
 }

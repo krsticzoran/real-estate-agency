@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import "./header.css";
 
 interface MyComponentProps {
   onData: string[];
@@ -7,16 +10,34 @@ interface MyComponentProps {
 }
 
 const DropdownMenu: React.FC<MyComponentProps> = ({ onData, page }) => {
+  const [show, setShow] = useState(false);
+  const isSmallScreen = useMediaQuery({ maxWidth: 991 });
+
+  const handleToggle = () => {
+    if (isSmallScreen) {
+      setShow((prevState) => !prevState);
+    }
+  };
+
   return (
-    <ul className="dropdown-menu position-absolute">
+    <NavDropdown
+      title={<span className="navbar--color-white my-auto ">{page}</span>}
+      id="navbarScrollingDropdown"
+      onMouseOver={!isSmallScreen ? () => setShow(true) : undefined}
+      onMouseLeave={!isSmallScreen ? () => setShow(false) : undefined}
+      onClick={handleToggle}
+      show={show}
+    >
       {onData.map((item) => (
-        <li key={item}>
-          <Link className="dropdown-item" to={`/${page}/${item}`}>
-            {item}
-          </Link>
-        </li>
+        <Link
+          key={item}
+          className="dropdown-item "
+          to={`/${page.toLowerCase()}/${item.toLowerCase()}`}
+        >
+          {item}
+        </Link>
       ))}
-    </ul>
+    </NavDropdown>
   );
 };
 
