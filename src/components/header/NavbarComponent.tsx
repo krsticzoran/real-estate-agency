@@ -4,17 +4,35 @@ import { menuList } from "../../assets/data/myData";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import "./header.css";
-
+import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 function NavbarComponent() {
+  const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (
-    <Navbar expand="lg" className=" navbar-padding w-100    ">
-      <Container className="justify-content-end  ">
-        <Navbar.Toggle aria-controls="navbarScroll" className="navbar-dark " />
+    <Navbar
+      expand="lg"
+      className={`w-100   ${
+        isSmallScreen ? "navbar-container" : "navbar-padding"
+      }`}
+    >
+      <Container
+        className={`justify-content-end ${
+          isSmallScreen ? " navbar-container-small-screen" : ""
+        }`}
+      >
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          className={`navbar-dark ${isSmallScreen ? "btn-home-margin" : ""}`}
+        />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0" navbarScroll>
+          <Nav
+            className={`me-auto  my-lg-0 ${
+              isSmallScreen ? "navbar--border-top" : ""
+            }`}
+            navbarScroll
+          >
             <DropdownMenu onData={menuList} page="Rent" />
             <DropdownMenu onData={menuList} page="Sales" />
             <Link className="navbar--color-white nav-link" to="/team">

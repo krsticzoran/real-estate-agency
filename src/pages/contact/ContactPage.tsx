@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/header/Header";
 
-const Home: React.FC = () => {
+const ContactPage: React.FC = () => {
   return (
     <>
       <Header />
@@ -9,4 +9,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default ContactPage;

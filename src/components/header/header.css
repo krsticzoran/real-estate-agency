@@ -1,23 +1,18 @@
-.dropdown-indicator::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
-  color: #5c0282;
+.navbar--border-top {
+  border-top: solid 1px #3a3a3a;
+  border-bottom: solid 1px #3a3a3a;
+  margin-top: 8px;
 }
 
 .navbar-padding {
   padding: 16px 0px 16px 64px !important;
+  margin-left: 60px;
 }
 .navbar--color-white {
   color: #d3d3d3 !important;
   font-weight: 600 !important;
   font-family: "Circular Std Book";
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .navbar--color-white:hover {
@@ -26,7 +21,26 @@
 
 .header-background {
   background-color: #272727 !important;
+  min-height: 74px;
 }
 #navbarScrollingDropdown::after {
   color: #5c0282;
+}
+.logo-container {
+  height: 74px !important;
+  position: absolute;
+}
+
+.navbar-container-small-screen {
+  max-width: 100% !important;
+  width: 100vw !important;
+  margin-top: 9px !important;
+}
+.btn-home-margin {
+  margin-bottom: 9px !important;
+}
+
+.navbar-container {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }

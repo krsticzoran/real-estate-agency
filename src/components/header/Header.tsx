@@ -6,9 +6,9 @@ import "./header.css";
 
 const Header: React.FC = () => {
   return (
-    <header className=" p-0 m-0  sticky header-background ">
-      <div className="d-flex flex-row  ">
-        <Link to="/">
+    <header className=" p-0 m-0  fixed-top header-background ">
+      <div className="d-flex flex-row ">
+        <Link to="/" className="logo-container">
           <img src={logo} alt="Logo" />
         </Link>
         <NavbarComponent />
