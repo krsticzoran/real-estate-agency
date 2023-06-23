@@ -6,3 +6,15 @@ export const menuList = [
   " Catering",
   "Other",
 ];
+
+export const location = [
+  "Valletta",
+  "Mdina",
+  "St. Julian’s",
+  "Marsaxlokk",
+  "Senglea",
+  "Cospicua",
+  "Vittoriosa",
+  "Sliema",
+  "Rabat",
+];

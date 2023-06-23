@@ -8,7 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function NavbarComponent() {
+const NavbarComponent: React.FC = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (
     <Navbar
@@ -49,6 +49,6 @@ function NavbarComponent() {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default NavbarComponent;

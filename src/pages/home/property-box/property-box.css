@@ -76,3 +76,45 @@
     min-height: 523px !important;
   }
 }
+
+.property-search-label {
+  color: #5c0282;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 27px;
+  margin-bottom: 7px;
+}
+
+.property-active-tab {
+  color: #5c0282;
+}
+
+.property-tab {
+  color: #000;
+}
+.property-tab:hover {
+  color: #5c0282;
+}
+
+.custom-select {
+  background-color: white;
+}
+.custom-select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #5c0282 !important;
+}
+
+.property-btn {
+  margin-top: 20px;
+  background-color: #5c0282 !important;
+  color: #fff;
+  border: solid 1px #5c0282 !important;
+  width: 100%;
+  border-radius: 3px;
+  padding: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import banner from "../../../assets/images/header-banner.webp";
 import CommercialSpecialists from "./CommercialSpecialists";
-import PropertyInputBox from "./PropertyInputBox";
+import PropertySearch from "./PropertySearch";
 import "./property-box.css";
 
 const PropertyBox: React.FC = () => {
@@ -14,7 +14,7 @@ const PropertyBox: React.FC = () => {
         <Container className=" property--box-subcontainer">
           <div className="row">
             <CommercialSpecialists />
-            <PropertyInputBox />
+            <PropertySearch />
           </div>
         </Container>
       </div>
