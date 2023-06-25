@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Tabs, Tab, Form, Button } from "react-bootstrap";
 import Select from "./Select";
+import MultiRangeSlider from "./PropertyRange";
 import { menuList, location } from "../../../assets/data/myData";
 import "./property-box.css";
 
-const PropertySearch = () => {
+const PropertySearch: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("rent");
   const [selectedLocation, setSelectedLocaction] = useState<string>("All");
   const [selectedProperty, setSelectedProperty] = useState<string>("All");
@@ -12,6 +13,12 @@ const PropertySearch = () => {
     useState<string>("All");
   const [selectedPropertySale, setSelectedPropertySale] =
     useState<string>("All");
+  const [rentRangeValues, setRentRangeValues] = useState<[number, number]>([
+    0, 100000,
+  ]);
+  const [saleRangeValues, setSaleRangeValues] = useState<[number, number]>([
+    0, 1000000,
+  ]);
 
   const handleLocationChange = (value: string) => {
     setSelectedLocaction(value);
@@ -30,9 +37,21 @@ const PropertySearch = () => {
   // TODO: Add code to handle selected property
   const handleSearch = (tab: string) => {
     if (tab === "rent") {
-      console.log(tab, selectedLocation, selectedProperty);
+      console.log(
+        tab,
+        selectedLocation,
+        selectedProperty,
+        rentRangeValues[0],
+        rentRangeValues[1]
+      );
     } else {
-      console.log(tab, selectedLocationSale, selectedPropertySale);
+      console.log(
+        tab,
+        selectedLocationSale,
+        selectedPropertySale,
+        saleRangeValues[0],
+        saleRangeValues[1]
+      );
     }
   };
 
@@ -70,6 +89,14 @@ const PropertySearch = () => {
                 labelValue="PROPERTY TYPE"
                 onValueChange={handlePropertyChange}
               />
+              <div className="property-range">
+                <MultiRangeSlider
+                  rangeValues={rentRangeValues}
+                  setRangeValues={setRentRangeValues}
+                  max={100000}
+                  step={1000}
+                />
+              </div>
               <Button
                 className="property-btn"
                 onClick={() => handleSearch("rent")}
@@ -103,6 +130,14 @@ const PropertySearch = () => {
                 labelValue="PROPERTY TYPE"
                 onValueChange={handlePropertyChangeSale}
               />
+              <div className="property-range">
+                <MultiRangeSlider
+                  rangeValues={saleRangeValues}
+                  setRangeValues={setSaleRangeValues}
+                  max={1000000}
+                  step={10000}
+                />
+              </div>
               <Button
                 className="property-btn"
                 onClick={() => handleSearch("sale")}

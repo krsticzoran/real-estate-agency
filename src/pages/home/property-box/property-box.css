@@ -48,35 +48,6 @@
   height: 100% !important;
 }
 
-@media (max-width: 576px) {
-}
-
-@media (min-width: 768px) {
-  .commercial-h1-text {
-    font-size: 30px !important;
-    line-height: 30px;
-  }
-  .commercial-h4-text {
-    padding-top: 0 !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .commercial-h1-text {
-    font-size: 46px !important;
-    line-height: 50px;
-  }
-  .property-input-box {
-    min-height: 490px !important;
-  }
-}
-
-@media (min-width: 1399px) {
-  .property-input-box {
-    min-height: 523px !important;
-  }
-}
-
 .property-search-label {
   color: #5c0282;
   font-size: 10px;
@@ -117,4 +88,40 @@
   padding: 15px;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.property-range {
+  margin-top: 10px !important;
+}
+
+@media (max-width: 576px) {
+}
+
+@media (min-width: 768px) {
+  .commercial-h1-text {
+    font-size: 30px !important;
+    line-height: 30px;
+  }
+  .commercial-h4-text {
+    padding-top: 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .commercial-h1-text {
+    font-size: 46px !important;
+    line-height: 50px;
+  }
+  .property-input-box {
+    min-height: 490px !important;
+  }
+  .property-btn {
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 1399px) {
+  .property-input-box {
+    min-height: 523px !important;
+  }
 }
