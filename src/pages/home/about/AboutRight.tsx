@@ -49,9 +49,10 @@ const AboutRight: FC = () => {
             <img src={img1} alt="benefit" className="right-img" />
           </div>
           <div className="right-text-box">
-            <h3 className="right-title">Local Knowledge</h3>
+            <h3 className="right-title">Trusted Partners</h3>
             <p className="right-text mt-1">
-              Led by Locals who love Belgrade and what they do.
+              Trusted by many local and international businesses in finding
+              their locations.
             </p>
           </div>
         </div>
