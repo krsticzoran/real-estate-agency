@@ -1,4 +1,9 @@
 # Real Estate Agency App
 
 </br>
-The real estate agency app is currently in its first stage of development. The technology that we are primarily using for this project is React Typescript. As we continue to build upon this app, we will be sure to keep our users informed of any updates and enhancements that we make. Stay tuned for more information and thank you for your interest in our app!
+
+[DEMO](https://real-estate-rent.netlify.app/)<br /><br />
+The real estate agency app is currently in its initial development stage. You can explore the current state of the website by visiting the demo link provided above. We are utilizing React (Typescript) as the primary technology for this project.
+<br /><br />
+
+Furthermore, in the second phase of development, we have plans to add a server, with a specific focus on utilizing GraphQL to connect the backend and frontend. This implementation will enable us to achieve more advanced functionalities and enhance data interaction. Stay tuned as we will keep you updated on the new upgrades and features that our application will bring!
