@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import banner from "../../../assets/images/header-banner.webp";
+import banner from "../../../assets/images/home/header-banner.webp";
 import CommercialSpecialists from "./CommercialSpecialists";
 import PropertySearch from "./PropertySearch";
 import "./property-box.css";

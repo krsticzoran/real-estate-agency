@@ -8,13 +8,13 @@ export const menuList = [
 ];
 
 export const location = [
-  "Valletta",
-  "Mdina",
-  "St. Julian’s",
-  "Marsaxlokk",
-  "Senglea",
-  "Cospicua",
-  "Vittoriosa",
-  "Sliema",
-  "Rabat",
+  "Zvezdara",
+  "Novi Beograd",
+  "Savski venac",
+  "Palilula",
+  "Stari grad",
+  "Vračar",
+  "Mladenovac",
+  "Voždovac",
+  "Surčin",
 ];
