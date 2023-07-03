@@ -5,6 +5,7 @@ import About from "./about/About";
 import Commercial from "./commercial/Commercial";
 import Social from "./social/Social";
 import Featured from "./featured/Featured";
+import Footer from "../../components/footer/Footer";
 
 const HomePage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage: React.FC = () => {
       <Commercial />
       <Social />
       <Featured />
+      <Footer />
     </>
   );
 };
