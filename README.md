@@ -3,6 +3,10 @@
 </br>
 
 [DEMO](https://real-estate-rent.netlify.app/)<br /><br />
+
+**Status: Landing Page - Finished**
+<br /><br />
+
 The real estate agency app is currently in its initial development stage. You can explore the current state of the website by visiting the demo link provided above. We are utilizing React (Typescript) as the primary technology for this project.
 <br /><br />
 
