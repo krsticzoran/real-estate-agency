@@ -1,0 +1,38 @@
+.team {
+  margin: 100px 0;
+}
+
+.team-card {
+  height: 360px !important;
+}
+
+.team-card img {
+  width: 100%;
+  height: 270px !important;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 20px;
+}
+
+.team-card-title {
+  font-size: 20px;
+  color: #5c0282;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.team-card strong {
+  color: #020202 !important;
+}
+
+.team-card a {
+  list-style: none;
+
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .team-card {
+    margin-bottom: 50px;
+  }
+}
