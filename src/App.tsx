@@ -4,6 +4,7 @@ import HomePage from "./pages/home/HomePage";
 import ContactPage from "./pages/contact/ContactPage";
 import "./App.css";
 import Team from "./pages/team/Team";
+import Member from "./pages/team/Member";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/team/:memberName" element={<Member />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/*" element={<HomePage />} />
       </Routes>
