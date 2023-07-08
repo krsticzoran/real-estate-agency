@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Card, Container, Row } from "react-bootstrap";
-import stefan from "../../assets/images/team/img1.jpeg";
-import marko from "../../assets/images/team/img2.jpeg";
-import jovan from "../../assets/images/team/img3.jpeg";
-import { staff } from "../../assets/data/myData";
+import { staff, getImagePath } from "../../assets/data/team";
 
 import "./team.css";
 
@@ -16,6 +13,8 @@ const Team: FC = () => {
       <Header />
       <div className="team">
         <Container>
+          <h2 className="team-title">Team</h2>
+          <h4>Our Specialist</h4>
           <Row>
             {staff.map((member) => (
               <div key={member.user} className="col-lg-4 col-sm-12 team-card">
@@ -45,16 +44,3 @@ const Team: FC = () => {
 };
 
 export default Team;
-
-function getImagePath(user: string): string {
-  switch (user) {
-    case "stefan":
-      return stefan;
-    case "marko":
-      return marko;
-    case "jovan":
-      return jovan;
-    default:
-      return "";
-  }
-}
