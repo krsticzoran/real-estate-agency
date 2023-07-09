@@ -1,15 +1,17 @@
 import { FC } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { staff, getImagePath } from "../../assets/data/team";
+import { useImagePath } from "../../hook/team";
 import "./team.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import { staff } from "../../assets/data/myData";
 
 const Member: FC = () => {
   const { memberName } = useParams();
   const selectedMember =
     staff.find((member) => member.user === memberName) || staff[0];
+  const getImagePath = useImagePath(selectedMember.user);
 
   return (
     <>
@@ -18,7 +20,7 @@ const Member: FC = () => {
         <Container>
           <Row>
             <div className="col-12 col-md-4 member-data-box">
-              <img src={getImagePath(selectedMember.user)} alt="staff" />
+              <img src={getImagePath} alt="staff" />
               <h3 className="member-name">{selectedMember.name}</h3>
               <p>Speaks: {selectedMember.language}</p>
             </div>
