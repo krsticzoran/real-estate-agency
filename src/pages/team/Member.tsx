@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useImagePath } from "../../hook/team";
+import { useImagePath } from "../../hook/useImagePath";
 import "./team.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
