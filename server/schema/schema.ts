@@ -1,38 +1,35 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLSchema,
-} from "graphql";
-import _ from "lodash";
-
-const users = [
-  { id: "23", firstName: "Bill", age: 20 },
-  { id: "40", firstName: "Samantha", age: 21 },
-];
+import { GraphQLObjectType, GraphQLString, GraphQLSchema } from "graphql";
+import { Collection, Db } from "mongodb";
 
 const UserType = new GraphQLObjectType({
   name: "User",
   fields: {
-    id: { type: GraphQLString },
-    firstName: { type: GraphQLString },
-    age: { type: GraphQLInt },
+    user: { type: GraphQLString },
+    name: { type: GraphQLString },
+    email: { type: GraphQLString },
+    overview: { type: GraphQLString },
   },
 });
 
-const RootQuery = new GraphQLObjectType({
-  name: "RootQueryType",
-  fields: {
-    user: {
-      type: UserType,
-      args: { id: { type: GraphQLString } },
-      resolve(parentValue, args) {
-        return _.find(users, { id: args.id });
+function schema(database: Db): GraphQLSchema {
+  const collection: Collection = database.collection("staff");
+
+  const RootQuery = new GraphQLObjectType({
+    name: "RootQueryType",
+    fields: {
+      user: {
+        type: UserType,
+        args: { user: { type: GraphQLString } },
+        resolve(parentValue, args) {
+          return collection.findOne({ user: args.user });
+        },
       },
     },
-  },
-});
+  });
 
-export const schema = new GraphQLSchema({
-  query: RootQuery,
-});
+  return new GraphQLSchema({
+    query: RootQuery,
+  });
+}
+
+export { schema };
