@@ -4,11 +4,39 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Card, Container, Row } from "react-bootstrap";
 import { useImagePath } from "../../hook/useImagePath";
-import { staff } from "../../assets/data/myData";
 
 import "./team.css";
 
+import { useQuery } from "@apollo/client";
+import { gql } from "graphql-tag";
+
+interface User {
+  user: string;
+  name: string;
+  email: string;
+  overview: string;
+  language: string;
+}
+
+const GET_USERS = gql`
+  query {
+    staff {
+      users {
+        user
+        name
+        email
+        overview
+        language
+      }
+    }
+  }
+`;
+
 const Team: FC = () => {
+  const { data } = useQuery(GET_USERS);
+
+  const staff: User[] = data?.staff?.users ?? [];
+
   const userImg = [
     useImagePath("stefan"),
     useImagePath("marko"),
@@ -23,7 +51,7 @@ const Team: FC = () => {
           <h2 className="team-title">Team</h2>
           <h4>Our Specialist</h4>
           <Row>
-            {staff.map((member, index) => (
+            {staff.map((member, index: number) => (
               <div key={member.user} className="col-lg-4 col-sm-12 team-card">
                 <Link to={`/team/${member.user}`}>
                   <Card>
