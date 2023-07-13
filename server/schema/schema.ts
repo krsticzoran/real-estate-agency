@@ -1,4 +1,9 @@
-import { GraphQLObjectType, GraphQLString, GraphQLSchema } from "graphql";
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLSchema,
+  GraphQLList,
+} from "graphql";
 import { Collection, Db } from "mongodb";
 
 const UserType = new GraphQLObjectType({
@@ -6,8 +11,16 @@ const UserType = new GraphQLObjectType({
   fields: {
     user: { type: GraphQLString },
     name: { type: GraphQLString },
+    language: { type: GraphQLString },
     email: { type: GraphQLString },
     overview: { type: GraphQLString },
+  },
+});
+
+const StaffType = new GraphQLObjectType({
+  name: "Staff",
+  fields: {
+    users: { type: new GraphQLList(UserType) },
   },
 });
 
@@ -22,6 +35,13 @@ function schema(database: Db): GraphQLSchema {
         args: { user: { type: GraphQLString } },
         resolve(parentValue, args) {
           return collection.findOne({ user: args.user });
+        },
+      },
+      staff: {
+        type: StaffType,
+        async resolve() {
+          const users = await collection.find().toArray();
+          return { users };
         },
       },
     },
