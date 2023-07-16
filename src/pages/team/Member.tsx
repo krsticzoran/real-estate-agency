@@ -5,13 +5,43 @@ import { useImagePath } from "../../hook/useImagePath";
 import "./team.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import { staff } from "../../assets/data/myData";
+import { Link } from "react-router-dom";
+
+import { useQuery } from "@apollo/client";
+import { gql } from "graphql-tag";
+
+const GET_USERS = gql`
+  query GetUser($name: String!) {
+    user(user: $name) {
+      user
+      name
+      email
+      overview
+      language
+      phone
+    }
+  }
+`;
+interface User {
+  user: string;
+  name: string;
+  email: string;
+  overview: string;
+  language: string;
+  phone: string;
+}
 
 const Member: FC = () => {
   const { memberName } = useParams();
-  const selectedMember =
-    staff.find((member) => member.user === memberName) || staff[0];
-  const getImagePath = useImagePath(selectedMember.user);
+
+  const { data } = useQuery(GET_USERS, {
+    variables: { name: memberName },
+  });
+
+  const user: User = data?.user ?? {};
+  console.log();
+
+  const getImagePath = useImagePath(user.user);
 
   return (
     <>
@@ -21,15 +51,33 @@ const Member: FC = () => {
           <Row>
             <div className="col-12 col-md-4 member-data-box">
               <img src={getImagePath} alt="staff" />
-              <h3 className="member-name">{selectedMember.name}</h3>
-              <p>Speaks: {selectedMember.language}</p>
+              <h3 className="member-name">{user.name}</h3>
+              <p>Speaks: {user.language}</p>
             </div>
             <div className="col-12 col-md-4">
               <h3 className="member-name">Overview</h3>
-              <p>{selectedMember.overview}</p>
+              <p>{user.overview}</p>
             </div>
             <div className="col-12 col-md-4">
-              <h1>{selectedMember.email}</h1>
+              <div className="staff-card">
+                {" "}
+                <h2>Contact {user.name}</h2>
+                <hr />
+                <Row>
+                  <div className="col-md-5">
+                    <h5>Phone Number</h5>
+                    <h2>
+                      <Link to={`tel:${user.phone}`}>{user.phone}</Link>
+                    </h2>
+                  </div>
+                  <div className="col-md-5">
+                    <h5>email</h5>
+                    <h2>
+                      <Link to={`mailto:${user.email}`}>{user.email}</Link>
+                    </h2>
+                  </div>
+                </Row>
+              </div>
             </div>
           </Row>
         </Container>
