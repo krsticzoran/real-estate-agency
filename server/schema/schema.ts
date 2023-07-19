@@ -3,6 +3,7 @@ import {
   GraphQLString,
   GraphQLSchema,
   GraphQLList,
+  GraphQLInt,
 } from "graphql";
 import { Collection, Db } from "mongodb";
 
@@ -14,6 +15,10 @@ const UserType = new GraphQLObjectType({
     language: { type: GraphQLString },
     email: { type: GraphQLString },
     overview: { type: GraphQLString },
+    phone: { type: GraphQLString },
+    listings: { type: GraphQLInt },
+    experience: { type: GraphQLString },
+    propreties: { type: GraphQLInt },
   },
 });
 
