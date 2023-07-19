@@ -70,6 +70,12 @@
   box-shadow: 0 1px 12px #dadada;
 }
 
+.staff-stats {
+  background-color: #5c0282;
+  border-radius: 7px;
+  margin-top: 43px !important;
+}
+
 @media (max-width: 991px) {
   .team {
     margin: 100px 0 50px 0;

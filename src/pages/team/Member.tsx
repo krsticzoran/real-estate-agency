@@ -19,6 +19,9 @@ const GET_USERS = gql`
       overview
       language
       phone
+      listings
+      experience
+      propreties
     }
   }
 `;
@@ -29,6 +32,9 @@ interface User {
   overview: string;
   language: string;
   phone: string;
+  listings: number;
+  experience: string;
+  propreties: number;
 }
 
 const Member: FC = () => {
@@ -75,6 +81,23 @@ const Member: FC = () => {
                     <h2>
                       <Link to={`mailto:${user.email}`}>{user.email}</Link>
                     </h2>
+                    <div className="staff-stats">
+                      <h5>{`${user.name} stats `}</h5>
+                      <Row>
+                        <div className="col-6">
+                          <p>Listings</p>
+                          <p>{user.listings}</p>
+                        </div>
+                        <div className="col-6">
+                          <p>PROPERTIES RENTED</p>
+                          <p>{user.propreties}</p>
+                        </div>
+                        <div className="col-12">
+                          <p>EXPERIENCE</p>
+                          <p>{user.experience}</p>
+                        </div>
+                      </Row>
+                    </div>
                   </div>
                 </Row>
               </div>
