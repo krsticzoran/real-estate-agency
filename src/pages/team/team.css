@@ -70,10 +70,50 @@
   box-shadow: 0 1px 12px #dadada;
 }
 
+.staff-card h2 {
+  color: #000 !important;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.staff-phone h5 {
+  font-size: 10px !important;
+  color: #5c0282;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.staff-card a {
+  text-decoration: none;
+  color: #000 !important;
+}
+
+.staff-card a:hover {
+  color: #5c0282 !important;
+}
+
 .staff-stats {
   background-color: #5c0282;
   border-radius: 7px;
-  margin-top: 43px !important;
+  margin-top: 20px !important;
+  color: #fff;
+}
+.staff-stats h5 {
+  font-size: 16px;
+
+  padding: 20px 30px;
+  border-bottom: solid 1px #9255ab;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.staff-numbers-card {
+  padding: 13px 30px 10px 30px;
+  overflow: hidden;
+}
+
+.staff-numbers {
+  font-size: 32px;
+  color: #ffd82e;
 }
 
 @media (max-width: 991px) {
@@ -86,5 +126,9 @@
   }
   .member-name {
     font-size: 20px;
+  }
+
+  .staff-card h2 {
+    margin-bottom: 0px;
   }
 }

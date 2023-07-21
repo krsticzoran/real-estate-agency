@@ -38,9 +38,9 @@ const Team: FC = () => {
   const staff: User[] = data?.staff?.users ?? [];
 
   const userImg = [
-    useImagePath("stefan"),
-    useImagePath("marko"),
     useImagePath("jovan"),
+    useImagePath("marko"),
+    useImagePath("stefan"),
   ];
 
   return (

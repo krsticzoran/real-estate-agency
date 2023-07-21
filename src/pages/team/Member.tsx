@@ -45,7 +45,6 @@ const Member: FC = () => {
   });
 
   const user: User = data?.user ?? {};
-  console.log();
 
   const getImagePath = useImagePath(user.user);
 
@@ -55,51 +54,51 @@ const Member: FC = () => {
       <div className="team">
         <Container>
           <Row>
-            <div className="col-12 col-md-4 member-data-box">
+            <div className="col-12 col-lg-4 member-data-box">
               <img src={getImagePath} alt="staff" />
               <h3 className="member-name">{user.name}</h3>
               <p>Speaks: {user.language}</p>
             </div>
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-lg-4">
               <h3 className="member-name">Overview</h3>
               <p>{user.overview}</p>
             </div>
-            <div className="col-12 col-md-4">
-              <div className="staff-card">
+            <div className="col-12 col-lg-4">
+              <div className="staff-card ">
                 {" "}
                 <h2>Contact {user.name}</h2>
                 <hr />
                 <Row>
-                  <div className="col-md-5">
+                  <div className="staff-phone col-xl-5">
                     <h5>Phone Number</h5>
-                    <h2>
+                    <h2 className="mb-3">
                       <Link to={`tel:${user.phone}`}>{user.phone}</Link>
                     </h2>
                   </div>
-                  <div className="col-md-5">
+                  <div className="staff-phone col-xl-5">
                     <h5>email</h5>
                     <h2>
                       <Link to={`mailto:${user.email}`}>{user.email}</Link>
                     </h2>
-                    <div className="staff-stats">
-                      <h5>{`${user.name} stats `}</h5>
-                      <Row>
-                        <div className="col-6">
-                          <p>Listings</p>
-                          <p>{user.listings}</p>
-                        </div>
-                        <div className="col-6">
-                          <p>PROPERTIES RENTED</p>
-                          <p>{user.propreties}</p>
-                        </div>
-                        <div className="col-12">
-                          <p>EXPERIENCE</p>
-                          <p>{user.experience}</p>
-                        </div>
-                      </Row>
-                    </div>
                   </div>
                 </Row>
+                <div className="staff-stats ">
+                  <h5>{`${user.name} stats `.toUpperCase()}</h5>
+                  <Row className="staff-numbers-card">
+                    <div className="col-6">
+                      <p>{`Listings`.toUpperCase()}</p>
+                      <p className="staff-numbers">{user.listings}</p>
+                    </div>
+                    <div className="col-6">
+                      <p>PROPERTIES RENTED</p>
+                      <p className="staff-numbers">{user.propreties}</p>
+                    </div>
+                    <div className="col-12">
+                      <p>EXPERIENCE</p>
+                      <p className="staff-numbers">{user.experience}</p>
+                    </div>
+                  </Row>
+                </div>
               </div>
             </div>
           </Row>
