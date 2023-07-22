@@ -2,10 +2,9 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import { graphqlHTTP } from "express-graphql";
-import { GraphQLSchema } from "graphql";
 import { MongoClient, ServerApiVersion } from "mongodb";
-
 import { schema } from "./schema/schema";
+import { schemaRealEstate } from "./schema/realestate"; // Import the schemaRealEstate function
 
 dotenv.config();
 
@@ -33,10 +32,22 @@ async function connectToMongoDB() {
     const database = client.db("realestate");
     const schemaWithDatabase = schema(database);
 
+    // Create a new GraphQL schema with the schemaRealEstate function and the same database instance
+    const realEstateSchema = schemaRealEstate(database);
+
     app.use(
       "/graphql",
       graphqlHTTP({
         schema: schemaWithDatabase,
+        graphiql: true,
+      })
+    );
+
+    // Create another GraphQL endpoint for real estate
+    app.use(
+      "/realestate", // Endpoint path
+      graphqlHTTP({
+        schema: realEstateSchema, // Use the schema created by schemaRealEstate
         graphiql: true,
       })
     );

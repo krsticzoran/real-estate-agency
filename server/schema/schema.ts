@@ -4,6 +4,7 @@ import {
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
+  GraphQLBoolean,
 } from "graphql";
 import { Collection, Db } from "mongodb";
 
