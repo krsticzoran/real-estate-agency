@@ -5,11 +5,28 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloLink,
+  HttpLink,
+  InMemoryCache,
+} from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 
-const client = new ApolloClient({
+const endpoint1 = new HttpLink({
   uri: "http://localhost:8000/graphql",
+});
+
+const endpoint2 = new HttpLink({
+  uri: "http://localhost:8000/realestate",
+});
+
+const client = new ApolloClient({
+  link: ApolloLink.split(
+    (operation) => operation.getContext().clientName === "endpoint2",
+    endpoint2,
+    endpoint1
+  ),
   cache: new InMemoryCache(),
 });
 
