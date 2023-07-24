@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Container, Row, Card } from "react-bootstrap";
 import "../home/about/about.css";
 import "../home/featured/featured.css";
+import "./propertylist.css";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 
@@ -12,11 +13,12 @@ import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 
 const GET_PROPERTIES = gql`
-  query GetProperties($property: String!, $sale: Boolean!) {
+  query GetProperties($property: String!, $sale: String!) {
     property(property: $property, sale: $sale) {
       property
       rez
       sale
+      num
     }
   }
 `;
@@ -24,14 +26,13 @@ const GET_PROPERTIES = gql`
 interface Property {
   property: string;
   rez: string;
-  sale: boolean;
+  sale: string;
+  num: number;
 }
 
-const Rent: FC = () => {
+const PropertyList: FC = () => {
   const { rentproperty } = useParams();
-
-  console.log(rentproperty);
-  const sale = true;
+  const { sale } = useParams();
 
   const { data } = useQuery(GET_PROPERTIES, {
     variables: { property: rentproperty, sale },
@@ -40,31 +41,41 @@ const Rent: FC = () => {
 
   const properties = data?.property ?? [];
 
-  console.log(properties);
   return (
     <>
       <Header></Header>
-      <div className="featured">
+      <div className="search-rent-sale">
         <Container>
           <Row>
             {properties.map((property: Property, index: number) => (
-              <div className="col-md-4 col-12">
-                <Card className="featured-box mb-1 mt-1">
-                  <Card.Body>
+              <div className="col-md-4 col-12" key={property.num}>
+                <div className="search-rent-sale-card">
+                  <div className="search-rent-sale-card-img-box">
                     <img src={p6} alt="restaurant" />
-                    <h3 className="featured-h3-title">{property.property}</h3>
-                    <p className="featured-price">€400/mo</p>
-                    <p className="featured-day">1 day ago</p>
-                  </Card.Body>
-                </Card>
+                    <h4>Novi Beograd</h4>
+                  </div>
+                  <div className="search-rent-sale-featured">
+                    <h3 className="search-rent-sale-title">
+                      {`${
+                        property.property.charAt(0).toUpperCase() +
+                        property.property.slice(1)
+                      } in Novi Beograd`}
+                      <span>{`REF NO. ${property.num}`}</span>
+                    </h3>
+                    <p className="search-rent-sale-price">€400/mo</p>
+                    <p className="search-rent-sale-m">{`25 m\u00B2`}</p>
+                    <p className="search-rent-sale-day">1 day ago</p>
+                  </div>
+                </div>
               </div>
             ))}
           </Row>
         </Container>
       </div>
+
       <Footer></Footer>
     </>
   );
 };
 
-export default Rent;
+export default PropertyList;
