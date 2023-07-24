@@ -9,11 +9,12 @@ import {
 import { Collection, Db } from "mongodb";
 
 const RealEstateType = new GraphQLObjectType({
-  name: "RealEstate", // Change the name to "RealEstate"
+  name: "RealEstate",
   fields: {
     property: { type: GraphQLString },
     rez: { type: GraphQLString },
-    sale: { type: GraphQLBoolean },
+    sale: { type: GraphQLString },
+    num: { type: GraphQLInt },
   },
 });
 
@@ -26,8 +27,8 @@ function schemaRealEstate(database: Db): GraphQLSchema {
       property: {
         type: new GraphQLList(RealEstateType),
         args: {
-          property: { type: GraphQLString }, // Argument to filter by property name
-          sale: { type: GraphQLBoolean }, // Argument to filter by sale status
+          property: { type: GraphQLString },
+          sale: { type: GraphQLString },
         },
         async resolve(parentValue, args) {
           const properties = await collection.find(args).toArray();
