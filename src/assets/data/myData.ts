@@ -1,6 +1,6 @@
 export const menuList = [
   "Offices",
-  "Shop",
+  "Shops",
   "Warehouses",
   "Hotels",
   "Catering",
