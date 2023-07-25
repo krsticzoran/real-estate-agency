@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { Container, Row, Card } from "react-bootstrap";
-import "../home/about/about.css";
-import "../home/featured/featured.css";
+import { Container, Row } from "react-bootstrap";
+
 import "./propertylist.css";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
@@ -12,23 +11,23 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 
+import PropertyCard from "../../components/property/PropertyCard";
+import { Property } from "../../components/property/PropertyCard";
+
 const GET_PROPERTIES = gql`
   query GetProperties($property: String!, $sale: String!) {
     property(property: $property, sale: $sale) {
       property
-      rez
       sale
       num
+      place
+      price
+      square
+      time
+      img
     }
   }
 `;
-
-interface Property {
-  property: string;
-  rez: string;
-  sale: string;
-  num: number;
-}
 
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();
@@ -48,26 +47,7 @@ const PropertyList: FC = () => {
         <Container>
           <Row>
             {properties.map((property: Property, index: number) => (
-              <div className="col-md-4 col-12" key={property.num}>
-                <div className="search-rent-sale-card">
-                  <div className="search-rent-sale-card-img-box">
-                    <img src={p6} alt="restaurant" />
-                    <h4>Novi Beograd</h4>
-                  </div>
-                  <div className="search-rent-sale-featured">
-                    <h3 className="search-rent-sale-title">
-                      {`${
-                        property.property.charAt(0).toUpperCase() +
-                        property.property.slice(1)
-                      } in Novi Beograd`}
-                      <span>{`REF NO. ${property.num}`}</span>
-                    </h3>
-                    <p className="search-rent-sale-price">€400/mo</p>
-                    <p className="search-rent-sale-m">{`25 m\u00B2`}</p>
-                    <p className="search-rent-sale-day">1 day ago</p>
-                  </div>
-                </div>
-              </div>
+              <PropertyCard property={property} key={property.num} />
             ))}
           </Row>
         </Container>
