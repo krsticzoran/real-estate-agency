@@ -1,7 +1,24 @@
+.search-rent-sale-link a {
+  list-style: none;
+
+  text-decoration: none;
+}
+
+.search-rent-sale-link a:hover {
+}
+
 .search-rent-sale-card {
   margin-bottom: 30px;
   border: solid 1px #ccc;
   border-radius: 4px;
+}
+
+.search-rent-sale-card:hover {
+  border: solid 1px #5c0282 !important;
+}
+
+.search-rent-sale-card:hover h4 {
+  background-color: #5c0282 !important;
 }
 .search-rent-sale-card-img-box {
   width: 100%;

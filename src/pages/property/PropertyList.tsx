@@ -47,7 +47,9 @@ const PropertyList: FC = () => {
         <Container>
           <Row>
             {properties.map((property: Property, index: number) => (
-              <PropertyCard property={property} key={property.num} />
+              <div className="col-md-4 col-12">
+                <PropertyCard property={property} key={property.num} />
+              </div>
             ))}
           </Row>
         </Container>
