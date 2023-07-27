@@ -5,8 +5,6 @@ import "./propertylist.css";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 
-import p6 from "../../assets/images/home/p6.jpeg";
-
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
@@ -47,8 +45,8 @@ const PropertyList: FC = () => {
         <Container>
           <Row>
             {properties.map((property: Property, index: number) => (
-              <div className="col-md-4 col-12">
-                <PropertyCard property={property} key={property.num} />
+              <div className="col-md-4 col-12" key={property.num}>
+                <PropertyCard property={property} />
               </div>
             ))}
           </Row>

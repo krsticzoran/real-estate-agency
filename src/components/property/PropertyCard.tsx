@@ -20,7 +20,7 @@ interface PropertyCardProps {
 const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
   return (
     <div className="search-rent-sale-link">
-      <Link to={`/search/${property.num}`}>
+      <Link to={`/property/${property.num}`}>
         <div className="search-rent-sale-card">
           <div className="search-rent-sale-card-img-box">
             <img src={property.img} alt="restaurant" />

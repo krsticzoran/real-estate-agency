@@ -6,6 +6,7 @@ import "./App.css";
 import Team from "./pages/team/Team";
 import Member from "./pages/team/Member";
 import PropertyList from "./pages/property/PropertyList";
+import PropertyItem from "./pages/property/PropertyItem";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/team" element={<Team />} />
         <Route path="/team/:memberName" element={<Member />} />
-        <Route path="/search/:search" element={<HomePage />} />
+        <Route path="/property/:item" element={<PropertyItem />} />
         <Route path="/:sale/:rentproperty" element={<PropertyList />} />
 
         <Route path="/contact" element={<ContactPage />} />
