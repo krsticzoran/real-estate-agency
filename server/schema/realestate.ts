@@ -12,9 +12,13 @@ const RealEstateType = new GraphQLObjectType({
   name: "RealEstate",
   fields: {
     property: { type: GraphQLString },
-    rez: { type: GraphQLString },
     sale: { type: GraphQLString },
     num: { type: GraphQLInt },
+    place: { type: GraphQLString },
+    price: { type: GraphQLInt },
+    square: { type: GraphQLInt },
+    time: { type: GraphQLInt },
+    img: { type: GraphQLString },
   },
 });
 
@@ -33,6 +37,13 @@ function schemaRealEstate(database: Db): GraphQLSchema {
         async resolve(parentValue, args) {
           const properties = await collection.find(args).toArray();
           return properties;
+        },
+      },
+      item: {
+        type: RealEstateType,
+        args: { num: { type: GraphQLInt } },
+        resolve(parentValue, args) {
+          return collection.findOne({ num: args.num });
         },
       },
     },
