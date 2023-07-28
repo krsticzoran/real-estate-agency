@@ -4,7 +4,6 @@ import {
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
-  GraphQLBoolean,
 } from "graphql";
 import { Collection, Db } from "mongodb";
 
@@ -19,6 +18,7 @@ const RealEstateType = new GraphQLObjectType({
     square: { type: GraphQLInt },
     time: { type: GraphQLInt },
     img: { type: GraphQLString },
+    specialist: { type: GraphQLString },
   },
 });
 
@@ -28,6 +28,13 @@ function schemaRealEstate(database: Db): GraphQLSchema {
   const RealEstateQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
+      item: {
+        type: RealEstateType,
+        args: { num: { type: GraphQLInt } },
+        resolve(parentValue, args) {
+          return collection.findOne({ num: args.num });
+        },
+      },
       property: {
         type: new GraphQLList(RealEstateType),
         args: {
@@ -37,13 +44,6 @@ function schemaRealEstate(database: Db): GraphQLSchema {
         async resolve(parentValue, args) {
           const properties = await collection.find(args).toArray();
           return properties;
-        },
-      },
-      item: {
-        type: RealEstateType,
-        args: { num: { type: GraphQLInt } },
-        resolve(parentValue, args) {
-          return collection.findOne({ num: args.num });
         },
       },
     },

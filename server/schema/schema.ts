@@ -20,6 +20,7 @@ const UserType = new GraphQLObjectType({
     listings: { type: GraphQLInt },
     experience: { type: GraphQLString },
     propreties: { type: GraphQLInt },
+    img: { type: GraphQLString },
   },
 });
 
