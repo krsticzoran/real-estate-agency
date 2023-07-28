@@ -3,6 +3,7 @@ import "./propertycard.css";
 import { Link } from "react-router-dom";
 
 export interface Property {
+  specialist: any;
   property: string;
   sale: string;
   num: number;

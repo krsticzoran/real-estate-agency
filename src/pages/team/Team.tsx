@@ -16,6 +16,7 @@ interface User {
   email: string;
   overview: string;
   language: string;
+  img: string;
 }
 
 const GET_USERS = gql`
@@ -27,6 +28,7 @@ const GET_USERS = gql`
         email
         overview
         language
+        img
       }
     }
   }
@@ -37,12 +39,6 @@ const Team: FC = () => {
 
   const staff: User[] = data?.staff?.users ?? [];
 
-  const userImg = [
-    useImagePath("jovan"),
-    useImagePath("marko"),
-    useImagePath("stefan"),
-  ];
-
   return (
     <>
       <Header />
@@ -51,12 +47,12 @@ const Team: FC = () => {
           <h2 className="team-title">Team</h2>
           <h4>Our Specialist</h4>
           <Row>
-            {staff.map((member, index: number) => (
+            {staff.map((member) => (
               <div key={member.user} className="col-lg-4 col-sm-12 team-card">
                 <Link to={`/team/${member.user}`}>
                   <Card>
                     <Card.Body>
-                      <img src={userImg[index]} alt="staff" />
+                      <img src={member.img} alt="staff" />
                       <div>
                         <h5 className="team-card-title">{member.name}</h5>
                         <p>

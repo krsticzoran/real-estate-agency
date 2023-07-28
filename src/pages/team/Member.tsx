@@ -8,34 +8,10 @@ import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
 
-const GET_USERS = gql`
-  query GetUser($name: String!) {
-    user(user: $name) {
-      user
-      name
-      email
-      overview
-      language
-      phone
-      listings
-      experience
-      propreties
-    }
-  }
-`;
-interface User {
-  user: string;
-  name: string;
-  email: string;
-  overview: string;
-  language: string;
-  phone: string;
-  listings: number;
-  experience: string;
-  propreties: number;
-}
+import { GET_USERS } from "../../assets/data/myData";
+
+import { User } from "../../assets/data/myData";
 
 const Member: FC = () => {
   const { memberName } = useParams();
