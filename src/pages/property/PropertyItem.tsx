@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Property } from "../../components/property/PropertyCard";
 import { Row } from "react-bootstrap";
-import { GET_USERS } from "../../assets/data/myData";
-import { User } from "../../assets/data/myData";
+import { useGetUser } from "../../hook/useGetUser";
 
 const GET_PROPERTY = gql`
   query GetProperty($num: Int!) {
@@ -35,11 +34,7 @@ const PropertyItem: FC = () => {
 
   const properties: Property = propertyData?.item ?? {};
 
-  const { data: userData } = useQuery(GET_USERS, {
-    variables: { name: properties.specialist ?? "" },
-  });
-
-  const user: User = userData?.user ?? {};
+  const user = useGetUser(properties.specialist ?? "") ?? {};
 
   return (
     <Row>

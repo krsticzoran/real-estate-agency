@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Card, Container, Row } from "react-bootstrap";
-import { useImagePath } from "../../hook/useImagePath";
 
 import "./team.css";
 

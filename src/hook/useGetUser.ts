@@ -1,25 +1,4 @@
-import { gql } from "@apollo/client";
-
-export const menuList = [
-  "Offices",
-  "Shops",
-  "Warehouses",
-  "Hotels",
-  "Catering",
-  "Other",
-];
-
-export const location = [
-  "Zvezdara",
-  "Novi Beograd",
-  "Savski venac",
-  "Palilula",
-  "Stari grad",
-  "Vračar",
-  "Mladenovac",
-  "Voždovac",
-  "Surčin",
-];
+import { gql, useQuery } from "@apollo/client";
 
 export const GET_USERS = gql`
   query GetUser($name: String!) {
@@ -49,4 +28,14 @@ export interface User {
   experience: string;
   propreties: number;
   img: string;
+}
+
+export function useGetUser(name: string | undefined) {
+  const { data } = useQuery(GET_USERS, {
+    variables: { name },
+  });
+
+  const user: User = data?.user ?? {};
+
+  return user;
 }

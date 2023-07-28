@@ -1,28 +1,18 @@
 import { FC } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useImagePath } from "../../hook/useImagePath";
+
 import "./team.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 
-import { useQuery } from "@apollo/client";
-
-import { GET_USERS } from "../../assets/data/myData";
-
-import { User } from "../../assets/data/myData";
+import { useGetUser } from "../../hook/useGetUser";
 
 const Member: FC = () => {
   const { memberName } = useParams();
 
-  const { data } = useQuery(GET_USERS, {
-    variables: { name: memberName },
-  });
-
-  const user: User = data?.user ?? {};
-
-  const getImagePath = useImagePath(user.user);
+  const user = useGetUser(memberName) ?? {};
 
   return (
     <>
@@ -31,7 +21,7 @@ const Member: FC = () => {
         <Container>
           <Row>
             <div className="col-12 col-lg-4 member-data-box">
-              <img src={getImagePath} alt="staff" />
+              <img src={user.img} alt="staff" />
               <h3 className="member-name">{user.name}</h3>
               <p>Speaks: {user.language}</p>
             </div>
