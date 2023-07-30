@@ -10,7 +10,7 @@ import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 
 import PropertyCard from "../../components/property/PropertyCard";
-import { Property } from "../../components/property/PropertyCard";
+import { Property } from "../../types";
 
 const GET_PROPERTIES = gql`
   query GetProperties($property: String!, $sale: String!) {

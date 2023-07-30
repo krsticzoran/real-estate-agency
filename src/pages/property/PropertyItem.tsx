@@ -2,9 +2,10 @@ import { gql } from "@apollo/client";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Property } from "../../components/property/PropertyCard";
+import { Property } from "../../types";
 import { Row } from "react-bootstrap";
 import { useGetUser } from "../../hook/useGetUser";
+import PropertyCarousel from "./PropertyCaorusel";
 
 const GET_PROPERTY = gql`
   query GetProperty($num: Int!) {
@@ -18,6 +19,9 @@ const GET_PROPERTY = gql`
       time
       img
       specialist
+      img1
+      img2
+      img3
     }
   }
 `;
@@ -39,7 +43,7 @@ const PropertyItem: FC = () => {
   return (
     <Row>
       <div className="col-6">
-        <img src={properties.img} alt="property" />
+        <PropertyCarousel property={properties} />
       </div>
       <div className="col-6">
         <p>{properties.property}</p>
