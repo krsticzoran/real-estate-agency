@@ -19,8 +19,8 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
           <div className="search-rent-sale-featured">
             <h3 className="search-rent-sale-title">
               {`${
-                property.property.charAt(0).toUpperCase() +
-                property.property.slice(1)
+                property.property?.charAt(0).toUpperCase() +
+                property.property?.slice(1)
               } in ${property.place}`}
               <span>{`REF NO. ${property.num}`}</span>
             </h3>

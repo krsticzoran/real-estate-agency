@@ -1,3 +1,11 @@
+.property-details {
+  margin: 150px 0 !important;
+}
+
+.carousel-property-card > .carousel a {
+  display: none !important;
+}
+
 .search-rent-sale {
   margin: 100px 0 10px 0;
 }
@@ -21,14 +29,35 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: #fff !important;
+
   color: #212529 !important;
   margin-top: 10px;
-  border: 1px solid #5c0282;
+  border: 1px solid #fff;
   z-index: 10000;
   opacity: 1 !important;
 }
 
 .disabled {
-  border: 1px solid #fff !important ;
+  border: 1px solid #d6d6d6 !important;
+  background-color: #d6d6d6 !important;
+}
+
+.user-property-card {
+  background-color: #fff;
+  padding: 25px 30px 34px 30px;
+  border-radius: 7px;
+  box-shadow: 0 1px 12px #dadada;
+}
+
+.agent-photo {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+}
+
+.agent-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
