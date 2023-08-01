@@ -1,13 +1,9 @@
 .property-details {
-  margin: 150px 0 !important;
+  margin: 130px 0 65px 0 !important;
 }
 
 .carousel-property-card > .carousel a {
   display: none !important;
-}
-
-.search-rent-sale {
-  margin: 100px 0 10px 0;
 }
 
 .carousel-property-card {
@@ -44,9 +40,57 @@
 
 .user-property-card {
   background-color: #fff;
-  padding: 25px 30px 34px 30px;
+  padding: 44px 30px 34px 30px;
   border-radius: 7px;
   box-shadow: 0 1px 12px #dadada;
+}
+
+.property-number {
+  padding: 0px;
+  margin: 0 0 10px 0;
+  color: #5c0282;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.property-details-title {
+  color: #000;
+  font-size: 24px;
+  font-family: "Circular Std";
+  margin-bottom: 12px;
+}
+
+.property-size-price-title {
+  font-size: 12px;
+  color: #272727;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 15px 0 5px 0;
+}
+.property-size-price {
+  font-size: 32px !important;
+  color: #5c0282 !important;
+  font-weight: 400;
+  padding-bottom: 0px;
+}
+
+.agent-card-details {
+  background-color: #5c0282;
+  border-radius: 7px;
+  padding: 30px 20px;
+  margin-top: 25px !important;
+}
+
+.agent-card-details h5 {
+  font-size: 10px;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.search-rent-sale {
+  margin: 100px 0 10px 0;
 }
 
 .agent-photo {
@@ -60,4 +104,30 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.agent-name-language {
+  width: 80%;
+}
+
+.agent-name-language h3,
+.agent-name-language h4 {
+  font-size: 15px;
+  color: #fff;
+  padding-left: 10px;
+  font-weight: 800;
+}
+
+.agent-phone-email-container {
+  margin-top: 30px;
+}
+
+.phone-email-icon {
+  color: #5c0282;
+}
+
+.agent-phone-email a {
+  list-style: none;
+  color: #5c0282;
+  text-decoration: none;
 }
