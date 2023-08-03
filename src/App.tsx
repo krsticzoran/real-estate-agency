@@ -7,6 +7,7 @@ import Team from "./pages/team/Team";
 import Member from "./pages/team/Member";
 import PropertyList from "./pages/property/PropertyList";
 import PropertyItem from "./pages/property/PropertyItem";
+import Search from "./pages/search/Search";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/team/:memberName" element={<Member />} />
         <Route path="/property/:item" element={<PropertyItem />} />
         <Route path="/:sale/:rentproperty" element={<PropertyList />} />
-
+        <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/*" element={<HomePage />} />
       </Routes>

@@ -4,8 +4,39 @@ import Select from "./Select";
 import MultiRangeSlider from "./PropertyRange";
 import { menuList, location } from "../../../assets/data/myData";
 import "./property-box.css";
+import { useQuery } from "@apollo/client";
+import { gql } from "graphql-tag";
+import { useNavigate } from "react-router-dom";
+
+const GET_PROPERTIES = gql`
+  query GetProperties(
+    $property: String!
+    $sale: String!
+    $minPrice: Int!
+    $maxPrice: Int!
+    $place: String!
+  ) {
+    search(
+      property: $property
+      sale: $sale
+      place: $place
+      minPrice: $minPrice
+      maxPrice: $maxPrice
+    ) {
+      property
+      sale
+      num
+      place
+      price
+      square
+      time
+      img
+    }
+  }
+`;
 
 const PropertySearch: React.FC = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<string>("rent");
   const [selectedLocation, setSelectedLocaction] = useState<string>("All");
   const [selectedProperty, setSelectedProperty] = useState<string>("All");
@@ -34,26 +65,34 @@ const PropertySearch: React.FC = () => {
     setSelectedPropertySale(value);
   };
 
-  // TODO: Add code to handle selected property
-  const handleSearch = (tab: string) => {
-    if (tab === "rent") {
-      console.log(
-        tab,
-        selectedLocation,
-        selectedProperty,
-        rentRangeValues[0],
-        rentRangeValues[1]
-      );
-    } else {
-      console.log(
-        tab,
-        selectedLocationSale,
-        selectedPropertySale,
-        saleRangeValues[0],
-        saleRangeValues[1]
-      );
+  const { data: rentData } = useQuery(GET_PROPERTIES, {
+    variables: {
+      property: selectedProperty,
+      sale: "rent",
+      place: selectedLocation,
+      minPrice: rentRangeValues[0],
+      maxPrice: rentRangeValues[1],
+    },
+    context: { clientName: "endpoint2" },
+  });
+  const { data: saleData } = useQuery(GET_PROPERTIES, {
+    variables: {
+      property: selectedPropertySale,
+      sale: "sale",
+      place: selectedLocationSale,
+      minPrice: saleRangeValues[0],
+      maxPrice: saleRangeValues[1],
+    },
+    context: { clientName: "endpoint2" },
+  });
+  let data = rentData;
+
+  function handleSearch(activeTab: string): void {
+    if (activeTab === "sale") {
+      data = saleData;
     }
-  };
+    navigate("/search", { state: { data } });
+  }
 
   return (
     <div className="col-md-6 col-sm-12 col-xs-12 d-flex align-content-center flex-wrap property-input-box ">
