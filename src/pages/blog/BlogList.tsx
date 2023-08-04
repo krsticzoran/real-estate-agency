@@ -23,7 +23,6 @@ const BlogList: FC = () => {
   const divStyle = {
     height: "100vh",
     display: "flex",
-
     justifyContent: "center",
     alignItems: "center",
   };
