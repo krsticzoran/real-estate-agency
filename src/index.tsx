@@ -21,11 +21,19 @@ const endpoint2 = new HttpLink({
   uri: "http://localhost:8000/realestate",
 });
 
+const endpoint3 = new HttpLink({
+  uri: "http://localhost:8000/blog",
+});
+
 const client = new ApolloClient({
   link: ApolloLink.split(
     (operation) => operation.getContext().clientName === "endpoint2",
     endpoint2,
-    endpoint1
+    ApolloLink.split(
+      (operation) => operation.getContext().clientName === "endpoint3",
+      endpoint3,
+      endpoint1
+    )
   ),
   cache: new InMemoryCache(),
 });
