@@ -4,10 +4,7 @@
 
 [DEMO](https://real-estate-rent.netlify.app/)<br /><br />
 
-**Status: Landing Page - Finished**
+In the demo version, users can explore the captivating visual design of the landing page, while the full functionality of the website will be revealed upon its completion
 <br /><br />
 
-The real estate agency app is currently in its initial development stage. You can explore the current state of the website by visiting the demo link provided above. I am utilizing React (Typescript) as the primary technology for this project.
-<br /><br />
-
-Furthermore, in the second phase of development, I have plans to add a server, with a specific focus on utilizing GraphQL to connect the backend and frontend. This implementation will enable us to achieve more advanced functionalities and enhance data interaction. Stay tuned as we will keep you updated on the new upgrades and features that our application will bring!
+This project serves as a dynamic website for a real estate agency, providing a practical environment for practicing React, TypeScript, and GraphQL. The project also utilizes Bootstrap for stylish layouts and leverages Express and MongoDB for seamless backend operations
