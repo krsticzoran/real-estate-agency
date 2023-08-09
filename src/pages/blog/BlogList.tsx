@@ -6,6 +6,8 @@ import React from "react";
 import Header from "../../components/header/Header";
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import BlogCard from "./BlogCard";
+import Footer from "../../components/footer/Footer";
 
 const GET_BLOGS = gql`
   query {
@@ -14,9 +16,18 @@ const GET_BLOGS = gql`
       author
       property
       num
+      img
     }
   }
 `;
+interface Blog {
+  num: number;
+  img: string;
+  property: string;
+  square: number;
+  title: string;
+  author: string;
+}
 
 const BlogList: FC = () => {
   const { data } = useQuery(GET_BLOGS, {
@@ -24,17 +35,12 @@ const BlogList: FC = () => {
   });
 
   const dataBlog = data?.blogList ?? [];
-  console.log(dataBlog[0]?.title);
 
   return (
     <>
       <Header />
       <div className="blog-cover-img-container">
-        <img
-          src="/img/blog/cover.jpeg"
-          alt="cover"
-          className="blog-cover-img"
-        />
+        <img src={dataBlog[0]?.img} alt="cover" className="blog-cover-img" />
         <div className="img-overlay" />
         <div className="blog-overlay-text">
           <Container>
@@ -50,6 +56,19 @@ const BlogList: FC = () => {
           </Container>
         </div>
       </div>
+      <Container className="mt-5 mb-3">
+        <Row>
+          {dataBlog.map(
+            (blog: Blog) =>
+              blog.num !== 1 && (
+                <div className="col-md-4 col-12" key={blog.num}>
+                  <BlogCard blog={blog} />
+                </div>
+              )
+          )}
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 };
