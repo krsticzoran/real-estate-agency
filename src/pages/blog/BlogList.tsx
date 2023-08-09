@@ -8,6 +8,7 @@ import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogCard from "./BlogCard";
 import Footer from "../../components/footer/Footer";
+import { Blog } from "../../types";
 
 const GET_BLOGS = gql`
   query {
@@ -20,14 +21,6 @@ const GET_BLOGS = gql`
     }
   }
 `;
-interface Blog {
-  num: number;
-  img: string;
-  property: string;
-  square: number;
-  title: string;
-  author: string;
-}
 
 const BlogList: FC = () => {
   const { data } = useQuery(GET_BLOGS, {

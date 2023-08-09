@@ -12,3 +12,12 @@ export interface Property {
   img2: string;
   img3: string;
 }
+
+export interface Blog {
+  num: number;
+  img: string;
+  property: string;
+  square: number;
+  title: string;
+  author: string;
+}

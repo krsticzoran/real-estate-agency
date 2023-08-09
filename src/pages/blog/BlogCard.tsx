@@ -2,15 +2,7 @@ import { FC } from "react";
 import "./blog.css";
 import "../../components/property/propertycard.css";
 import { Link } from "react-router-dom";
-
-interface Blog {
-  num: number;
-  img: string;
-  property: string;
-  square: number;
-  title: string;
-  author: string;
-}
+import { Blog } from "../../types";
 
 interface BlogCardProps {
   blog: Blog;
