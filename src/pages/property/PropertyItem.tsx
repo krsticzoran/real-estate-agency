@@ -35,7 +35,6 @@ const GET_PROPERTY = gql`
 const PropertyItem: FC = () => {
   const { item } = useParams();
   const num = parseInt(item ?? "0");
-  console.log(num);
 
   const { data: propertyData } = useQuery(GET_PROPERTY, {
     variables: { num },
