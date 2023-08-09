@@ -12,7 +12,10 @@ const BlogType = new GraphQLObjectType({
   name: "Blog",
   fields: {
     title: { type: GraphQLString },
-    content: { type: GraphQLString },
+    property: { type: GraphQLString },
+    author: { type: GraphQLString },
+    num: { type: GraphQLInt },
+    img: { type: GraphQLString },
   },
 });
 
@@ -27,6 +30,13 @@ function schemaBlog(database: Db): GraphQLSchema {
         async resolve() {
           const blogList = await collection.find().toArray();
           return blogList;
+        },
+      },
+      blogText: {
+        type: BlogType,
+        args: { title: { type: GraphQLString } },
+        resolve(parentValue, args) {
+          return collection.findOne({ title: args.title });
         },
       },
     },
