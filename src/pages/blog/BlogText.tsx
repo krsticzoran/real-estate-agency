@@ -22,11 +22,13 @@ const BlogText: FC = () => {
     variables: { title: formattedTitle },
     context: { clientName: "endpoint3" },
   });
+  const blog = data?.blogText ?? {};
 
-  console.log(data);
+  console.log(blog);
+
   return (
     <div>
-      <p>dfsdfa</p>
+      <p>{blog.title}</p>
     </div>
   );
 };
