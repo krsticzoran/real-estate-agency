@@ -1,6 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import { FC } from "react";
 import { useParams } from "react-router";
+import ReactMarkdown from "react-markdown";
+import { Container } from "react-bootstrap";
 
 const GET_BLOGTEXT = gql`
   query GetBlogText($title: String!) {
@@ -10,6 +12,7 @@ const GET_BLOGTEXT = gql`
       property
       num
       img
+      content
     }
   }
 `;
@@ -27,9 +30,19 @@ const BlogText: FC = () => {
   console.log(blog);
 
   return (
-    <div>
-      <p>{blog.title}</p>
-    </div>
+    <Container>
+      <div>
+        <h4>{blog.property}</h4>
+        <h1>{blog.title}</h1>
+        <p>{blog.author}</p>
+      </div>
+      <div>
+        <div>
+          <img src={blog.img} alt="img" />
+        </div>
+        <ReactMarkdown children={blog.content} />
+      </div>
+    </Container>
   );
 };
 
