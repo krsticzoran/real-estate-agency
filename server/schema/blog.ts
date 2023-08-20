@@ -4,7 +4,6 @@ import {
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
-  GraphQLBoolean,
 } from "graphql";
 import { Collection, Db } from "mongodb";
 
@@ -16,6 +15,7 @@ const BlogType = new GraphQLObjectType({
     author: { type: GraphQLString },
     num: { type: GraphQLInt },
     img: { type: GraphQLString },
+    content: { type: GraphQLString },
   },
 });
 
