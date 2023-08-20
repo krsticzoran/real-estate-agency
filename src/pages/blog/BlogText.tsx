@@ -3,6 +3,9 @@ import { FC } from "react";
 import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { Container } from "react-bootstrap";
+import "./blog.css";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 const GET_BLOGTEXT = gql`
   query GetBlogText($title: String!) {
@@ -30,19 +33,25 @@ const BlogText: FC = () => {
   console.log(blog);
 
   return (
-    <Container>
-      <div>
-        <h4>{blog.property}</h4>
-        <h1>{blog.title}</h1>
-        <p>{blog.author}</p>
-      </div>
-      <div>
-        <div>
-          <img src={blog.img} alt="img" />
+    <>
+      <Header />
+      <Container>
+        <div className="blog-title-section">
+          <h4>{blog.property}</h4>
+          <h1>{blog.title}</h1>
+          <p>{blog.author}</p>
         </div>
-        <ReactMarkdown children={blog.content} />
-      </div>
-    </Container>
+        <div>
+          <div className="blog-img-section">
+            <img src={blog.img} alt="img" />
+          </div>
+          <div className="blog-content-section">
+            <ReactMarkdown children={blog.content} />
+          </div>
+        </div>
+      </Container>
+      <Footer />
+    </>
   );
 };
 
