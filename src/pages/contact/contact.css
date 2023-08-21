@@ -1,0 +1,10 @@
+.contact-img-box img {
+  min-width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .contact-img-box img {
+    max-width: 100%;
+  }
+}
