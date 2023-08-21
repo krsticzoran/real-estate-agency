@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Container } from "react-bootstrap";
@@ -12,7 +12,7 @@ type EmailData = {
   message: string;
 };
 
-const ContactPage: React.FC = () => {
+const ContactPage: FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +20,6 @@ const ContactPage: React.FC = () => {
     message: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
-  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,24 +35,42 @@ const ContactPage: React.FC = () => {
       message: formData.message,
     };
 
-    emailjs
-      .send(serviceID, templateID, emailData, userID)
-      .then(
-        (result) => {
-          console.log("Email sent successfully", result.text);
-          setSuccessMessage("Email sent successfully");
-        },
-        (error) => {
-          console.error("Error sending email", error);
-          setSuccessMessage("Error sending email");
-        }
-      )
-      .finally(() => {
-        if (formRef.current) {
-          formRef.current.reset(); // Reset the form
-        }
-      });
+    emailjs.send(serviceID, templateID, emailData, userID).then(
+      (result) => {
+        console.log("Email sent successfully", result.text);
+        setSuccessMessage("Email sent successfully");
+      },
+      (error) => {
+        console.error("Error sending email", error);
+        setSuccessMessage("Error sending email");
+      }
+    );
+
+    setFormData({
+      name: "",
+      email: "",
+      number: "",
+      message: "",
+    });
   };
+
+  useEffect(() => {
+    const inputFields = document.querySelectorAll("input, textarea");
+
+    inputFields.forEach((field) => {
+      field.addEventListener("focus", () => {
+        setSuccessMessage("");
+      });
+    });
+
+    return () => {
+      inputFields.forEach((field) => {
+        field.removeEventListener("focus", () => {
+          setSuccessMessage("");
+        });
+      });
+    };
+  }, []);
 
   return (
     <>
