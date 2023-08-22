@@ -3,6 +3,10 @@
   background-color: #f5f5f5;
 }
 
+.commercial a {
+  text-decoration: none;
+}
+
 .commercial-big-title {
   font-size: 36px;
   color: #1f1f1f;
