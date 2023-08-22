@@ -71,7 +71,7 @@ const FooterTop: FC = () => {
                 <h5 className="footer-title mb-3">Other</h5>
               </li>
               <li>
-                <Link to="/contact-us">Contact Us</Link>
+                <Link to="/contact">Contact Us</Link>
               </li>
               <li>
                 <Link to="/about-us">About Us</Link>
