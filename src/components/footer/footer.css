@@ -111,3 +111,12 @@
     margin-right: 10px !important;
   }
 }
+
+.truncate-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+}

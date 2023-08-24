@@ -100,11 +100,11 @@ const FooterTop: FC = () => {
               {dataBlog.slice(0, 4).map((blog: Blog) => (
                 <li key={blog.title} className="blog-li">
                   <Link
-                    to={`/blog/${dataBlog[0]?.title.replace(/\s+/g, "-")}`}
-                    className="d-flex "
+                    to={`/blog/${blog.title.replace(/\s+/g, "-")}`}
+                    className="d-flex"
                   >
                     <img src={blog.img} alt={blog.title} />
-                    <p>{blog.title}</p>
+                    <p className="truncate-text">{blog.title}</p>
                   </Link>
                 </li>
               ))}
