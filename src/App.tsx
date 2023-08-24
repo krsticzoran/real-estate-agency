@@ -10,6 +10,7 @@ import PropertyItem from "./pages/property/PropertyItem";
 import Search from "./pages/search/Search";
 import BlogList from "./pages/blog/BlogList";
 import BlogText from "./pages/blog/BlogText";
+import AboutUs from "./pages/about/AboutUs";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:title" element={<BlogText />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/*" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
