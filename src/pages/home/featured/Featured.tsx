@@ -64,7 +64,10 @@ const Featured: FC = () => {
               {properties
                 .slice(0, 3)
                 .map((property: Property, index: number) => (
-                  <div className="col-md-4 col-12 featured-card">
+                  <div
+                    className="col-md-4 col-12 featured-card"
+                    key={property.num}
+                  >
                     <Link to={`/property/${property.num}`}>
                       <Card className="featured-box mb-1 mt-1">
                         <Card.Body>

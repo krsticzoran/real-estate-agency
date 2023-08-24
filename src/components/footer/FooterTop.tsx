@@ -7,12 +7,29 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { menuList } from "../../assets/data/myData";
-import blog1 from "../../assets/images/footer/blog-image-25.jpeg";
-import blog2 from "../../assets/images/footer/blog-image-24.jpeg";
-import blog3 from "../../assets/images/footer/blog-image-23.jpeg";
-import blog4 from "../../assets/images/footer/blog-image-22.jpeg";
+import { Blog } from "../../types";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_BLOGS = gql`
+  query {
+    blogList {
+      title
+      author
+      property
+      num
+      img
+    }
+  }
+`;
 
 const FooterTop: FC = () => {
+  const { data } = useQuery(GET_BLOGS, {
+    context: { clientName: "endpoint3" },
+  });
+
+  const dataBlog = data?.blogList ?? [];
+  console.log(dataBlog);
+
   return (
     <div className="footer-top">
       <Container>
@@ -83,39 +100,17 @@ const FooterTop: FC = () => {
               <li>
                 <h5 className="footer-title mb-3">Blog</h5>
               </li>
-              <li className="blog-li">
-                <Link
-                  to="/blog/look-for-when-renting-office-space"
-                  className="d-flex "
-                >
-                  <img src={blog1} alt="office" />
-                  <p>Do you currently own an office space</p>
-                </Link>
-              </li>
-              <li className="blog-li">
-                <Link to="/blog/annual-awards" className="d-flex">
-                  <img src={blog2} alt="awards" />
-                  <p>Annual awards for our company in April</p>
-                </Link>
-              </li>
-              <li className="blog-li">
-                <Link
-                  to="/blog/benefits-of-coworking-office-spaces"
-                  className="d-flex"
-                >
-                  <img src={blog3} alt="coworking office spaces" />
-                  <p>Benefits of Coworking Office Spaces</p>
-                </Link>
-              </li>
-              <li className="blog-li">
-                <Link
-                  to="/blog/thinking-about-moving-property-in-belgrade-heres-everything-you-need-to-know"
-                  className="d-flex"
-                >
-                  <img src={blog4} alt="office" />
-                  <p>Thinking About Moving Property In Belgrade?</p>
-                </Link>
-              </li>
+              {dataBlog.map((blog: Blog) => (
+                <li key={blog.title} className="blog-li">
+                  <Link
+                    to={`/blog/${dataBlog[0]?.title.replace(/\s+/g, "-")}`}
+                    className="d-flex "
+                  >
+                    <img src={blog.img} alt={blog.title} />
+                    <p>{blog.title}</p>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </Row>
