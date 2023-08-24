@@ -14,9 +14,6 @@ const GET_BLOGS = gql`
   query {
     blogList {
       title
-      author
-      property
-      num
       img
     }
   }
@@ -100,7 +97,7 @@ const FooterTop: FC = () => {
               <li>
                 <h5 className="footer-title mb-3">Blog</h5>
               </li>
-              {dataBlog.map((blog: Blog) => (
+              {dataBlog.slice(0, 4).map((blog: Blog) => (
                 <li key={blog.title} className="blog-li">
                   <Link
                     to={`/blog/${dataBlog[0]?.title.replace(/\s+/g, "-")}`}
