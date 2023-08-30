@@ -1,13 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const menuList = [
-  "offices",
-  "shops",
-  "warehouses",
-  "hotels",
-  "catering",
-  "other",
-];
+export const menuList = ["offices", "shops", "warehouses", "catering"];
 
 export const location = [
   "Zvezdara",
@@ -15,10 +8,7 @@ export const location = [
   "Savski venac",
   "Palilula",
   "Stari grad",
-  "Vračar",
   "Mladenovac",
-  "Voždovac",
-  "Surčin",
 ];
 
 export const GET_USERS = gql`

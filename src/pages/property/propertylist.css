@@ -9,7 +9,9 @@
 .carousel-property-card {
   position: relative;
 }
-
+.carousel-property-card img {
+  max-height: 600px;
+}
 .carousel-controls {
   padding: 0 3px;
   position: absolute;
@@ -39,8 +41,9 @@
 }
 
 .user-property-card {
+  max-height: 600px;
   background-color: #fff;
-  padding: 44px 30px 34px 30px;
+  padding: 44px 30px 34px 25px;
   border-radius: 7px;
   box-shadow: 0 1px 12px #dadada;
 }
