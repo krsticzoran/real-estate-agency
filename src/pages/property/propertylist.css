@@ -134,3 +134,19 @@
   color: #5c0282;
   text-decoration: none;
 }
+
+.no-search {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-to-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #5c0282;
+  text-decoration: none;
+  list-style: none;
+}

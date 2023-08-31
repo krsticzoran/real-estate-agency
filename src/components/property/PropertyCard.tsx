@@ -25,9 +25,9 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
               <span>{`REF NO. ${property.num}`}</span>
             </h3>
             {property.sale === "rent" ? (
-              <p className="search-rent-sale-price">{`€${property.price}/mo`}</p>
+              <p className="search-rent-sale-price">{`€ ${property.price.toLocaleString()}/mo`}</p>
             ) : (
-              <p className="search-rent-sale-price">{`€${property.price}`}</p>
+              <p className="search-rent-sale-price">{`${property.price.toLocaleString()} €`}</p>
             )}
             <p className="search-rent-sale-m">{`${property.square} m\u00B2`}</p>
             <p className="search-rent-sale-day">{`${property.time} day ago`}</p>
