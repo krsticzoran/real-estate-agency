@@ -8,11 +8,37 @@ import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 
 import { useGetUser } from "../../hook/useGetUser";
+import { useQuery } from "@apollo/client";
+import { gql } from "graphql-tag";
+
+const GET_PROPERTIES = gql`
+  query GetProperties($specialist: String!) {
+    staff(specialist: $specialist) {
+      property
+      sale
+      num
+      place
+      price
+      square
+      time
+      img
+    }
+  }
+`;
 
 const Member: FC = () => {
   const { memberName } = useParams();
 
   const user = useGetUser(memberName) ?? {};
+
+  const { data } = useQuery(GET_PROPERTIES, {
+    variables: { specialist: memberName },
+    context: { clientName: "endpoint2" },
+  });
+
+  const properties = data?.staff ?? [];
+
+  console.log(properties);
 
   return (
     <>

@@ -25,7 +25,6 @@ const FooterTop: FC = () => {
   });
 
   const dataBlog = data?.blogList ?? [];
-  console.log(dataBlog);
 
   return (
     <div className="footer-top">
