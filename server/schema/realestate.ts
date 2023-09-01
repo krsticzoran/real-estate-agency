@@ -49,6 +49,16 @@ function schemaRealEstate(database: Db): GraphQLSchema {
           return properties;
         },
       },
+      staff: {
+        type: new GraphQLList(RealEstateType),
+        args: {
+          specialist: { type: GraphQLString },
+        },
+        async resolve(parentValue, args) {
+          const staffProperties = await collection.find(args).toArray();
+          return staffProperties;
+        },
+      },
       search: {
         type: new GraphQLList(RealEstateType),
         args: {
