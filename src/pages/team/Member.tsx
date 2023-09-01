@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { useGetUser } from "../../hook/useGetUser";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
+import { Property } from "../../types";
+import PropertyCard from "../../components/property/PropertyCard";
 
 const GET_PROPERTIES = gql`
   query GetProperties($specialist: String!) {
@@ -38,8 +40,6 @@ const Member: FC = () => {
 
   const properties = data?.staff ?? [];
 
-  console.log(properties);
-
   return (
     <>
       <Header />
@@ -55,7 +55,7 @@ const Member: FC = () => {
               <h3 className="member-name">Overview</h3>
               <p>{user.overview}</p>
             </div>
-            <div className="col-12 col-lg-4">
+            <div className="col-12 col-lg-4 mb-5">
               <div className="staff-card ">
                 {" "}
                 <h2>Contact {user.name}</h2>
@@ -93,6 +93,18 @@ const Member: FC = () => {
                 </div>
               </div>
             </div>
+
+            <hr />
+            <div className="col-12 staff-property">
+              <h4>properties</h4>
+              <h2>{`Properties listed by ${user.name}`}</h2>
+            </div>
+
+            {properties.slice(0, 6).map((property: Property, index: number) => (
+              <div className="col-md-4 col-12" key={property.num}>
+                <PropertyCard property={property} />
+              </div>
+            ))}
           </Row>
         </Container>
       </div>
