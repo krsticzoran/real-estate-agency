@@ -77,6 +77,7 @@ const Featured: FC = () => {
           </div>
           <div className="col-12 featured-container">
             <Carousel
+              className="caurosel-prev-icon"
               interval={null}
               indicators={false}
               prevIcon={<FontAwesomeIcon icon={faLeftLong} />}

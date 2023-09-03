@@ -50,3 +50,21 @@
     margin-top: 10px !important;
   }
 }
+
+@media (max-width: 769px) {
+  .carousel-control-next svg,
+  .carousel-control-prev svg {
+    width: 15px !important;
+  }
+  .carousel-control-prev {
+    right: 40px !important;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+  .caurosel-prev-icon .carousel-control-prev,
+  .caurosel-prev-icon .carousel-control-next {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
