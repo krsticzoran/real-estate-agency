@@ -44,20 +44,10 @@
 }
 @media (max-width: 768px) {
   .featured {
-    margin: 30px 0 20px 0 !important;
+    margin: 45px 0 20px 0 !important;
   }
   .featured-container {
     margin-top: 10px !important;
-  }
-}
-
-@media (max-width: 769px) {
-  .carousel-control-next svg,
-  .carousel-control-prev svg {
-    width: 15px !important;
-  }
-  .carousel-control-prev {
-    right: 40px !important;
   }
 }
 
@@ -66,5 +56,16 @@
   .caurosel-prev-icon .carousel-control-next {
     width: 50px !important;
     height: 50px !important;
+    top: -100px !important;
+  }
+  .carousel-control-prev {
+    right: 60px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .caurosel-prev-icon .carousel-control-next,
+  .caurosel-prev-icon .carousel-control-prev {
+    top: -100px !important;
   }
 }
