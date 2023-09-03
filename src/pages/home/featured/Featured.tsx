@@ -3,12 +3,15 @@ import { Container, Row, Card } from "react-bootstrap";
 import "../about/about.css";
 import "./featured.css";
 
-import p2 from "../../../assets/images/home/p2.jpeg";
-import p6 from "../../../assets/images/home/p6.jpeg";
-import p1 from "../../../assets/images/home/p1.jpeg";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { Property } from "../../../types";
+
+import Carousel from "react-bootstrap/Carousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from "react-responsive";
 
 const GET_PROPERTIES = gql`
   query GetProperties(
@@ -51,6 +54,19 @@ const Featured: FC = () => {
 
   const properties = data?.search ?? [];
 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const chunk = (arr: any[], size: number) => {
+    return arr.reduce((chunks, el, i) => {
+      if (i % size === 0) {
+        chunks.push([el]);
+      } else {
+        chunks[chunks.length - 1].push(el);
+      }
+      return chunks;
+    }, []);
+  };
+
   return (
     <div className="featured">
       <Container>
@@ -60,32 +76,88 @@ const Featured: FC = () => {
             <h2 className="about-title">Featured properties for rent</h2>
           </div>
           <div className="col-12 featured-container">
-            <Row>
-              {properties
-                .slice(0, 3)
-                .map((property: Property, index: number) => (
-                  <div
-                    className="col-md-4 col-12 featured-card"
-                    key={property.num}
-                  >
-                    <Link to={`/property/${property.num}`}>
-                      <Card className="featured-box mb-1 mt-1">
-                        <Card.Body>
-                          <img src={property.img} alt={property.img} />
-                          <h3 className="featured-h3-title">
-                            {`${
-                              property.property.charAt(0).toUpperCase() +
-                              property.property.slice(1)
-                            } `}
-                          </h3>
-                          <p className="featured-price">{`€${property.price}/mo`}</p>
-                          <p className="featured-day">{`${property.time} days ago`}</p>
-                        </Card.Body>
-                      </Card>
-                    </Link>
-                  </div>
-                ))}
-            </Row>
+            <Carousel
+              interval={null}
+              indicators={false}
+              prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
+              nextIcon={<FontAwesomeIcon icon={faRightLong} />}
+            >
+              {isMobile
+                ? chunk(properties, 1).map(
+                    (propertySet: Property[], index: number) => (
+                      <Carousel.Item key={index}>
+                        <Row>
+                          {propertySet.map(
+                            (property: Property, subIndex: number) => (
+                              <div
+                                className="col-md-4 col-12 featured-card"
+                                key={property.num}
+                              >
+                                <Link to={`/property/${property.num}`}>
+                                  <Card className="featured-box mb-1 mt-1">
+                                    <Card.Body>
+                                      <img
+                                        src={property.img}
+                                        alt={property.img}
+                                      />
+                                      <h3 className="featured-h3-title">
+                                        {`${
+                                          property.property
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                          property.property.slice(1)
+                                        }`}
+                                      </h3>
+                                      <p className="featured-price">{`€${property.price}/mo`}</p>
+                                      <p className="featured-day">{`${property.time} days ago`}</p>
+                                    </Card.Body>
+                                  </Card>
+                                </Link>
+                              </div>
+                            )
+                          )}
+                        </Row>
+                      </Carousel.Item>
+                    )
+                  )
+                : chunk(properties, 3).map(
+                    (propertySet: Property[], index: number) => (
+                      <Carousel.Item key={index}>
+                        <Row>
+                          {propertySet.map(
+                            (property: Property, subIndex: number) => (
+                              <div
+                                className="col-md-4 col-12 featured-card"
+                                key={property.num}
+                              >
+                                <Link to={`/property/${property.num}`}>
+                                  <Card className="featured-box mb-1 mt-1">
+                                    <Card.Body>
+                                      <img
+                                        src={property.img}
+                                        alt={property.img}
+                                      />
+                                      <h3 className="featured-h3-title">
+                                        {`${
+                                          property.property
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                          property.property.slice(1)
+                                        }`}
+                                      </h3>
+                                      <p className="featured-price">{`€${property.price}/mo`}</p>
+                                      <p className="featured-day">{`${property.time} days ago`}</p>
+                                    </Card.Body>
+                                  </Card>
+                                </Link>
+                              </div>
+                            )
+                          )}
+                        </Row>
+                      </Carousel.Item>
+                    )
+                  )}
+            </Carousel>
           </div>
         </Row>
       </Container>
