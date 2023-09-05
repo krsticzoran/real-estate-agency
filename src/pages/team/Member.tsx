@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Card, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 import "./team.css";
@@ -12,6 +12,12 @@ import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 import { Property } from "../../types";
 import PropertyCard from "../../components/property/PropertyCard";
+
+import Carousel from "react-bootstrap/Carousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from "react-responsive";
 
 const GET_PROPERTIES = gql`
   query GetProperties($specialist: String!) {
@@ -39,6 +45,19 @@ const Member: FC = () => {
   });
 
   const properties = data?.staff ?? [];
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const chunk = (arr: any[], size: number) => {
+    return arr.reduce((chunks, el, i) => {
+      if (i % size === 0) {
+        chunks.push([el]);
+      } else {
+        chunks[chunks.length - 1].push(el);
+      }
+      return chunks;
+    }, []);
+  };
 
   return (
     <>
@@ -100,11 +119,51 @@ const Member: FC = () => {
               <h2>{`Properties listed by ${user.name}`}</h2>
             </div>
 
-            {properties.slice(0, 6).map((property: Property, index: number) => (
-              <div className="col-md-4 col-12" key={property.num}>
-                <PropertyCard property={property} />
-              </div>
-            ))}
+            <Carousel
+              className="caurosel-prev-icon"
+              interval={null}
+              indicators={false}
+              prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
+              nextIcon={<FontAwesomeIcon icon={faRightLong} />}
+            >
+              {isMobile
+                ? chunk(properties, 1).map(
+                    (propertySet: Property[], index: number) => (
+                      <Carousel.Item key={index}>
+                        <Row>
+                          {propertySet.map(
+                            (property: Property, subIndex: number) => (
+                              <div
+                                className="col-md-4 col-12"
+                                key={property.num}
+                              >
+                                <PropertyCard property={property} />
+                              </div>
+                            )
+                          )}
+                        </Row>
+                      </Carousel.Item>
+                    )
+                  )
+                : chunk(properties, 3).map(
+                    (propertySet: Property[], index: number) => (
+                      <Carousel.Item key={index}>
+                        <Row>
+                          {propertySet.map(
+                            (property: Property, subIndex: number) => (
+                              <div
+                                className="col-md-4 col-12"
+                                key={property.num}
+                              >
+                                <PropertyCard property={property} />
+                              </div>
+                            )
+                          )}
+                        </Row>
+                      </Carousel.Item>
+                    )
+                  )}
+            </Carousel>
           </Row>
         </Container>
       </div>
