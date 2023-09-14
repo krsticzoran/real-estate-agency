@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Container, Row } from "react-bootstrap";
 import "./contact.css";
-import emailjs from "emailjs-com";
+import * as emailjs from "emailjs-com";
 
 type EmailData = {
   name: string;
