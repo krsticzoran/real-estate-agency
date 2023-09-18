@@ -30,8 +30,6 @@ const BlogText: FC = () => {
   });
   const blog = data?.blogText ?? {};
 
-  console.log(blog);
-
   return (
     <>
       <Header />
