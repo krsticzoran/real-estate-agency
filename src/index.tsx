@@ -22,7 +22,7 @@ const endpoint2 = new HttpLink({
 });
 
 const endpoint3 = new HttpLink({
-  uri: "https://www.real-estate-react.com/blog",
+  uri: "https://www.real-estate-react.com/bloggraphql",
 });
 
 const client = new ApolloClient({
