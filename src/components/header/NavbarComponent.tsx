@@ -34,7 +34,7 @@ const NavbarComponent: React.FC = () => {
             navbarScroll
           >
             <DropdownMenu onData={menuList} page="Rent" />
-            <DropdownMenu onData={menuList} page="Sales" />
+            <DropdownMenu onData={menuList} page="Sale" />
             <Link className="navbar--color-white nav-link" to="/team">
               Team
             </Link>

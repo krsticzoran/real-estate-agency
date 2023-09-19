@@ -31,13 +31,13 @@ const GET_PROPERTIES = gql`
 
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();
-  const { sale } = useParams();
+  let { sale } = useParams();
 
   const { data } = useQuery(GET_PROPERTIES, {
     variables: { property: rentproperty, sale },
     context: { clientName: "endpoint2" },
   });
-
+  console.log(data);
   const properties = data?.property ?? [];
 
   return (
