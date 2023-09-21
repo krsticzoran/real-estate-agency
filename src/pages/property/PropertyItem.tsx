@@ -69,7 +69,16 @@ const PropertyItem: FC = () => {
               </div>
               <div className="col-6">
                 <h5 className="property-size-price-title">PRICE</h5>
-                <h2 className="property-size-price">{`€${properties.price}/mo`}</h2>
+
+                {properties.sale === "rent" ? (
+                  <h2 className="property-size-price">{`€ ${properties.price?.toLocaleString()}/mo`}</h2>
+                ) : (
+                  <h2 className="property-size-price">{`€ ${
+                    properties.price
+                      ? (properties.price / 1000000).toFixed(2) + "M"
+                      : "0"
+                  }`}</h2>
+                )}
               </div>
             </Row>
             <hr />
