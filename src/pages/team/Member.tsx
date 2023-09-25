@@ -3,8 +3,7 @@ import { Card, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 import "./team.css";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+
 import { Link } from "react-router-dom";
 
 import { useGetUser } from "../../hook/useGetUser";
@@ -60,8 +59,7 @@ const Member: FC = () => {
   };
 
   return (
-    <>
-      <Header />
+ 
       <div className="team">
         <Container>
           <Row>
@@ -167,8 +165,7 @@ const Member: FC = () => {
           </Row>
         </Container>
       </div>
-      <Footer />
-    </>
+    
   );
 };
 

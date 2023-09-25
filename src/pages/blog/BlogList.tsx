@@ -3,11 +3,11 @@ import "./blog.css";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
 import React from "react";
-import Header from "../../components/header/Header";
+
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogCard from "./BlogCard";
-import Footer from "../../components/footer/Footer";
+
 import { Blog } from "../../types";
 
 const GET_BLOGS = gql`
@@ -31,7 +31,7 @@ const BlogList: FC = () => {
 
   return (
     <>
-      <Header />
+      
       <div className="blog-cover-img-container">
         <img src={dataBlog[0]?.img} alt="cover" className="blog-cover-img" />
         <div className="img-overlay" />
@@ -61,7 +61,7 @@ const BlogList: FC = () => {
           )}
         </Row>
       </Container>
-      <Footer />
+     
     </>
   );
 };

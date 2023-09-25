@@ -4,8 +4,6 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { Container } from "react-bootstrap";
 import "./blog.css";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 
 const GET_BLOGTEXT = gql`
   query GetBlogText($title: String!) {
@@ -32,7 +30,6 @@ const BlogText: FC = () => {
 
   return (
     <>
-      <Header />
       <Container>
         <div className="blog-title-section">
           <h4>{blog.property}</h4>
@@ -48,7 +45,6 @@ const BlogText: FC = () => {
           </div>
         </div>
       </Container>
-      <Footer />
     </>
   );
 };

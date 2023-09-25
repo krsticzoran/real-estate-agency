@@ -2,8 +2,7 @@ import { FC } from "react";
 import { Container, Row } from "react-bootstrap";
 
 import "./propertylist.css";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,36 +40,31 @@ const PropertyList: FC = () => {
   const properties = data?.property ?? [];
 
   return (
-    <>
-      <Header></Header>
-      <div className="search-rent-sale">
-        <Container>
-          <Row>
-            {properties.length === 0 ? (
-              <>
-                <div className="col-12">
-                  <Link to={"/"} className="back-to-home">
-                    <FontAwesomeIcon icon={faLeftLong} />
-                    <span>Back to home page</span>
-                  </Link>
-                </div>
-                <div className="no-search">
-                  <p>No search results</p>
-                </div>
-              </>
-            ) : (
-              properties.map((property: Property, index: number) => (
-                <div className="col-md-4 col-12" key={property.num}>
-                  <PropertyCard property={property} />
-                </div>
-              ))
-            )}
-          </Row>
-        </Container>
-      </div>
-
-      <Footer></Footer>
-    </>
+    <div className="search-rent-sale">
+      <Container>
+        <Row>
+          {properties.length === 0 ? (
+            <>
+              <div className="col-12">
+                <Link to={"/"} className="back-to-home">
+                  <FontAwesomeIcon icon={faLeftLong} />
+                  <span>Back to home page</span>
+                </Link>
+              </div>
+              <div className="no-search">
+                <p>No search results</p>
+              </div>
+            </>
+          ) : (
+            properties.map((property: Property, index: number) => (
+              <div className="col-md-4 col-12" key={property.num}>
+                <PropertyCard property={property} />
+              </div>
+            ))
+          )}
+        </Row>
+      </Container>
+    </div>
   );
 };
 
