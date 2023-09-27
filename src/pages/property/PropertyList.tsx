@@ -36,7 +36,7 @@ const PropertyList: FC = () => {
     variables: { property: rentproperty, sale },
     context: { clientName: "endpoint2" },
   });
-  console.log(data);
+
   const properties = data?.property ?? [];
 
   return (
