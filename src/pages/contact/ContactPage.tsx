@@ -85,9 +85,10 @@ const ContactPage: FC = () => {
               we’ll help in whatever way we can
             </p>
             <form onSubmit={handleSubmit} className="contact-form-box">
-              <label>NAME</label>
+              <label htmlFor="name">NAME</label>
               <input
                 type="text"
+                id="name"
                 name="name"
                 placeholder="Name"
                 value={formData.name}
@@ -96,9 +97,11 @@ const ContactPage: FC = () => {
                 }
                 required
               />
-              <label>EMAIL</label>
+
+              <label htmlFor="email">EMAIL</label>
               <input
                 type="email"
+                id="email"
                 name="email"
                 placeholder="Email"
                 value={formData.email}
@@ -107,9 +110,11 @@ const ContactPage: FC = () => {
                 }
                 required
               />
-              <label>PHONE NUMBER</label>
+
+              <label htmlFor="number">PHONE NUMBER</label>
               <input
                 type="number"
+                id="number"
                 name="number"
                 placeholder="Number"
                 value={formData.number}
@@ -118,9 +123,11 @@ const ContactPage: FC = () => {
                 }
                 required
               />
-              <label>MESSAGE</label>
+
+              <label htmlFor="message">MESSAGE</label>
               <input
                 type="text"
+                id="message"
                 name="message"
                 placeholder="Message"
                 value={formData.message}
