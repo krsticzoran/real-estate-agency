@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Property } from "../../types";
 import { Container, Row } from "react-bootstrap";
 import { useGetUser } from "../../hook/useGetUser";
-import PropertyCarousel from "./PropertyCaorusel";
+import PropertyCarousel from "./PropertyCarousel";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";

@@ -55,6 +55,7 @@ const PropertyCarousel: FC<PropertyCarouselProps> = ({ property }) => {
           onClick={handlePrev}
           disabled={activeIndex === 0}
           className={` ${activeIndex === 0 ? "disabled" : ""}`}
+          data-testid="prev-button"
         >
           {<FontAwesomeIcon icon={faLeftLong} />}
         </button>
@@ -62,6 +63,7 @@ const PropertyCarousel: FC<PropertyCarouselProps> = ({ property }) => {
           onClick={handleNext}
           disabled={activeIndex === 3}
           className={` ${activeIndex === 3 ? "disabled" : ""}`}
+          data-testid="next-button"
         >
           <FontAwesomeIcon icon={faRightLong} />
         </button>
