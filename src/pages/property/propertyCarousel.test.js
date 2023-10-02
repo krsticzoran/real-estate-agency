@@ -12,30 +12,46 @@ const mockProperty = {
 test("renders property carousel with images", async () => {
   render(<PropertyCarousel property={mockProperty} />);
 
-  // Check if the first image is displayed
   const images = screen.getAllByAltText("property");
   expect(images).toHaveLength(4);
 
-  const parent = images[0].closest("div");
-
-  expect(parent).toHaveClass("active");
-
   const nextButton = screen.getByTestId("next-button");
-
-  expect(screen.getByTestId("prev-button")).toBeInTheDocument();
   expect(nextButton).toBeInTheDocument();
+  expect(screen.getByTestId("prev-button")).toBeInTheDocument();
+  expect(screen.getByTestId("prev-button")).toHaveClass("disabled");
+
+  expect(screen.getByTestId("one")).toHaveClass("active");
 
   fireEvent.click(nextButton);
 
-  // Check if the second image is displayed
-
   await waitFor(() => {
-    const parentOfSecondImage = images[1].closest("div");
-    expect(parentOfSecondImage).toHaveClass("active");
+    expect(screen.getByTestId("two")).toHaveClass("active");
   });
 
-  // You can repeat the above steps to test other images and buttons
-  // For example, clicking next until the last image and checking if the next button is disabled.
+  await waitFor(() => {
+    expect(screen.getByTestId("one")).not.toHaveClass("active");
+  });
 
-  // Similarly, you can test the previous button functionality.
+  await waitFor(() => {
+    expect(screen.getByTestId("prev-button")).not.toHaveClass("disabled");
+  });
+
+  fireEvent.click(nextButton);
+
+  await waitFor(() => {
+    expect(screen.getByTestId("three")).toHaveClass("active");
+  });
+
+  await waitFor(() => {
+    expect(screen.getByTestId("two")).not.toHaveClass("active");
+  });
+
+  fireEvent.click(nextButton);
+  await waitFor(() => {
+    expect(screen.getByTestId("four")).toHaveClass("active");
+  });
+
+  await waitFor(() => {
+    expect(nextButton).toHaveClass("disabled");
+  });
 });

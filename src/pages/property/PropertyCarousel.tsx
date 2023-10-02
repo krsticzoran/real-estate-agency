@@ -30,22 +30,22 @@ const PropertyCarousel: FC<PropertyCarouselProps> = ({ property }) => {
         interval={null} // Set the interval to null to prevent auto-rotation
       >
         {property.img && (
-          <Carousel.Item key="img">
+          <Carousel.Item key="img" data-testid="one">
             <img className="d-block w-100" src={property.img} alt="property" />
           </Carousel.Item>
         )}
         {property.img1 && (
-          <Carousel.Item key="img1">
+          <Carousel.Item key="img1" data-testid="two">
             <img className="d-block w-100" src={property.img1} alt="property" />
           </Carousel.Item>
         )}
         {property.img2 && (
-          <Carousel.Item key="img2">
+          <Carousel.Item key="img2" data-testid="three">
             <img className="d-block w-100" src={property.img2} alt="property" />
           </Carousel.Item>
         )}
         {property.img3 && (
-          <Carousel.Item key="img3">
+          <Carousel.Item key="img3" data-testid="four">
             <img className="d-block w-100" src={property.img3} alt="property" />
           </Carousel.Item>
         )}
