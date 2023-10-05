@@ -12,7 +12,7 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 const Search: FC = () => {
   const location = useLocation();
   const data = location.state?.data.search;
-
+  console.log(data);
   return (
     <div className="search-rent-sale">
       <Container>
