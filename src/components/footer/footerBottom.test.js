@@ -1,17 +1,14 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import FooterBottom from "./FooterBottom";
-
-jest.mock("react-router-dom", () => {
-  const actual = jest.requireActual("react-router-dom");
-  return {
-    ...actual,
-    Link: ({ to, children }) => <a href={to}>{children}</a>,
-  };
-});
+import { MemoryRouter } from "react-router";
 
 test("render footer bottom", () => {
-  render(<FooterBottom />);
+  render(
+    <MemoryRouter>
+      <FooterBottom />
+    </MemoryRouter>
+  );
 
   expect(screen.getByText(/All Rights Reserved/i)).toBeInTheDocument();
 
