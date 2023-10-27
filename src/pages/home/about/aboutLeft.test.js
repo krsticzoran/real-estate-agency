@@ -1,17 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import AboutLeft from "./AboutLeft";
-
-jest.mock("react-router-dom", () => {
-  const actual = jest.requireActual("react-router-dom");
-  return {
-    ...actual,
-    Link: ({ to, children }) => <a href={to}>{children}</a>,
-  };
-});
+import { MemoryRouter } from "react-router";
 
 test("render AboutLeft component", () => {
-  render(<AboutLeft />);
+  render(
+    <MemoryRouter>
+      <AboutLeft />
+    </MemoryRouter>
+  );
 
   expect(
     screen.getByRole("heading", {
