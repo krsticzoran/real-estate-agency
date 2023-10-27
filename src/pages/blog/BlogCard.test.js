@@ -1,15 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import BlogCard from "./BlogCard";
-
-// This code will replace the Link component with a basic a tag for testing purposes.
-jest.mock("react-router-dom", () => {
-  const actual = jest.requireActual("react-router-dom");
-  return {
-    ...actual,
-    Link: ({ to, children }) => <a href={to}>{children}</a>,
-  };
-});
+import { MemoryRouter } from "react-router";
 
 const mockBlog = {
   blog: {
@@ -21,7 +13,11 @@ const mockBlog = {
 };
 
 test("renders blog card with sample data", () => {
-  render(<BlogCard blog={mockBlog.blog} />);
+  render(
+    <MemoryRouter>
+      <BlogCard blog={mockBlog.blog} />
+    </MemoryRouter>
+  );
 
   // Assert that the rendered component contains the expected text and elements
   expect(screen.getByText("Sample Blog Title")).toBeInTheDocument();
