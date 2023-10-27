@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Commercial from "./Commercial";
+import { MemoryRouter } from "react-router";
 
 jest.mock("../../../hook/useGetPropertyAviable", () => ({
   useGePropertyAviable: (property) => {
@@ -14,16 +15,12 @@ jest.mock("../../../hook/useGetPropertyAviable", () => ({
   },
 }));
 
-jest.mock("react-router-dom", () => {
-  const actual = jest.requireActual("react-router-dom");
-  return {
-    ...actual,
-    Link: ({ to, children }) => <a href={to}>{children}</a>,
-  };
-});
-
 test("render Commercial component", () => {
-  render(<Commercial />);
+  render(
+    <MemoryRouter>
+      <Commercial />
+    </MemoryRouter>
+  );
 
   expect(
     screen.getByRole("heading", {
