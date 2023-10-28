@@ -20,6 +20,7 @@ const GET_BLOGTEXT = gql`
 
 const BlogText: FC = () => {
   const { title } = useParams();
+
   const formattedTitle = title!.replace(/-/g, " ");
 
   const { data } = useQuery(GET_BLOGTEXT, {
