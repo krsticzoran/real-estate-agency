@@ -12,25 +12,25 @@ test("render header component", () => {
 
   expect(screen.getByAltText(/logo/i)).toBeInTheDocument();
 
-  expect(
-    screen.getByRole("link", {
-      name: /team/i,
-    })
-  ).toBeInTheDocument();
-
   expect(screen.getByText(/rent/i)).toBeInTheDocument();
 
   expect(screen.getByText(/sale/i)).toBeInTheDocument();
 
   expect(
     screen.getByRole("link", {
+      name: /team/i,
+    })
+  ).toHaveAttribute("href", "/team");
+
+  expect(
+    screen.getByRole("link", {
       name: /blog/i,
     })
-  ).toBeInTheDocument();
+  ).toHaveAttribute("href", "/blog");
 
   expect(
     screen.getByRole("link", {
       name: /contact/i,
     })
-  ).toBeInTheDocument();
+  ).toHaveAttribute("href", "/contact");
 });
