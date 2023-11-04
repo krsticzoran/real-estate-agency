@@ -43,3 +43,8 @@
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
+
+.navbar-login {
+  margin-top: 5px;
+  margin-bottom: 7px;
+}

@@ -45,6 +45,14 @@ const NavbarComponent: React.FC = () => {
               Contact
             </Link>
           </Nav>
+          <Link
+            className={`navbar--color-white nav-link  ${
+              isSmallScreen ? "navbar-login" : ""
+            }`}
+            to="/login"
+          >
+            Login
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
