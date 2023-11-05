@@ -1,3 +1,6 @@
 .login-container {
-  margin: 500px;
+  height: 75vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
