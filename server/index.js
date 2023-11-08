@@ -6,6 +6,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const { schema } = require("./schema/schema");
 const { schemaRealEstate } = require("./schema/realestate");
 const { schemaBlog } = require("./schema/blog");
+const { schemaAuth } = require("./schema/auth");
 
 dotenv.config();
 
@@ -44,10 +45,20 @@ async function connectToMongoDB() {
     const realEstateSchema = schemaRealEstate(database);
     const blogSchema = schemaBlog(database);
 
+    const authSchema = schemaAuth(database);
+
     app.use(
       "/graphql",
       graphqlHTTP({
         schema: schemaWithDatabase,
+        graphiql: true,
+      })
+    );
+
+    app.use(
+      "/auth",
+      graphqlHTTP({
+        schema: authSchema,
         graphiql: true,
       })
     );
