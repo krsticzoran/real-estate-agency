@@ -14,15 +14,19 @@ import {
 import { ApolloProvider } from "@apollo/client";
 
 const endpoint1 = new HttpLink({
-  uri: "https://real-estate-react.com/graphql",
+  uri: "http://localhost:8000/graphql",
 });
 
 const endpoint2 = new HttpLink({
-  uri: "https://real-estate-react.com/realestate",
+  uri: "http://localhost:8000/realestate",
 });
 
 const endpoint3 = new HttpLink({
-  uri: "https://www.real-estate-react.com/bloggraphql",
+  uri: "http://localhost:8000/bloggraphql",
+});
+
+const endpoint4 = new HttpLink({
+  uri: "http://localhost:8000/auth",
 });
 
 const client = new ApolloClient({
@@ -32,7 +36,11 @@ const client = new ApolloClient({
     ApolloLink.split(
       (operation) => operation.getContext().clientName === "endpoint3",
       endpoint3,
-      endpoint1
+      ApolloLink.split(
+        (operation) => operation.getContext().clientName === "endpoint4",
+        endpoint4,
+        endpoint1
+      )
     )
   ),
   cache: new InMemoryCache(),

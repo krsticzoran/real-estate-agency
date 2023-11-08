@@ -3,6 +3,17 @@ import { Container } from "react-bootstrap";
 import "./login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useQuery } from "@apollo/client";
+import { gql } from "graphql-tag";
+
+const GET_USER = gql`
+  query GetUser($user: String!, $password: String!) {
+    findUser(user: $user, password: $password) {
+      user
+      password
+    }
+  }
+`;
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ user: "", password: "" });
@@ -17,6 +28,13 @@ const LoginPage = () => {
     console.log(formData);
     setFormData({ user: "", password: "" });
   };
+
+  const { data } = useQuery(GET_USER, {
+    variables: { user: "admin", password: "admin" },
+    context: { clientName: "endpoint4" },
+  });
+
+  console.log(data);
 
   return (
     <div className="login-container">
