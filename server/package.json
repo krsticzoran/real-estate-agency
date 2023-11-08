@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "nodemon index.ts",
+    "start": "nodemon index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
-    "graphql": "^16.7.1",
+    "graphql": "^15.8.0",
     "lodash": "^4.17.21",
     "mongodb": "^5.7.0",
     "nodemailer": "^6.9.4",

@@ -1,16 +1,15 @@
-import {
+const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
-  GraphQLBoolean,
-} from "graphql";
-import { Collection, Db } from "mongodb";
+} = require("graphql");
+const { Collection, Db } = require("mongodb");
 
 const UserType = new GraphQLObjectType({
   name: "User",
-  fields: {
+  fields: () => ({
     user: { type: GraphQLString },
     name: { type: GraphQLString },
     language: { type: GraphQLString },
@@ -21,18 +20,18 @@ const UserType = new GraphQLObjectType({
     experience: { type: GraphQLString },
     propreties: { type: GraphQLInt },
     img: { type: GraphQLString },
-  },
+  }),
 });
 
 const StaffType = new GraphQLObjectType({
   name: "Staff",
-  fields: {
+  fields: () => ({
     users: { type: new GraphQLList(UserType) },
-  },
+  }),
 });
 
-function schema(database: Db): GraphQLSchema {
-  const collection: Collection = database.collection("staff");
+function schema(database) {
+  const collection = database.collection("staff");
 
   const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -59,4 +58,4 @@ function schema(database: Db): GraphQLSchema {
   });
 }
 
-export { schema };
+module.exports = { schema };

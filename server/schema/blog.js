@@ -1,26 +1,26 @@
-import {
+const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
-} from "graphql";
-import { Collection, Db } from "mongodb";
+} = require("graphql");
+const { Collection, Db } = require("mongodb");
 
 const BlogType = new GraphQLObjectType({
   name: "Blog",
-  fields: {
+  fields: () => ({
     title: { type: GraphQLString },
     property: { type: GraphQLString },
     author: { type: GraphQLString },
     num: { type: GraphQLInt },
     img: { type: GraphQLString },
     content: { type: GraphQLString },
-  },
+  }),
 });
 
-function schemaBlog(database: Db): GraphQLSchema {
-  const collection: Collection = database.collection("blog");
+function schemaBlog(database) {
+  const collection = database.collection("blog");
 
   const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -47,4 +47,4 @@ function schemaBlog(database: Db): GraphQLSchema {
   });
 }
 
-export { schemaBlog };
+module.exports = { schemaBlog };

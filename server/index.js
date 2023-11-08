@@ -1,21 +1,21 @@
-import dotenv from "dotenv";
-import express, { Express, Request, Response } from "express";
-import cors from "cors";
-import { graphqlHTTP } from "express-graphql";
-import { MongoClient, ServerApiVersion } from "mongodb";
-import { schema } from "./schema/schema";
-import { schemaRealEstate } from "./schema/realestate";
-import { schemaBlog } from "./schema/blog";
+const dotenv = require("dotenv");
+const express = require("express");
+const cors = require("cors");
+const { graphqlHTTP } = require("express-graphql");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const { schema } = require("./schema/schema");
+const { schemaRealEstate } = require("./schema/realestate");
+const { schemaBlog } = require("./schema/blog");
 
 dotenv.config();
 
-const app: Express = express();
+const app = express();
 
 app.use(express.json());
 app.use(cors());
 
 const uri =
-  "mongodb+srv://zorankrstic81:tSvBAwWCiHYVdECy@cluster0.1miblzg.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://zoki2000:test1234@cluster0.1miblzg.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -23,6 +23,14 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+// Define a middleware function for error handling
+function errorHandler(err, req, res, next) {
+  console.error("Error:", err.message);
+  res.status(500).json({ error: "Internal Server Error" });
+}
+
+app.use(errorHandler); // Use the error handling middleware
 
 async function connectToMongoDB() {
   try {
@@ -53,14 +61,14 @@ async function connectToMongoDB() {
     );
 
     app.use(
-      "/blog",
+      "/bloggraphql",
       graphqlHTTP({
         schema: blogSchema,
         graphiql: true,
       })
     );
 
-    app.get("/", (req: Request, res: Response) => {
+    app.get("/", (req, res) => {
       res.send("Hello World From the Typescript!");
     });
 

@@ -1,15 +1,15 @@
-import {
+const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLSchema,
   GraphQLList,
   GraphQLInt,
-} from "graphql";
-import { Collection, Db } from "mongodb";
+} = require("graphql");
+const { Collection, Db } = require("mongodb");
 
 const RealEstateType = new GraphQLObjectType({
   name: "RealEstate",
-  fields: {
+  fields: () => ({
     property: { type: GraphQLString },
     sale: { type: GraphQLString },
     num: { type: GraphQLInt },
@@ -22,11 +22,11 @@ const RealEstateType = new GraphQLObjectType({
     img1: { type: GraphQLString },
     img2: { type: GraphQLString },
     img3: { type: GraphQLString },
-  },
+  }),
 });
 
-function schemaRealEstate(database: Db): GraphQLSchema {
-  const collection: Collection = database.collection("realestate");
+function schemaRealEstate(database) {
+  const collection = database.collection("realestate");
 
   const RealEstateQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -72,7 +72,7 @@ function schemaRealEstate(database: Db): GraphQLSchema {
           const { property, sale, place, minPrice, maxPrice } = args;
 
           // Prepare the search filter based on provided arguments
-          const searchFilter: any = {};
+          const searchFilter = {};
           if (property && property.toLowerCase() !== "all") {
             searchFilter.property = property;
           }
@@ -102,4 +102,4 @@ function schemaRealEstate(database: Db): GraphQLSchema {
   });
 }
 
-export { schemaRealEstate };
+module.exports = { schemaRealEstate };
