@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, InputGroup } from "react-bootstrap";
 import "./login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useQuery } from "@apollo/client";
 import { gql } from "graphql-tag";
+import { useLazyQuery } from "@apollo/client";
+import { useNavigate } from "react-router";
 
 const GET_USER = gql`
   query GetUser($user: String!, $password: String!) {
@@ -16,25 +18,37 @@ const GET_USER = gql`
 `;
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ user: "", password: "" });
+  const [authError, setAuthError] = useState(false);
 
   const handleChange = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmitform = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitform = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
-    setFormData({ user: "", password: "" });
+
+    try {
+      const result = await getAuth();
+
+      if (result.data?.findUser.user) {
+        setFormData({ user: "", password: "" });
+        navigate("/admin");
+      } else {
+        console.log("nooo");
+      }
+    } catch (error) {
+      setAuthError(true);
+      console.error("Error fetching user:", error);
+    }
   };
 
-  const { data } = useQuery(GET_USER, {
-    variables: { user: "admin", password: "admin" },
+  const [getAuth, { data }] = useLazyQuery(GET_USER, {
+    variables: { user: formData.user, password: formData.password },
     context: { clientName: "endpoint4" },
   });
-
-  console.log(data);
 
   return (
     <div className="login-container">
@@ -75,6 +89,11 @@ const LoginPage = () => {
                   >
                     Submit
                   </Button>
+                  {authError && (
+                    <p className="text-danger mt-2">
+                      Please choose a valid username and password.
+                    </p>
+                  )}
                 </Form>
               </div>
             </div>
