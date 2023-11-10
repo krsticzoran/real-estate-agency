@@ -6,6 +6,7 @@ const AuthType = new GraphQLObjectType({
   fields: () => ({
     user: { type: GraphQLString },
     password: { type: GraphQLString },
+    id: { type: GraphQLString },
   }),
 });
 
