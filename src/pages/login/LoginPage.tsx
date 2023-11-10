@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { Container, InputGroup } from "react-bootstrap";
+
 import "./login.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useQuery } from "@apollo/client";
+
 import { gql } from "graphql-tag";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router";
+import Cookies from "js-cookie";
 
 const GET_USER = gql`
   query GetUser($user: String!, $password: String!) {
     findUser(user: $user, password: $password) {
       user
       password
+      id
     }
   }
 `;
@@ -35,6 +37,7 @@ const LoginPage = () => {
 
       if (result.data?.findUser.user) {
         setFormData({ user: "", password: "" });
+        Cookies.set("admin", result.data?.findUser.id, { expires: 7 });
         navigate("/admin");
       } else {
         console.log("nooo");
