@@ -7,8 +7,12 @@ import "./header.css";
 import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useQuery } from "@apollo/client";
+import { useAuth } from "../../context/AuthContext";
 
 const NavbarComponent: React.FC = () => {
+  const { isAuthenticated } = useAuth();
+
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (
     <Navbar
@@ -45,14 +49,25 @@ const NavbarComponent: React.FC = () => {
               Contact
             </Link>
           </Nav>
-          <Link
-            className={`navbar--color-white nav-link  ${
-              isSmallScreen ? "navbar-login" : ""
-            }`}
-            to="/login"
-          >
-            Login
-          </Link>
+          {isAuthenticated === true ? (
+            <Link
+              className={`navbar--color-white nav-link  ${
+                isSmallScreen ? "navbar-login" : ""
+              }`}
+              to="/admin"
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              className={`navbar--color-white nav-link  ${
+                isSmallScreen ? "navbar-login" : ""
+              }`}
+              to="/login"
+            >
+              Login
+            </Link>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

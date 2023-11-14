@@ -2,7 +2,8 @@ import React, { lazy, Suspense } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop/ScrolllToTop";
-import Layout from "./components/layout/Layout";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 // Lazy-loaded components
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -20,8 +21,9 @@ const Admin = lazy(() => import("./pages/admin/Admin"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <Layout>
+    <>
+      <BrowserRouter>
+        <Header />
         <ScrollToTop />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
@@ -40,8 +42,9 @@ function App() {
             <Route path="/*" element={<HomePage />} />
           </Routes>
         </Suspense>
-      </Layout>
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

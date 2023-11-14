@@ -12,6 +12,7 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
+import { AuthProvider } from "./context/AuthContext";
 
 const endpoint1 = new HttpLink({
   uri: "http://localhost:8000/graphql",
@@ -54,7 +55,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
