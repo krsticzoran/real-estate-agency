@@ -1,0 +1,7 @@
+.dashboard-container {
+}
+
+.dashboard-menu {
+  display: flex;
+  flex-direction: column;
+}

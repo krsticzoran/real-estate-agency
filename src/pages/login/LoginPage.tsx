@@ -44,7 +44,7 @@ const LoginPage = () => {
         setFormData({ user: "", password: "" });
         Cookies.set("admin", result.data?.findUser.id, { expires: 7 });
         setAuthenticated(true);
-        navigate("/admin");
+        navigate("/dashboard");
       } else {
         console.log("nooo");
       }

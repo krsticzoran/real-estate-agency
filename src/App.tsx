@@ -17,32 +17,44 @@ const BlogList = lazy(() => import("./pages/blog/BlogList"));
 const BlogText = lazy(() => import("./pages/blog/BlogText"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const LoginPage = lazy(() => import("./pages/login/LoginPage"));
-const Admin = lazy(() => import("./pages/admin/Admin"));
+const Dashboard = lazy(() => import("./pages/dashboard/dashboard"));
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <ScrollToTop />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/team/:memberName" element={<Member />} />
-            <Route path="/property/:item" element={<PropertyItem />} />
-            <Route path="/:sale/:rentproperty" element={<PropertyList />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/blog" element={<BlogList />} />
-            <Route path="/blog/:title" element={<BlogText />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/*" element={<HomePage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Header />
+                  <ScrollToTop />
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/team" element={<Team />} />
+                    <Route path="/team/:memberName" element={<Member />} />
+                    <Route path="/property/:item" element={<PropertyItem />} />
+                    <Route
+                      path="/:sale/:rentproperty"
+                      element={<PropertyList />}
+                    />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/blog" element={<BlogList />} />
+                    <Route path="/blog/:title" element={<BlogText />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/login" element={<LoginPage />} />
+                  </Routes>
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
         </Suspense>
-        <Footer />
       </BrowserRouter>
     </>
   );

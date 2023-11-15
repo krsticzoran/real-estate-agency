@@ -7,7 +7,6 @@ import "./header.css";
 import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useQuery } from "@apollo/client";
 import { useAuth } from "../../context/AuthContext";
 
 const NavbarComponent: React.FC = () => {
@@ -54,7 +53,7 @@ const NavbarComponent: React.FC = () => {
               className={`navbar--color-white nav-link  ${
                 isSmallScreen ? "navbar-login" : ""
               }`}
-              to="/admin"
+              to="/dashboard"
             >
               Dashboard
             </Link>
