@@ -39,7 +39,7 @@ const Dashboard = () => {
           <div className="text-danger">This page isn't allowed !!!</div>
           <Button className="back-home-btn">
             <Link to="/" className="back-home-link">
-              Back to HomePage
+              Back to Home
             </Link>
           </Button>
         </div>
