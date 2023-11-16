@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import logo from "../../assets/images/header/logo.png";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -34,11 +35,13 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <Link to="/" className="">
-            Back to HomePage
-          </Link>
-          <div>This page isn't allowed</div>
+        <div className="back-home-container">
+          <div className="text-danger">This page isn't allowed !!!</div>
+          <Button className="back-home-btn">
+            <Link to="/" className="back-home-link">
+              Back to HomePage
+            </Link>
+          </Button>
         </div>
       )}
     </>
