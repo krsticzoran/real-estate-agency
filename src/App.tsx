@@ -17,7 +17,7 @@ const BlogList = lazy(() => import("./pages/blog/BlogList"));
 const BlogText = lazy(() => import("./pages/blog/BlogText"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const LoginPage = lazy(() => import("./pages/login/LoginPage"));
-const Dashboard = lazy(() => import("./pages/dashboard/dashboard"));
+const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
 
 function App() {
   return (
