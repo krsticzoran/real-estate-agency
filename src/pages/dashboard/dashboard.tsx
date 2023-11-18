@@ -3,11 +3,10 @@ import "./dashboard.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
-
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import Menu from "./menu/Menu";
+import Header from "./header/Header";
 import UnauthorizedAccess from "./unauthorizedAccess/UnauthorizedAccess";
+import { Container, Row } from "react-bootstrap";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -23,9 +22,12 @@ const Dashboard = () => {
   return (
     <>
       {isAdminAuthenticated ? (
-        <div className="dashboard-container">
-          <Menu logout={logout} />
-        </div>
+        <Container>
+          <Row>
+            <Menu logout={logout} />
+            <Header />
+          </Row>
+        </Container>
       ) : (
         <UnauthorizedAccess />
       )}
