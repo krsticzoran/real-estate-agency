@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./dashboard.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
@@ -13,6 +13,12 @@ const Dashboard = () => {
   const isAdminAuthenticated = Cookies.get("admin") === "admin123456";
   const { setAuthenticated } = useAuth();
 
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleSwitchChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   const logout = () => {
     Cookies.remove("admin");
     setAuthenticated(false);
@@ -22,10 +28,13 @@ const Dashboard = () => {
   return (
     <>
       {isAdminAuthenticated ? (
-        <Container>
+        <Container className={isChecked ? "bg-dark" : "bg-light"}>
           <Row>
             <Menu logout={logout} />
-            <Header />
+            <Header
+              isChecked={isChecked}
+              handleSwitchChange={handleSwitchChange}
+            />
           </Row>
         </Container>
       ) : (

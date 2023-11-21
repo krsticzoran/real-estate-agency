@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import admin from "../../../assets/images/dashboard/admin.jpeg";
 import Form from "react-bootstrap/Form";
 
-const Header = () => {
-  const [isChecked, setIsChecked] = useState(false);
+interface HeaderProps {
+  isChecked: boolean;
+  handleSwitchChange: () => void;
+}
 
-  const handleSwitchChange = () => {
-    setIsChecked(!isChecked);
-  };
+const Header: React.FC<HeaderProps> = ({ isChecked, handleSwitchChange }) => {
   return (
     <div className="col-lg-10 col-sm-12 d-flex align-items-center justify-content-end dashboard-header">
       <Form className="p-5">
