@@ -7,6 +7,7 @@ import Menu from "./menu/Menu";
 import Header from "./header/Header";
 import UnauthorizedAccess from "./unauthorizedAccess/UnauthorizedAccess";
 import { Container, Row } from "react-bootstrap";
+import ProgressBar from "./progressBar/ProgressBar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const Dashboard = () => {
               handleSwitchChange={handleSwitchChange}
             />
           </Row>
+          <ProgressBar />
         </Container>
       ) : (
         <UnauthorizedAccess />
