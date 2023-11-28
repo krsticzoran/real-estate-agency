@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isChecked, handleSwitchChange }) => {
   return (
-    <div className="col-lg-10 col-sm-12 d-flex justify-content-between align-items-center dashboard-header ">
+    <div className=" d-flex justify-content-between align-items-center dashboard-header ">
       <p className="pt-2">Welcome to RE Belgrade dashboard</p>
       <div className="d-flex align-items-center">
         <Form className="p-5 ">

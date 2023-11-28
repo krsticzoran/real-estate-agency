@@ -38,15 +38,25 @@ const CustomProgressBar: FC = () => {
   ).toFixed(0);
 
   return (
-    <ProgressBar>
-      <ProgressBar
-        striped
-        variant="success"
-        now={Number(percentRent)}
-        key={1}
-      />
-      <ProgressBar variant="warning" now={100 - Number(percentRent)} key={2} />
-    </ProgressBar>
+    <div>
+      <div className="d-flex justify-content-between ">
+        <span>rent</span>
+        <span>sale</span>
+      </div>
+      <ProgressBar>
+        <ProgressBar
+          striped
+          style={{ backgroundColor: "blue" }}
+          now={Number(percentRent)}
+          key={1}
+        />
+        <ProgressBar
+          style={{ backgroundColor: "red" }}
+          now={100 - Number(percentRent)}
+          key={2}
+        />
+      </ProgressBar>
+    </div>
   );
 };
 

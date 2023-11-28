@@ -32,12 +32,14 @@ const Dashboard = () => {
         <Container className={isChecked ? "bg-dark" : "bg-light"}>
           <Row>
             <Menu logout={logout} />
-            <Header
-              isChecked={isChecked}
-              handleSwitchChange={handleSwitchChange}
-            />
+            <div className="col-lg-10 col-sm-12">
+              <Header
+                isChecked={isChecked}
+                handleSwitchChange={handleSwitchChange}
+              />
+              <ProgressBar />
+            </div>
           </Row>
-          <ProgressBar />
         </Container>
       ) : (
         <UnauthorizedAccess />
