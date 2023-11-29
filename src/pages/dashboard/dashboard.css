@@ -53,3 +53,28 @@
   width: 45px;
   height: 45px;
 }
+
+.progress-bar-container {
+  height: 180px;
+  background-color: #ff6746;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 0.75rem;
+  color: #fff;
+}
+
+.progress-bar-container h4 {
+  color: #3d4465;
+}
+
+.progress-bar-container span {
+  color: #7e7e7e;
+}
+
+.progress-bar-icon {
+  width: 60px;
+  height: 60px;
+  padding-right: 2px;
+  background-color: #ff6746;
+  color: #fff;
+}
