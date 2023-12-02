@@ -31,6 +31,7 @@ const GET_PROPERTIES = gql`
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();
   let { sale } = useParams();
+  console.log(rentproperty);
 
   const { data } = useQuery(GET_PROPERTIES, {
     variables: { property: rentproperty, sale },
