@@ -78,3 +78,8 @@
   background-color: #ff6746;
   color: #fff;
 }
+
+.circular-progressbar {
+  height: 90px;
+  width: 90px;
+}

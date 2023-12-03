@@ -2,10 +2,12 @@ import { gql } from "@apollo/client";
 import { FC } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { useQuery } from "@apollo/client";
-import { Row } from "react-bootstrap";
+import { Card, Row } from "react-bootstrap";
 import "../dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const GET_PROPERTIES = gql`
   query GetProperties($sale: String!) {
@@ -101,7 +103,84 @@ const CustomProgressBar: FC = () => {
           </div>
         </Row>
       </div>
-      <div>{warehousesRent.length}</div>
+      <Row>
+        <div className="col-sm-12 col-lg-6">
+          <Card>
+            <Card.Body className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>{officesRent.length}</h2>
+                <p>Offices for Rent</p>
+                <span>total amount</span>
+              </div>
+              <div>
+                <CircularProgressbar
+                  className="circular-progressbar"
+                  value={+(officesRent.length / propertyRent.length) * 100}
+                  text={`${(officesRent.length / propertyRent.length) * 100}%`}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className="col-sm-12 col-lg-6">
+          <Card>
+            <Card.Body className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>{shopsRent.length}</h2>
+                <p>Shops for Rent</p>
+                <span>total amount</span>
+              </div>
+              <div>
+                <CircularProgressbar
+                  className="circular-progressbar"
+                  value={+(shopsRent.length / propertyRent.length) * 100}
+                  text={`${(shopsRent.length / propertyRent.length) * 100}%`}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+
+        <div className="col-sm-12 col-lg-6">
+          <Card>
+            <Card.Body className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>{warehousesRent.length}</h2>
+                <p>Warehouses for Rent</p>
+                <span>total amount</span>
+              </div>
+              <div>
+                <CircularProgressbar
+                  className="circular-progressbar"
+                  value={+(warehousesRent.length / propertyRent.length) * 100}
+                  text={`${
+                    (warehousesRent.length / propertyRent.length) * 100
+                  }%`}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+
+        <div className="col-sm-12 col-lg-6">
+          <Card>
+            <Card.Body className="d-flex justify-content-between align-items-center">
+              <div>
+                <h2>{cateringRent.length}</h2>
+                <p>Catering for Rent</p>
+                <span>total amount</span>
+              </div>
+              <div>
+                <CircularProgressbar
+                  className="circular-progressbar"
+                  value={+(cateringRent.length / propertyRent.length) * 100}
+                  text={`${(cateringRent.length / propertyRent.length) * 100}%`}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+      </Row>
     </div>
   );
 };
