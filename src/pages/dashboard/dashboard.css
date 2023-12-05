@@ -83,3 +83,21 @@
   height: 90px;
   width: 90px;
 }
+
+.circular-rent h2 {
+  font-size: 36px !important;
+  line-height: 1.25;
+  color: #000 !important;
+}
+
+.circular-rent p {
+  font-weight: 500;
+  font-size: 18px !important;
+  line-height: 1.5;
+  color: #000 !important;
+}
+
+.circular-rent span {
+  font-size: 13px !important;
+  line-height: 1.4;
+}
