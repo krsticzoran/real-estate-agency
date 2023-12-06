@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import CircularRent from "./Circular";
 
 const GET_PROPERTIES = gql`
   query GetProperties($sale: String!) {
@@ -63,6 +64,29 @@ const CustomProgressBar: FC = () => {
 
   const propertySale = propertyS.data?.propertyAll ?? [];
 
+  const officesSale: PropertyType[] = propertySale.filter(
+    (data: PropertyType) => data.property === "offices"
+  );
+
+  const shopsSale: PropertyType[] = propertySale.filter(
+    (data: PropertyType) => data.property === "shops"
+  );
+
+  const warehousesSale: PropertyType[] = propertySale.filter(
+    (data: PropertyType) => data.property === "warehouses"
+  );
+
+  const cateringSale: PropertyType[] = propertySale.filter(
+    (data: PropertyType) => data.property === "catering"
+  );
+
+  console.log(
+    officesSale.length,
+    shopsSale.length,
+    warehousesSale.length,
+    cateringSale.length
+  );
+
   const percentRent = Number(
     (
       (propertyRent.length / (propertyRent.length + propertySale.length)) *
@@ -107,114 +131,26 @@ const CustomProgressBar: FC = () => {
       </div>
       <div className="circular-rent">
         <Row>
-          <div className="col-sm-12 col-lg-6">
-            <Card>
-              <Card.Body className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>{officesRent.length}</h2>
-                  <p>Offices for Rent</p>
-                  <span>total amount</span>
-                </div>
-                <div>
-                  <CircularProgressbar
-                    className="circular-progressbar"
-                    value={+(officesRent.length / propertyRent.length) * 100}
-                    text={`${
-                      (officesRent.length / propertyRent.length) * 100
-                    }%`}
-                    styles={buildStyles({
-                      pathTransitionDuration: 1,
-                      pathColor: "#3B4CB8",
-                      textColor: "#3B4CB8",
-                      trailColor: "#dbdef3",
-                      backgroundColor: "#3e98c7",
-                    })}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="col-sm-12 col-lg-6">
-            <Card>
-              <Card.Body className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>{shopsRent.length}</h2>
-                  <p>Shops for Rent</p>
-                  <span>total amount</span>
-                </div>
-                <div>
-                  <CircularProgressbar
-                    className="circular-progressbar"
-                    value={+(shopsRent.length / propertyRent.length) * 100}
-                    text={`${(shopsRent.length / propertyRent.length) * 100}%`}
-                    styles={buildStyles({
-                      pathTransitionDuration: 1,
-                      pathColor: "#3B4CB8",
-                      textColor: "#3B4CB8",
-                      trailColor: "#dbdef3",
-                      backgroundColor: "#3e98c7",
-                    })}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className="col-sm-12 col-lg-6">
-            <Card>
-              <Card.Body className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>{warehousesRent.length}</h2>
-                  <p>Warehouses for Rent</p>
-                  <span>total amount</span>
-                </div>
-                <div>
-                  <CircularProgressbar
-                    className="circular-progressbar"
-                    value={+(warehousesRent.length / propertyRent.length) * 100}
-                    text={`${
-                      (warehousesRent.length / propertyRent.length) * 100
-                    }%`}
-                    styles={buildStyles({
-                      pathTransitionDuration: 1,
-                      pathColor: "#3B4CB8",
-                      textColor: "#3B4CB8",
-                      trailColor: "#dbdef3",
-                      backgroundColor: "#3e98c7",
-                    })}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className="col-sm-12 col-lg-6">
-            <Card>
-              <Card.Body className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h2>{cateringRent.length}</h2>
-                  <p>Catering for Rent</p>
-                  <span>total amount</span>
-                </div>
-                <div>
-                  <CircularProgressbar
-                    className="circular-progressbar"
-                    value={+(cateringRent.length / propertyRent.length) * 100}
-                    text={`${
-                      (cateringRent.length / propertyRent.length) * 100
-                    }%`}
-                    styles={buildStyles({
-                      pathTransitionDuration: 1,
-                      pathColor: "#3B4CB8",
-                      textColor: "#3B4CB8",
-                      trailColor: "#dbdef3",
-                      backgroundColor: "#3e98c7",
-                    })}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
+          <CircularRent
+            propertyName={"Offices for Rent"}
+            property={officesRent}
+            propertyAll={propertyRent}
+          />
+          <CircularRent
+            propertyName={"Shops for Rent"}
+            property={shopsRent}
+            propertyAll={propertyRent}
+          />
+          <CircularRent
+            propertyName={"Warehouses for Rent"}
+            property={warehousesRent}
+            propertyAll={propertyRent}
+          />
+          <CircularRent
+            propertyName={"Catering for Rent"}
+            property={cateringRent}
+            propertyAll={propertyRent}
+          />
         </Row>
       </div>
     </div>
