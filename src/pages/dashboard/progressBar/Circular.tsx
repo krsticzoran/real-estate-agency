@@ -16,12 +16,16 @@ interface CircularProps {
   propertyName: string;
   property: PropertyType[];
   propertyAll: PropertyType[];
+  color: string;
+  colorCircular: string;
 }
 
 const Circular: FC<CircularProps> = ({
   propertyName,
   property,
   propertyAll,
+  color,
+  colorCircular,
 }) => {
   return (
     <div className="col-sm-12 col-lg-6 mt-3 ">
@@ -37,12 +41,14 @@ const Circular: FC<CircularProps> = ({
             <CircularProgressbar
               className="circular-progressbar"
               value={(property.length / propertyAll.length) * 100}
-              text={`${(property.length / propertyAll.length) * 100}%`}
+              text={`${((property.length / propertyAll.length) * 100).toFixed(
+                2
+              )}%`}
               styles={buildStyles({
                 pathTransitionDuration: 1,
-                pathColor: "#3B4CB8",
-                textColor: "#3B4CB8",
-                trailColor: "#dbdef3",
+                pathColor: color,
+                textColor: color,
+                trailColor: colorCircular,
                 backgroundColor: "#3e98c7",
               })}
             />

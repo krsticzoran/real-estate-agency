@@ -6,7 +6,7 @@ import { Card, Row } from "react-bootstrap";
 import "../dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+
 import "react-circular-progressbar/dist/styles.css";
 import CircularRent from "./Circular";
 
@@ -80,13 +80,6 @@ const CustomProgressBar: FC = () => {
     (data: PropertyType) => data.property === "catering"
   );
 
-  console.log(
-    officesSale.length,
-    shopsSale.length,
-    warehousesSale.length,
-    cateringSale.length
-  );
-
   const percentRent = Number(
     (
       (propertyRent.length / (propertyRent.length + propertySale.length)) *
@@ -135,21 +128,61 @@ const CustomProgressBar: FC = () => {
             propertyName={"Offices for Rent"}
             property={officesRent}
             propertyAll={propertyRent}
+            color="#3B4CB8"
+            colorCircular="#dbdef3"
           />
           <CircularRent
             propertyName={"Shops for Rent"}
             property={shopsRent}
             propertyAll={propertyRent}
+            color="#3B4CB8"
+            colorCircular="#dbdef3"
           />
           <CircularRent
             propertyName={"Warehouses for Rent"}
             property={warehousesRent}
             propertyAll={propertyRent}
+            color="#3B4CB8"
+            colorCircular="#dbdef3"
           />
           <CircularRent
             propertyName={"Catering for Rent"}
             property={cateringRent}
             propertyAll={propertyRent}
+            color="#3B4CB8"
+            colorCircular="#dbdef3"
+          />
+        </Row>
+      </div>
+      <div className="circular-rent">
+        <Row>
+          <CircularRent
+            propertyName={"Offices for Sale"}
+            property={officesSale}
+            propertyAll={propertySale}
+            color="#37D159"
+            colorCircular="#d5f5dc"
+          />
+          <CircularRent
+            propertyName={"Shops for Sale"}
+            property={shopsSale}
+            propertyAll={propertySale}
+            color="#37D159"
+            colorCircular="#d5f5dc"
+          />
+          <CircularRent
+            propertyName={"Warehouses for Sale"}
+            property={warehousesSale}
+            propertyAll={propertySale}
+            color="#37D159"
+            colorCircular="#d5f5dc"
+          />
+          <CircularRent
+            propertyName={"Catering for Sale"}
+            property={cateringSale}
+            propertyAll={propertySale}
+            color="#37D159"
+            colorCircular="#d5f5dc"
           />
         </Row>
       </div>
