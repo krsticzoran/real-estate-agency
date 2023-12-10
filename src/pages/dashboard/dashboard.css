@@ -54,7 +54,13 @@
   height: 45px;
 }
 
+.progressbarr-link {
+  list-style: none;
+  text-decoration: none;
+}
+
 .progress-bar-container {
+  cursor: pointer;
   height: 180px;
   background-color: #ff6746;
   padding-right: 15px;

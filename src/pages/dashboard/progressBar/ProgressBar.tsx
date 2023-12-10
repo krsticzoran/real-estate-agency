@@ -9,6 +9,8 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import "react-circular-progressbar/dist/styles.css";
 import CircularRent from "./Circular";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const GET_PROPERTIES = gql`
   query GetProperties($sale: String!) {
@@ -87,41 +89,41 @@ const CustomProgressBar: FC = () => {
     ).toFixed(0)
   );
 
-  console.log(percentRent);
-
   return (
     <div>
-      <div className="progress-bar-container d-flex justify-content-center align-items-center">
-        <Row className="w-100">
-          <div className="d-flex  ">
-            <div className="col-sm-1 h-100">
-              <FontAwesomeIcon className="progress-bar-icon" icon={faHouse} />
-            </div>
-            <div className="col-sm-11 ">
-              <h4>
-                Total Properties {propertyRent.length + propertySale.length}
-              </h4>
-              <ProgressBar>
-                <ProgressBar
-                  striped
-                  style={{ backgroundColor: "#fff" }}
-                  now={percentRent}
-                  key={1}
-                />
-                <ProgressBar
-                  style={{ backgroundColor: "#e9ecef" }}
-                  now={100 - percentRent}
-                  key={2}
-                />
-              </ProgressBar>
-              <div className="d-flex justify-content-between ">
-                <span>{propertyRent.length} rent</span>
-                <span>{propertySale.length} sale</span>
+      <Link to={"/dashboard/items"} className="progressbarr-link">
+        <div className="progress-bar-container d-flex justify-content-center align-items-center">
+          <Row className="w-100">
+            <div className="d-flex  ">
+              <div className="col-sm-1 h-100">
+                <FontAwesomeIcon className="progress-bar-icon" icon={faHouse} />
+              </div>
+              <div className="col-sm-11 ">
+                <h4>
+                  Total Properties {propertyRent.length + propertySale.length}
+                </h4>
+                <ProgressBar>
+                  <ProgressBar
+                    striped
+                    style={{ backgroundColor: "#fff" }}
+                    now={percentRent}
+                    key={1}
+                  />
+                  <ProgressBar
+                    style={{ backgroundColor: "#e9ecef" }}
+                    now={100 - percentRent}
+                    key={2}
+                  />
+                </ProgressBar>
+                <div className="d-flex justify-content-between ">
+                  <span>{propertyRent.length} rent</span>
+                  <span>{propertySale.length} sale</span>
+                </div>
               </div>
             </div>
-          </div>
-        </Row>
-      </div>
+          </Row>
+        </div>
+      </Link>
       <div className="circular-rent">
         <Row>
           <CircularRent

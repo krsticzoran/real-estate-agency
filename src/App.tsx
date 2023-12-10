@@ -18,7 +18,9 @@ const BlogText = lazy(() => import("./pages/blog/BlogText"));
 const AboutUs = lazy(() => import("./pages/about/AboutUs"));
 const LoginPage = lazy(() => import("./pages/login/LoginPage"));
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
-
+const DashboardProperties = lazy(
+  () => import("./pages/dashboard/properties/DashboardProperties")
+);
 function App() {
   return (
     <>
@@ -26,6 +28,7 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/items" element={<DashboardProperties />} />
 
             <Route
               path="/*"
