@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 interface PropertyType {
   property: string;
@@ -27,9 +28,14 @@ const Circular: FC<CircularProps> = ({
   color,
   colorCircular,
 }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/dashboard/items", { state: { data: property } });
+  };
+
   return (
     <div className="col-sm-12 col-lg-6 mt-3 ">
-      <Card>
+      <Card onClick={handleClick}>
         <Card.Body className="d-flex justify-content-between align-items-center pt-4 pb-4">
           <div>
             <h2>{property.length}</h2>

@@ -1,7 +1,10 @@
 import { FC } from "react";
-
+import { useLocation } from "react-router-dom";
 const DashboardProperties: FC = () => {
-  return <div>yeaa</div>;
+  const location = useLocation();
+  const data = location.state?.data;
+  console.log(data);
+  return <div> .....</div>;
 };
 
 export default DashboardProperties;
