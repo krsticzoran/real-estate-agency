@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
@@ -18,6 +18,37 @@ interface PropertyType {
 const DashboardProperties: FC = () => {
   const location = useLocation();
   const data: PropertyType[] | undefined = location.state?.data;
+  const [renderData, setRenderData] = useState<PropertyType[] | undefined>(
+    undefined
+  );
+  useEffect(() => {
+    setRenderData(data);
+  }, []);
+
+  const handleSort = (
+    event: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGSVGElement>
+  ) => {
+    const sortProperty = event.currentTarget.getAttribute("data-position");
+    if (sortProperty && renderData) {
+      setRenderData((prevState) => {
+        if (prevState) {
+          return [...prevState].sort((a, b) => {
+            if (sortProperty === "square") {
+              return a.square - b.square;
+            }
+            if (sortProperty === "price") {
+              return a.price - b.price;
+            }
+            if (sortProperty === "place") {
+              return a.place.localeCompare(b.place);
+            }
+            return 0;
+          });
+        }
+        return prevState;
+      });
+    }
+  };
 
   return (
     <div>
@@ -26,17 +57,44 @@ const DashboardProperties: FC = () => {
           <tr>
             <th>#ID</th>
             <th>Property</th>
-            <th>Position</th>
-            <th>Square</th>
             <th>
-              Prices
-              <FontAwesomeIcon icon={faSort} />
+              <div className="d-flex justify-content-between">
+                Position
+                <FontAwesomeIcon
+                  icon={faSort}
+                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                  onClick={handleSort}
+                  data-position="place"
+                />
+              </div>
+            </th>
+            <th>
+              <div className="d-flex justify-content-between">
+                Square
+                <FontAwesomeIcon
+                  icon={faSort}
+                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                  onClick={handleSort}
+                  data-position="square"
+                />
+              </div>
+            </th>
+            <th>
+              <div className="d-flex justify-content-between">
+                Prices
+                <FontAwesomeIcon
+                  icon={faSort}
+                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                  onClick={handleSort}
+                  data-position="price"
+                />
+              </div>
             </th>
           </tr>
         </thead>
         <tbody>
-          {data &&
-            data.map((item: PropertyType, index: number) => (
+          {renderData &&
+            renderData.map((item: PropertyType, index: number) => (
               <tr key={index}>
                 <td>{item.num}</td>
                 <td>{item.property}</td>
