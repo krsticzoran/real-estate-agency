@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
+import Pagination from "react-bootstrap/Pagination";
 
 interface PropertyType {
   property: string;
@@ -21,6 +22,13 @@ const DashboardProperties: FC = () => {
   const [renderData, setRenderData] = useState<PropertyType[] | undefined>(
     undefined
   );
+  const [active, setActive] = useState<number>(1);
+
+  const numbersArray = Array.from(
+    { length: Math.ceil((data?.length ?? 0) / 10) },
+    (_, index) => index + 1
+  );
+
   useEffect(() => {
     setRenderData(data);
   }, []);
@@ -106,6 +114,13 @@ const DashboardProperties: FC = () => {
             ))}
         </tbody>
       </Table>
+      <Pagination size="sm">
+        {numbersArray.map((num) => (
+          <Pagination.Item key={num} active={num === active}>
+            {num}
+          </Pagination.Item>
+        ))}
+      </Pagination>
     </div>
   );
 };
