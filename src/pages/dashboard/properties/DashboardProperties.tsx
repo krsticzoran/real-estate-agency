@@ -24,6 +24,8 @@ const DashboardProperties: FC = () => {
   );
   const [active, setActive] = useState<number>(1);
 
+  const newData = renderData?.slice((active - 1) * 10, active * 10);
+
   const numbersArray = Array.from(
     { length: Math.ceil((data?.length ?? 0) / 10) },
     (_, index) => index + 1
@@ -44,6 +46,9 @@ const DashboardProperties: FC = () => {
             if (sortProperty === "square") {
               return a.square - b.square;
             }
+            if (sortProperty === "id") {
+              return a.num - b.num;
+            }
             if (sortProperty === "price") {
               return a.price - b.price;
             }
@@ -63,7 +68,17 @@ const DashboardProperties: FC = () => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>#ID</th>
+            <th>
+              <div className="d-flex justify-content-between">
+                #ID
+                <FontAwesomeIcon
+                  icon={faSort}
+                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                  onClick={handleSort}
+                  data-position="id"
+                />
+              </div>
+            </th>
             <th>Property</th>
             <th>
               <div className="d-flex justify-content-between">
@@ -101,8 +116,8 @@ const DashboardProperties: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {renderData &&
-            renderData.map((item: PropertyType, index: number) => (
+          {newData &&
+            newData.map((item: PropertyType, index: number) => (
               <tr key={index}>
                 <td>{item.num}</td>
                 <td>{item.property}</td>
@@ -116,7 +131,11 @@ const DashboardProperties: FC = () => {
       </Table>
       <Pagination size="sm">
         {numbersArray.map((num) => (
-          <Pagination.Item key={num} active={num === active}>
+          <Pagination.Item
+            key={num}
+            active={num === active}
+            onClick={() => setActive(num)}
+          >
             {num}
           </Pagination.Item>
         ))}
