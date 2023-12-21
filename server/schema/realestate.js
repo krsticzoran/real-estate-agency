@@ -28,6 +28,22 @@ const RealEstateType = new GraphQLObjectType({
 function schemaRealEstate(database) {
   const collection = database.collection("realestate");
 
+  const RealEstateMutation = new GraphQLObjectType({
+    name: "RootMutationType",
+    fields: {
+      deleteProperty: {
+        type: RealEstateType,
+        args: { num: { type: GraphQLInt } },
+        async resolve(parentValue, { num }) {
+          const deletedProperty = await collection.findOneAndDelete({
+            num: num,
+          });
+          return deletedProperty.value;
+        },
+      },
+    },
+  });
+
   const RealEstateQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
@@ -109,6 +125,7 @@ function schemaRealEstate(database) {
 
   return new GraphQLSchema({
     query: RealEstateQuery,
+    mutation: RealEstateMutation,
   });
 }
 
