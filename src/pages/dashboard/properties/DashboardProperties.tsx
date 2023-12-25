@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-bootstrap/Pagination";
+import { useMutation, useQuery } from "@apollo/client";
+import gql from "graphql-tag";
 
 interface PropertyType {
   property: string;
@@ -16,12 +18,46 @@ interface PropertyType {
   img: string;
 }
 
+const DELETE_PROPERTY = gql`
+  mutation DeleteProperty($num: Int!) {
+    deleteProperty(num: $num) {
+      num
+    }
+  }
+`;
+
+const GET_PROPERTIES = gql`
+  query GetProperties($property: String!, $sale: String!) {
+    property(property: $property, sale: $sale) {
+      property
+      sale
+      num
+      place
+      price
+      square
+      time
+      img
+    }
+  }
+`;
+
 const DashboardProperties: FC = () => {
   const location = useLocation();
-  const data: PropertyType[] | undefined = location.state?.data;
+  const { property, sale } = location.state?.data[0];
+
+  const { data: arr } = useQuery(GET_PROPERTIES, {
+    variables: { property, sale },
+    context: { clientName: "endpoint2" },
+  });
+
+  console.log(arr);
+  const data: PropertyType[] | undefined = arr?.property;
   const [renderData, setRenderData] = useState<PropertyType[] | undefined>(
     undefined
   );
+
+  const [deleteProperty] = useMutation(DELETE_PROPERTY);
+
   const [active, setActive] = useState<number>(1);
 
   const newData = renderData?.slice((active - 1) * 10, active * 10);
@@ -60,6 +96,21 @@ const DashboardProperties: FC = () => {
         }
         return prevState;
       });
+    }
+  };
+
+  const deleteProperties = async (e: any) => {
+    const parentKey = e.target.parentElement.getAttribute("data-parent-key");
+    console.log(+parentKey);
+    try {
+      const { data } = await deleteProperty({
+        variables: { num: +parentKey },
+        context: { clientName: "endpoint2" },
+      });
+      console.log(data);
+    } catch (error) {
+      console.error("Error deleting property:", error);
+      // Handle error state
     }
   };
 
@@ -118,13 +169,13 @@ const DashboardProperties: FC = () => {
         <tbody>
           {newData &&
             newData.map((item: PropertyType, index: number) => (
-              <tr key={index}>
+              <tr key={index} data-parent-key={item.num}>
                 <td>{item.num}</td>
                 <td>{item.property}</td>
                 <td>{item.place}</td>
                 <td>{`${item.square} m\u00B2`}</td>
                 <td>{`${item.price.toLocaleString()} €`}</td>
-                <Button>Delete</Button>
+                <Button onClick={deleteProperties}>Delete</Button>
               </tr>
             ))}
         </tbody>
