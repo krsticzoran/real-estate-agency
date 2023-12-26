@@ -31,7 +31,6 @@ const Circular: FC<CircularProps> = ({
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/dashboard/items", { state: { data: property } });
-    console.log(property);
   };
 
   return (

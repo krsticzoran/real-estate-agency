@@ -45,13 +45,13 @@ const DashboardProperties: FC = () => {
   const location = useLocation();
   const { property, sale } = location.state?.data[0];
 
-  const { data: arr } = useQuery(GET_PROPERTIES, {
+  const { data } = useQuery(GET_PROPERTIES, {
     variables: { property, sale },
     context: { clientName: "endpoint2" },
   });
 
-  console.log(arr);
-  const data: PropertyType[] | undefined = arr?.property;
+  console.log(data);
+
   const [renderData, setRenderData] = useState<PropertyType[] | undefined>(
     undefined
   );
@@ -68,8 +68,8 @@ const DashboardProperties: FC = () => {
   );
 
   useEffect(() => {
-    setRenderData(data);
-  }, []);
+    setRenderData(data?.property);
+  }, [data]);
 
   const handleSort = (
     event: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGSVGElement>
@@ -107,6 +107,10 @@ const DashboardProperties: FC = () => {
         variables: { num: +parentKey },
         context: { clientName: "endpoint2" },
       });
+
+      setRenderData((prevState) =>
+        prevState?.filter((item) => item.num !== +parentKey)
+      );
       console.log(data);
     } catch (error) {
       console.error("Error deleting property:", error);
