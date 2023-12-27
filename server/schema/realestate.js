@@ -41,6 +41,27 @@ function schemaRealEstate(database) {
           return deletedProperty.value;
         },
       },
+      addProperty: {
+        type: RealEstateType,
+        args: {
+          property: { type: GraphQLString },
+          sale: { type: GraphQLString },
+          num: { type: GraphQLInt },
+          place: { type: GraphQLString },
+          price: { type: GraphQLInt },
+          square: { type: GraphQLInt },
+          time: { type: GraphQLInt },
+          img: { type: GraphQLString },
+          specialist: { type: GraphQLString },
+          img1: { type: GraphQLString },
+          img2: { type: GraphQLString },
+          img3: { type: GraphQLString },
+        },
+        async resolve(parentValue, args) {
+          const addedProperty = await collection.insertOne({ ...args });
+          return addedProperty.ops[0];
+        },
+      },
     },
   });
 
