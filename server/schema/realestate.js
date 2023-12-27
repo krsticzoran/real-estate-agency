@@ -58,8 +58,21 @@ function schemaRealEstate(database) {
           img3: { type: GraphQLString },
         },
         async resolve(parentValue, args) {
-          const addedProperty = await collection.insertOne({ ...args });
-          return addedProperty.ops[0];
+          try {
+            const addedProperty = await collection.insertOne({ ...args });
+            if (addedProperty.insertedId) {
+              const newProperty = await collection.findOne({
+                _id: addedProperty.insertedId,
+              });
+              return newProperty;
+            } else {
+              console.log("Failed to retrieve the newly added property.");
+              return null;
+            }
+          } catch (error) {
+            console.error("Error inserting property:", error);
+            return null;
+          }
         },
       },
     },
