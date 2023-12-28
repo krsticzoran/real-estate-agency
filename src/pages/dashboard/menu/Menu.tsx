@@ -14,7 +14,7 @@ const Menu: FC<ChildProps> = ({ logout }) => {
         <img src={logo} alt="Logo" />
       </Link>
       <button>Dashboard</button>
-      <button>Properties</button>
+      <button>Add Property</button>
       <button>Blog Post</button>
       <button>Team Member</button>
       <button>Manage Users</button>
