@@ -22,7 +22,7 @@ const DashboardProperties = lazy(
   () => import("./pages/dashboard/properties/DashboardProperties")
 );
 const AddProperty = lazy(
-  () => import("./pages/dashboard/addPrpperty/addProperty")
+  () => import("./pages/dashboard/addPrpperty/AddProperty")
 );
 function App() {
   return (

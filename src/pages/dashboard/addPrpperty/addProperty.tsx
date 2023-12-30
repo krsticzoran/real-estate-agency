@@ -1,21 +1,67 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
-const addProperty: FC = () => {
+interface FormData {
+  sale: string;
+  property: string;
+  place: string;
+  price: string;
+  square: string;
+}
+
+const AddProperty: FC = () => {
+  const defaultFormData = {
+    sale: "sale",
+    property: "offices",
+    place: "Zvezdara",
+    price: "",
+    square: "",
+  };
+
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
+
+  const handleInputChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ): void => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    console.log(formData);
+    setFormData(defaultFormData);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
-          <Form.Select aria-label="Default select example">
-            <option value="Sale">Sale</option>
-            <option value="Rent">Rent</option>
+          <Form.Select
+            aria-label="Default select example"
+            name="sale"
+            value={formData.sale}
+            onChange={handleInputChange}
+          >
+            <option value="sale">Sale</option>
+            <option value="rent">Rent</option>
           </Form.Select>
         </Col>
         <Col>
-          <Form.Select aria-label="Default select example">
+          <Form.Select
+            aria-label="Default select example"
+            name="property"
+            value={formData.property}
+            onChange={handleInputChange}
+          >
             <option value="offices">Office</option>
             <option value="shops">Shop</option>
             <option value="warehouses">Warehouse</option>
@@ -23,7 +69,12 @@ const addProperty: FC = () => {
           </Form.Select>
         </Col>
         <Col>
-          <Form.Select aria-label="Default select example">
+          <Form.Select
+            aria-label="Default select example"
+            name="place"
+            value={formData.place}
+            onChange={handleInputChange}
+          >
             <option value="Zvezdara">Zvezdara</option>
             <option value="Novi Beograd">Novi Beograd</option>
             <option value="Savski venac">Savski venac</option>
@@ -36,11 +87,23 @@ const addProperty: FC = () => {
       <Row>
         <Col>
           <Form.Label htmlFor="inputPrice">Price</Form.Label>
-          <Form.Control type="text" id="inputPrice" />
+          <Form.Control
+            type="text"
+            id="inputPrice"
+            name="price"
+            value={formData.price}
+            onChange={handleInputChange}
+          />
         </Col>
         <Col>
           <Form.Label htmlFor="inputSquare">Square</Form.Label>
-          <Form.Control type="text" id="inputSquare" />
+          <Form.Control
+            type="text"
+            id="inputSquare"
+            name="square"
+            value={formData.square}
+            onChange={handleInputChange}
+          />
         </Col>
       </Row>
       <Row>
@@ -76,4 +139,4 @@ const addProperty: FC = () => {
   );
 };
 
-export default addProperty;
+export default AddProperty;
