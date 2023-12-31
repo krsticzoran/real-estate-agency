@@ -3,25 +3,65 @@ import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/client";
 
 interface FormData {
   sale: string;
   property: string;
   place: string;
-  price: string;
-  square: string;
+  price: number;
+  square: number;
+  img: string;
+  num: number;
 }
 
-const AddProperty: FC = () => {
-  const defaultFormData = {
-    sale: "sale",
-    property: "offices",
-    place: "Zvezdara",
-    price: "",
-    square: "",
-  };
+const defaultFormData = {
+  sale: "sale",
+  property: "offices",
+  place: "Zvezdara",
+  price: 0,
+  square: 0,
+  img: "/img/offices/1.webp",
+  num: 1201,
+};
 
+const ADD_PROPERTY = gql`
+  mutation AddProperty(
+    $sale: String!
+    $property: String!
+    $place: String!
+    $price: Int!
+    $square: Int!
+    $img: String!
+    $num: Int!
+  ) {
+    addProperty(
+      sale: $sale
+      property: $property
+      place: $place
+      price: $price
+      square: $square
+      img: $img
+      num: $num
+    ) {
+      sale
+      property
+      place
+      price
+      square
+      img
+      num
+    }
+  }
+`;
+
+const AddProperty: FC = () => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
+
+  const [executeMutation, { data, error }] = useMutation(ADD_PROPERTY, {
+    context: { clientName: "endpoint2" },
+  });
 
   const handleInputChange = (
     event: React.ChangeEvent<
@@ -29,18 +69,22 @@ const AddProperty: FC = () => {
     >
   ): void => {
     const { name, value } = event.target;
+    const updatedValue =
+      name === "price" || name === "square" ? parseFloat(value) : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: updatedValue,
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+
+    await executeMutation({ variables: formData });
+
     setFormData(defaultFormData);
   };
-
+  console.log(data, error); // Initially, these will be undefined
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
