@@ -23,7 +23,7 @@ const defaultFormData = {
   price: 0,
   square: 0,
   img: "/img/offices/1.webp",
-  num: 1201,
+  num: 1300,
 };
 
 const ADD_PROPERTY = gql`
@@ -75,6 +75,27 @@ const AddProperty: FC = () => {
       ...formData,
       [name]: updatedValue,
     });
+  };
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+
+      const uploadedFileName = await uploadFileToServer(file);
+
+      setFormData({
+        ...formData,
+        img: uploadedFileName,
+      });
+    }
+  };
+
+  const uploadFileToServer = async (file: File): Promise<string> => {
+    // Your file upload logic here (e.g., using fetch, axios, or another method)
+    // Return the file path or name after successful upload
+    return `/public/img/property/${file.name}`; // Replace with your actual path or name
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -154,7 +175,7 @@ const AddProperty: FC = () => {
         <Col>
           <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Upload photo 1</Form.Label>
-            <Form.Control type="file" />
+            <Form.Control type="file" onChange={handleFileChange} />
           </Form.Group>
         </Col>
         <Col>
