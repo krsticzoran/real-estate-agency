@@ -11,6 +11,8 @@ const { schemaAuth } = require("./schema/auth");
 dotenv.config();
 
 const app = express();
+const multer = require("multer");
+const upload = multer({ dest: "public/img/property/" });
 
 app.use(express.json());
 app.use(cors());
@@ -46,6 +48,39 @@ async function connectToMongoDB() {
     const blogSchema = schemaBlog(database);
 
     const authSchema = schemaAuth(database);
+
+    const collection = database.collection("realestate");
+
+    // Handle file uploads at the '/upload' route using Multer
+    app.post("/upload", upload.single("img"), async (req, res) => {
+      try {
+        if (!req.file) {
+          return res.status(400).send("No file uploaded.");
+        }
+
+        // Logic to handle file upload and update the database with the file path
+        const filePath = `public/img/property/${req.file.filename}`;
+
+        const result = await collection.findOneAndUpdate(
+          {},
+          { $set: { img: filePath } },
+          { returnOriginal: false } // Ensure the updated document is returned
+        );
+
+        // Check if the update was successful
+        if (result && result.value) {
+          // Once the file is uploaded and the database is updated, send a success response
+          res.status(200).json({ filePath });
+        } else {
+          // Handle the scenario where the database update failed
+          res.status(500).send("Error updating database with file path.");
+        }
+      } catch (error) {
+        // Handle any errors that occur during file upload or database operations
+        console.error("Error handling file upload:", error);
+        res.status(500).send("Error handling file upload.");
+      }
+    });
 
     app.use(
       "/graphql",

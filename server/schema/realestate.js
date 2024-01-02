@@ -25,8 +25,14 @@ const RealEstateType = new GraphQLObjectType({
   }),
 });
 
+const multer = require("multer");
+
+let collection;
+
 function schemaRealEstate(database) {
   const collection = database.collection("realestate");
+
+  const upload = multer({ dest: "public/img/property/" });
 
   const RealEstateMutation = new GraphQLObjectType({
     name: "RootMutationType",
@@ -53,9 +59,6 @@ function schemaRealEstate(database) {
           time: { type: GraphQLInt },
           img: { type: GraphQLString },
           specialist: { type: GraphQLString },
-          img1: { type: GraphQLString },
-          img2: { type: GraphQLString },
-          img3: { type: GraphQLString },
         },
         async resolve(parentValue, args) {
           try {
