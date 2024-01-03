@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
+import axios from "axios";
 
 interface FormData {
   sale: string;
@@ -23,7 +24,7 @@ const defaultFormData = {
   price: 0,
   square: 0,
   img: "/img/offices/1.webp",
-  num: 1300,
+  num: 2300,
 };
 
 const ADD_PROPERTY = gql`
@@ -58,6 +59,7 @@ const ADD_PROPERTY = gql`
 
 const AddProperty: FC = () => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
+  const [file, setFile] = useState<File | null>(null);
 
   const [executeMutation, { data, error }] = useMutation(ADD_PROPERTY, {
     context: { clientName: "endpoint2" },
@@ -83,7 +85,17 @@ const AddProperty: FC = () => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
 
-      const uploadedFileName = await uploadFileToServer(file);
+      // Generate a unique name (you can use timestamps, UUIDs, or any unique generation logic)
+      const uniqueFileName = `${Date.now()}_${file.name}`;
+
+      // Create a new File object with the modified name
+      const modifiedFile = new File([file], uniqueFileName, {
+        type: file.type,
+      });
+
+      const uploadedFileName = `/public/img/property/${uniqueFileName}`;
+
+      setFile(modifiedFile);
 
       setFormData({
         ...formData,
@@ -92,20 +104,30 @@ const AddProperty: FC = () => {
     }
   };
 
-  const uploadFileToServer = async (file: File): Promise<string> => {
-    // Your file upload logic here (e.g., using fetch, axios, or another method)
-    // Return the file path or name after successful upload
-    return `/public/img/property/${file.name}`; // Replace with your actual path or name
+  const handleFileUpload = async () => {
+    try {
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        await axios.post("http://localhost:8000/upload", formData);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     await executeMutation({ variables: formData });
-
+    setFile(null);
     setFormData(defaultFormData);
+    console.log(file);
+
+    await handleFileUpload();
   };
-  console.log(data, error); // Initially, these will be undefined
+
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
