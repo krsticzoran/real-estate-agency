@@ -5,6 +5,7 @@ const {
   GraphQLList,
   GraphQLInt,
 } = require("graphql");
+
 const { Collection, Db } = require("mongodb");
 
 const RealEstateType = new GraphQLObjectType({
@@ -25,14 +26,8 @@ const RealEstateType = new GraphQLObjectType({
   }),
 });
 
-const multer = require("multer");
-
-let collection;
-
 function schemaRealEstate(database) {
   const collection = database.collection("realestate");
-
-  const upload = multer({ dest: "public/img/property/" });
 
   const RealEstateMutation = new GraphQLObjectType({
     name: "RootMutationType",
