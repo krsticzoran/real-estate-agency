@@ -17,16 +17,6 @@ interface FormData {
   num: number;
 }
 
-const defaultFormData = {
-  sale: "sale",
-  property: "offices",
-  place: "Zvezdara",
-  price: 0,
-  square: 0,
-  img: "/img/offices/1.webp",
-  num: 2300,
-};
-
 const ADD_PROPERTY = gql`
   mutation AddProperty(
     $sale: String!
@@ -58,10 +48,19 @@ const ADD_PROPERTY = gql`
 `;
 
 const AddProperty: FC = () => {
+  const defaultFormData = {
+    sale: "sale",
+    property: "offices",
+    place: "Zvezdara",
+    price: 0,
+    square: 0,
+    img: "/img/offices/1.webp",
+    num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
+  };
   const [formData, setFormData] = useState<FormData>(defaultFormData);
   const [file, setFile] = useState<File | null>(null);
 
-  const [executeMutation, { data, error }] = useMutation(ADD_PROPERTY, {
+  const [executeMutation] = useMutation(ADD_PROPERTY, {
     context: { clientName: "endpoint2" },
   });
 
@@ -121,9 +120,10 @@ const AddProperty: FC = () => {
     event.preventDefault();
 
     await executeMutation({ variables: formData });
+    console.log(formData);
     setFile(null);
     setFormData(defaultFormData);
-    console.log(file);
+    defaultFormData.num = parseInt(Date.now().toString().substring(6, 12), 10);
 
     await handleFileUpload();
   };
