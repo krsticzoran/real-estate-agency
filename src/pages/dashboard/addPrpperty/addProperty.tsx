@@ -82,6 +82,7 @@ const AddProperty: FC = () => {
     } else {
       updatedValue = value;
     }
+
     setFormData({
       ...formData,
       [name]: updatedValue,
@@ -128,6 +129,15 @@ const AddProperty: FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (
+      !formData.price ||
+      !formData.square ||
+      isNaN(Number(formData.price)) ||
+      isNaN(Number(formData.square))
+    ) {
+      alert("Please insert valid data");
+      return;
+    }
 
     await executeMutation({ variables: formData });
     console.log(formData);
