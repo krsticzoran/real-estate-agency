@@ -17,6 +17,16 @@ interface FormData {
   num: number;
 }
 
+const defaultFormData = {
+  sale: "sale",
+  property: "offices",
+  place: "Zvezdara",
+  price: 0,
+  square: 0,
+  img: "/img/offices/1.webp",
+  num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
+};
+
 const ADD_PROPERTY = gql`
   mutation AddProperty(
     $sale: String!
@@ -48,15 +58,6 @@ const ADD_PROPERTY = gql`
 `;
 
 const AddProperty: FC = () => {
-  const defaultFormData = {
-    sale: "sale",
-    property: "offices",
-    place: "Zvezdara",
-    price: 0,
-    square: 0,
-    img: "/img/offices/1.webp",
-    num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
-  };
   const [formData, setFormData] = useState<FormData>(defaultFormData);
   const [file, setFile] = useState<File | null>(null);
 
@@ -70,8 +71,17 @@ const AddProperty: FC = () => {
     >
   ): void => {
     const { name, value } = event.target;
-    const updatedValue =
-      name === "price" || name === "square" ? parseFloat(value) : value;
+    let updatedValue;
+
+    if (
+      (name === "price" || name === "square") &&
+      value !== "" &&
+      !isNaN(Number(value))
+    ) {
+      updatedValue = parseFloat(value);
+    } else {
+      updatedValue = value;
+    }
     setFormData({
       ...formData,
       [name]: updatedValue,
