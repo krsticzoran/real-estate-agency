@@ -41,6 +41,9 @@ const ADD_PROPERTY = gql`
     $price: Int!
     $square: Int!
     $img: String!
+    $img1: String!
+    $img2: String!
+    $img3: String!
     $num: Int!
   ) {
     addProperty(
@@ -50,6 +53,9 @@ const ADD_PROPERTY = gql`
       price: $price
       square: $square
       img: $img
+      img1: $img1
+      img2: $img2
+      img3: $img3
       num: $num
     ) {
       sale
