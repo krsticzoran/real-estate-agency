@@ -15,6 +15,9 @@ interface FormData {
   square: number;
   img: string;
   num: number;
+  img1: string;
+  img2: string;
+  img3: string;
 }
 
 const defaultFormData = {
@@ -23,7 +26,10 @@ const defaultFormData = {
   place: "Zvezdara",
   price: 0,
   square: 0,
-  img: "/img/offices/1.webp",
+  img: "",
+  img1: "",
+  img2: "",
+  img3: "",
   num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
 };
 
@@ -94,6 +100,7 @@ const AddProperty: FC = () => {
   ) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
+      const { id } = event.target;
 
       // Generate a unique name (you can use timestamps, UUIDs, or any unique generation logic)
       const uniqueFileName = `${Date.now()}_${file.name}`;
@@ -109,7 +116,7 @@ const AddProperty: FC = () => {
 
       setFormData({
         ...formData,
-        img: uploadedFileName,
+        [id]: uploadedFileName,
       });
     }
   };
@@ -215,27 +222,27 @@ const AddProperty: FC = () => {
       </Row>
       <Row>
         <Col>
-          <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="img" className="mb-3">
             <Form.Label>Upload photo 1</Form.Label>
             <Form.Control type="file" onChange={handleFileChange} />
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="img1" className="mb-3">
             <Form.Label>upload photo 2</Form.Label>
-            <Form.Control type="file" />
+            <Form.Control type="file" onChange={handleFileChange} />
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="img2" className="mb-3">
             <Form.Label>Upload photo 3</Form.Label>
-            <Form.Control type="file" />
+            <Form.Control type="file" onChange={handleFileChange} />
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group controlId="formFile" className="mb-3">
+          <Form.Group controlId="img3" className="mb-3">
             <Form.Label>Upload photo 4</Form.Label>
-            <Form.Control type="file" />
+            <Form.Control type="file" onChange={handleFileChange} />
           </Form.Group>
         </Col>
       </Row>
