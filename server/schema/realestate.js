@@ -54,6 +54,9 @@ function schemaRealEstate(database) {
           time: { type: GraphQLInt },
           img: { type: GraphQLString },
           specialist: { type: GraphQLString },
+          img1: { type: GraphQLString },
+          img2: { type: GraphQLString },
+          img3: { type: GraphQLString },
         },
         async resolve(parentValue, args) {
           try {
