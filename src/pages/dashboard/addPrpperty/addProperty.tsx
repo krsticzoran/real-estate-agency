@@ -71,7 +71,6 @@ const ADD_PROPERTY = gql`
 
 const AddProperty: FC = () => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
-  const [file, setFile] = useState<File | null>(null);
 
   const [executeMutation] = useMutation(ADD_PROPERTY, {
     context: { clientName: "endpoint2" },
@@ -118,16 +117,16 @@ const AddProperty: FC = () => {
 
       const uploadedFileName = `/public/img/property/${uniqueFileName}`;
 
-      setFile(modifiedFile);
-
       setFormData({
         ...formData,
         [id]: uploadedFileName,
       });
+
+      await handleFileUpload(modifiedFile);
     }
   };
 
-  const handleFileUpload = async () => {
+  const handleFileUpload = async (file: File) => {
     try {
       if (file) {
         const formData = new FormData();
@@ -154,11 +153,9 @@ const AddProperty: FC = () => {
 
     await executeMutation({ variables: formData });
     console.log(formData);
-    setFile(null);
+
     setFormData(defaultFormData);
     defaultFormData.num = parseInt(Date.now().toString().substring(6, 12), 10);
-
-    await handleFileUpload();
   };
 
   return (
