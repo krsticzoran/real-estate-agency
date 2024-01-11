@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -71,6 +71,10 @@ const ADD_PROPERTY = gql`
 
 const AddProperty: FC = () => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
+  const file1Ref = useRef<HTMLInputElement>(null);
+  const file2Ref = useRef<HTMLInputElement>(null);
+  const file3Ref = useRef<HTMLInputElement>(null);
+  const file4Ref = useRef<HTMLInputElement>(null);
 
   const [executeMutation] = useMutation(ADD_PROPERTY, {
     context: { clientName: "endpoint2" },
@@ -156,6 +160,11 @@ const AddProperty: FC = () => {
 
     setFormData(defaultFormData);
     defaultFormData.num = parseInt(Date.now().toString().substring(6, 12), 10);
+
+    file1Ref.current && (file1Ref.current.value = "");
+    file2Ref.current && (file2Ref.current.value = "");
+    file3Ref.current && (file3Ref.current.value = "");
+    file4Ref.current && (file4Ref.current.value = "");
   };
 
   return (
@@ -227,25 +236,41 @@ const AddProperty: FC = () => {
         <Col>
           <Form.Group controlId="img" className="mb-3">
             <Form.Label>Upload photo 1</Form.Label>
-            <Form.Control type="file" onChange={handleFileChange} />
+            <Form.Control
+              type="file"
+              ref={file1Ref}
+              onChange={handleFileChange}
+            />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group controlId="img1" className="mb-3">
             <Form.Label>upload photo 2</Form.Label>
-            <Form.Control type="file" onChange={handleFileChange} />
+            <Form.Control
+              type="file"
+              ref={file2Ref}
+              onChange={handleFileChange}
+            />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group controlId="img2" className="mb-3">
             <Form.Label>Upload photo 3</Form.Label>
-            <Form.Control type="file" onChange={handleFileChange} />
+            <Form.Control
+              type="file"
+              ref={file3Ref}
+              onChange={handleFileChange}
+            />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group controlId="img3" className="mb-3">
             <Form.Label>Upload photo 4</Form.Label>
-            <Form.Control type="file" onChange={handleFileChange} />
+            <Form.Control
+              type="file"
+              ref={file4Ref}
+              onChange={handleFileChange}
+            />
           </Form.Group>
         </Col>
       </Row>
