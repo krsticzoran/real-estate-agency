@@ -155,6 +155,11 @@ const AddProperty: FC = () => {
       return;
     }
 
+    if (!formData.img || !formData.img1 || !formData.img2 || !formData.img3) {
+      alert("Please upload 4 photo");
+      return;
+    }
+
     await executeMutation({ variables: formData });
     console.log(formData);
 
