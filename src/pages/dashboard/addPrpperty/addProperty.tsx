@@ -73,6 +73,8 @@ const ADD_PROPERTY = gql`
 const AddProperty: FC = () => {
   const navigate = useNavigate();
 
+  const [file, setFile] = useState<File | null>(null);
+
   const [formData, setFormData] = useState<FormData>(defaultFormData);
   const file1Ref = useRef<HTMLInputElement>(null);
   const file2Ref = useRef<HTMLInputElement>(null);
@@ -126,27 +128,32 @@ const AddProperty: FC = () => {
         type: file.type,
       });
 
+      setFile(modifiedFile);
       const uploadedFileName = `/public/img/property/${uniqueFileName}`;
 
       setFormData({
         ...formData,
         [id]: uploadedFileName,
       });
-
-      await handleFileUpload(modifiedFile);
     }
   };
 
   const handleFileUpload = async (file: File) => {
     try {
-      if (file) {
-        const formData = new FormData();
-        formData.append("file", file);
+      const formData = new FormData();
+      formData.append("file", file);
 
-        await axios.post("http://localhost:8000/upload", formData);
-      }
+      const response = await axios.post(
+        "http://localhost:8000/upload",
+        formData
+      );
+
+      console.log("File upload response:", response);
+
+      // Additional handling based on the response, if needed
     } catch (error) {
       console.error("Error uploading file:", error);
+      throw error; // Re-throw the error to be caught by the calling function
     }
   };
 
@@ -168,6 +175,12 @@ const AddProperty: FC = () => {
     }
 
     await executeMutation({ variables: formData });
+
+    if (file) {
+      await handleFileUpload(file);
+    }
+
+    console.log(event);
     console.log(formData);
 
     setFormData(defaultFormData);
@@ -293,6 +306,7 @@ const AddProperty: FC = () => {
           Submit
         </Button>
       </Form>
+      <p>fsf</p>
     </>
   );
 };
