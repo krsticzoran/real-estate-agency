@@ -73,7 +73,7 @@ const ADD_PROPERTY = gql`
 const AddProperty: FC = () => {
   const navigate = useNavigate();
 
-  const [file, setFile] = useState<File | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState<FormData>(defaultFormData);
   const file1Ref = useRef<HTMLInputElement>(null);
@@ -96,6 +96,7 @@ const AddProperty: FC = () => {
   ): void => {
     const { name, value } = event.target;
     let updatedValue;
+    setIsSuccess(false);
 
     if (
       (name === "price" || name === "square") &&
@@ -116,6 +117,8 @@ const AddProperty: FC = () => {
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    setIsSuccess(false);
+
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       const { id } = event.target;
@@ -128,36 +131,32 @@ const AddProperty: FC = () => {
         type: file.type,
       });
 
-      setFile(modifiedFile);
       const uploadedFileName = `/public/img/property/${uniqueFileName}`;
 
       setFormData({
         ...formData,
         [id]: uploadedFileName,
       });
+
+      await handleFileUpload(modifiedFile);
     }
   };
 
   const handleFileUpload = async (file: File) => {
     try {
-      const formData = new FormData();
-      formData.append("file", file);
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file);
 
-      const response = await axios.post(
-        "http://localhost:8000/upload",
-        formData
-      );
-
-      console.log("File upload response:", response);
-
-      // Additional handling based on the response, if needed
+        await axios.post("http://localhost:8000/upload", formData);
+      }
     } catch (error) {
       console.error("Error uploading file:", error);
-      throw error; // Re-throw the error to be caught by the calling function
     }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    console.log(event);
     event.preventDefault();
     if (
       !formData.price ||
@@ -174,14 +173,24 @@ const AddProperty: FC = () => {
       return;
     }
 
-    await executeMutation({ variables: formData });
+    try {
+      const { data } = await executeMutation({ variables: formData });
 
-    if (file) {
-      await handleFileUpload(file);
+      // Check if the data object has the expected structure indicating success
+      if (data && data.addProperty && data.addProperty.property) {
+        setIsSuccess(true);
+
+        // Clear file input values
+        file1Ref.current && (file1Ref.current.value = "");
+        file2Ref.current && (file2Ref.current.value = "");
+        file3Ref.current && (file3Ref.current.value = "");
+        file4Ref.current && (file4Ref.current.value = "");
+      } else {
+        console.error("Mutation was not successful");
+      }
+    } catch (error) {
+      console.error("Error in mutation:", error);
     }
-
-    console.log(event);
-    console.log(formData);
 
     setFormData(defaultFormData);
     defaultFormData.num = parseInt(Date.now().toString().substring(6, 12), 10);
@@ -306,7 +315,7 @@ const AddProperty: FC = () => {
           Submit
         </Button>
       </Form>
-      <p>fsf</p>
+      <p>{isSuccess ? "Property added successfully!" : ""}</p>
     </>
   );
 };
