@@ -21,7 +21,7 @@ const GET_PROPERTY = gql`
       place
       price
       square
-      time
+      date
       img
       specialist
       img1

@@ -34,8 +34,8 @@ const GET_PROPERTIES = gql`
       place
       price
       square
-      time
       img
+      date
     }
   }
 `;
@@ -110,7 +110,7 @@ const Featured: FC = () => {
                                         }`}
                                       </h3>
                                       <p className="featured-price">{`€${property.price}/mo`}</p>
-                                      <p className="featured-day">{`${property.time} days ago`}</p>
+                                      <p className="featured-day">{`${property.date}`}</p>
                                     </Card.Body>
                                   </Card>
                                 </Link>
@@ -147,7 +147,7 @@ const Featured: FC = () => {
                                         }`}
                                       </h3>
                                       <p className="featured-price">{`€${property.price}/mo`}</p>
-                                      <p className="featured-day">{`${property.time} days ago`}</p>
+                                      <p className="featured-day">{`${property.date}`}</p>
                                     </Card.Body>
                                   </Card>
                                 </Link>

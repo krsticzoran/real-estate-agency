@@ -19,7 +19,16 @@ interface FormData {
   img1: string;
   img2: string;
   img3: string;
+  date: string;
 }
+
+const currentDate = new Date();
+
+const day = currentDate.getDate().toString().padStart(2, "0");
+const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+const year = currentDate.getFullYear();
+
+const formattedDate = `${day}.${month}.${year}`;
 
 const defaultFormData = {
   sale: "sale",
@@ -32,6 +41,7 @@ const defaultFormData = {
   img2: "",
   img3: "",
   num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
+  date: formattedDate,
 };
 
 const ADD_PROPERTY = gql`
@@ -45,6 +55,7 @@ const ADD_PROPERTY = gql`
     $img1: String!
     $img2: String!
     $img3: String!
+    $date: String!
     $num: Int!
   ) {
     addProperty(
@@ -58,6 +69,7 @@ const ADD_PROPERTY = gql`
       img2: $img2
       img3: $img3
       num: $num
+      date: $date
     ) {
       sale
       property
@@ -174,6 +186,7 @@ const AddProperty: FC = () => {
     }
 
     try {
+      console.log(formData);
       const { data } = await executeMutation({ variables: formData });
 
       // Check if the data object has the expected structure indicating success

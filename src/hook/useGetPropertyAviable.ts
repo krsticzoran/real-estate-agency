@@ -9,7 +9,7 @@ const GET_PROPERTIES = gql`
       place
       price
       square
-      time
+      date
       img
     }
   }

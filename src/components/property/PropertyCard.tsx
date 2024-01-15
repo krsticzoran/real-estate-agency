@@ -30,7 +30,7 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
               <p className="search-rent-sale-price">{`${property.price.toLocaleString()} €`}</p>
             )}
             <p className="search-rent-sale-m">{`${property.square} m\u00B2`}</p>
-            <p className="search-rent-sale-day">{`${property.time} day ago`}</p>
+            <p className="search-rent-sale-day">{`${property.date}`}</p>
           </div>
         </div>
       </Link>

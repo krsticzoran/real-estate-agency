@@ -6,7 +6,7 @@ export interface Property {
   place: string;
   price: number;
   square: number;
-  time: number;
+  date: string;
   img: string;
   img1: string;
   img2: string;
