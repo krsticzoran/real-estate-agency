@@ -20,7 +20,7 @@ const GET_PROPERTIES = gql`
       place
       price
       square
-      time
+      date
       img
     }
   }
@@ -32,7 +32,7 @@ interface PropertyType {
   place: string;
   price: number;
   square: number;
-  time: number;
+  date: string;
   img: string;
 }
 

@@ -9,7 +9,7 @@ interface PropertyType {
   place: string;
   price: number;
   square: number;
-  time: number;
+  date: string;
   img: string;
 }
 
