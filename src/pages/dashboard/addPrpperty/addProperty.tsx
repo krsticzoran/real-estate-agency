@@ -143,7 +143,7 @@ const AddProperty: FC = () => {
         type: file.type,
       });
 
-      const uploadedFileName = `/public/img/property/${uniqueFileName}`;
+      const uploadedFileName = `/img/property/${uniqueFileName}`;
 
       setFormData({
         ...formData,
