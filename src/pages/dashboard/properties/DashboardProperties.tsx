@@ -50,8 +50,6 @@ const DashboardProperties: FC = () => {
     context: { clientName: "endpoint2" },
   });
 
-  console.log(data);
-
   const [renderData, setRenderData] = useState<PropertyType[] | undefined>(
     undefined
   );

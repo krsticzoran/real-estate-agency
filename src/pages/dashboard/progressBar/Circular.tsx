@@ -30,7 +30,9 @@ const Circular: FC<CircularProps> = ({
 }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/dashboard/items", { state: { data: property } });
+    if (property.length) {
+      navigate("/dashboard/items", { state: { data: property } });
+    }
   };
 
   return (
