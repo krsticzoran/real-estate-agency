@@ -42,11 +42,13 @@ const defaultFormData = {
   img3: "",
   num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
   date: formattedDate,
+  specialist: "marko",
 };
 
 const ADD_PROPERTY = gql`
   mutation AddProperty(
     $sale: String!
+    $specialist: String!
     $property: String!
     $place: String!
     $price: Int!
@@ -70,6 +72,7 @@ const ADD_PROPERTY = gql`
       img3: $img3
       num: $num
       date: $date
+      specialist: $specialist
     ) {
       sale
       property
@@ -78,6 +81,7 @@ const ADD_PROPERTY = gql`
       square
       img
       num
+      specialist
     }
   }
 `;

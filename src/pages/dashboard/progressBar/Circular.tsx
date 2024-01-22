@@ -35,15 +35,19 @@ const Circular: FC<CircularProps> = ({
     }
   };
 
+  const style = {
+    cursor: "pointer",
+  };
+
   return (
     <div className="col-sm-12 col-lg-6 mt-3 ">
-      <Card onClick={handleClick}>
+      <Card onClick={handleClick} style={property.length ? style : {}}>
         <Card.Body className="d-flex justify-content-between align-items-center pt-4 pb-4">
           <div>
             <h2>{property.length}</h2>
 
             <p>{propertyName}</p>
-            <span>total amount</span>
+            <span>Total amount</span>
           </div>
           <div>
             <CircularProgressbar
