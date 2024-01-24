@@ -7,6 +7,7 @@ import { faSort } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-bootstrap/Pagination";
 import { useMutation, useQuery } from "@apollo/client";
 import gql from "graphql-tag";
+import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
 
 interface PropertyType {
   property: string;
@@ -118,6 +119,7 @@ const DashboardProperties: FC = () => {
 
   return (
     <div>
+      <BackToTheDashboard />
       <Table striped bordered hover size="sm">
         <thead>
           <tr>

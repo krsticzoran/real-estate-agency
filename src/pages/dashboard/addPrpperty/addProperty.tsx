@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
 
 interface FormData {
   sale: string;
@@ -87,8 +87,6 @@ const ADD_PROPERTY = gql`
 `;
 
 const AddProperty: FC = () => {
-  const navigate = useNavigate();
-
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState<FormData>(defaultFormData);
@@ -96,10 +94,6 @@ const AddProperty: FC = () => {
   const file2Ref = useRef<HTMLInputElement>(null);
   const file3Ref = useRef<HTMLInputElement>(null);
   const file4Ref = useRef<HTMLInputElement>(null);
-
-  const handleReturnBackClick = () => {
-    navigate("/dashboard/");
-  };
 
   const [executeMutation] = useMutation(ADD_PROPERTY, {
     context: { clientName: "endpoint2" },
@@ -220,8 +214,7 @@ const AddProperty: FC = () => {
 
   return (
     <>
-      <button onClick={handleReturnBackClick}>return to the dashboard</button>
-
+      <BackToTheDashboard />
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
