@@ -145,7 +145,10 @@ const Member: FC = () => {
                       <Row>
                         {propertySet.map(
                           (property: Property, subIndex: number) => (
-                            <div className="col-md-4 col-12" key={property.num}>
+                            <div
+                              className="col-md-4 col-12 property-card-member"
+                              key={property.num}
+                            >
                               <PropertyCard property={property} />
                             </div>
                           )
