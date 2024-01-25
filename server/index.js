@@ -8,6 +8,7 @@ const { schemaRealEstate } = require("./schema/realestate");
 const { schemaBlog } = require("./schema/blog");
 const { schemaAuth } = require("./schema/auth");
 const multer = require("multer");
+const path = require("path"); // Import the 'path' module
 
 dotenv.config();
 
@@ -16,9 +17,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, "../public_html"))); // Serve static files
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    return cb(null, "../public/img/property");
+    return cb(null, "../public_html/img/property");
   },
   filename: function (req, file, cb) {
     return cb(null, file.originalname);
@@ -48,7 +51,6 @@ function errorHandler(err, req, res, next) {
   console.error("Error:", err.message);
   res.status(500).json({ error: "Internal Server Error" });
 }
-
 app.use(errorHandler); // Use the error handling middleware
 
 async function connectToMongoDB() {
@@ -97,8 +99,8 @@ async function connectToMongoDB() {
       })
     );
 
-    app.get("/", (req, res) => {
-      res.send("Hello World From the Typescript!");
+    app.get("*", function (req, res) {
+      res.sendFile(path.join(__dirname, "../public_html", "index.html"));
     });
 
     const port = 8000;
