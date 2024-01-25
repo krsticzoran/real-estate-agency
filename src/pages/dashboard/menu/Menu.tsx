@@ -19,11 +19,11 @@ const Menu: FC<ChildProps> = ({ logout }) => {
       <Link to="/" className="">
         <img src={logo} alt="Logo" />
       </Link>
-      <button>Dashboard</button>
+     
       <button onClick={handleAddPropertyClick}>Add Property</button>
-      <button>Blog Post</button>
-      <button>Team Member</button>
-      <button>Manage Users</button>
+     
+      
+     
       <button onClick={logout}>Logout</button>
     </div>
   );
