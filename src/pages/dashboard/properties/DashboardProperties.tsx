@@ -62,7 +62,7 @@ const DashboardProperties: FC = () => {
   const newData = renderData?.slice((active - 1) * 10, active * 10);
 
   const numbersArray = Array.from(
-    { length: Math.ceil((data?.length ?? 0) / 10) },
+    { length: Math.ceil((data?.property.length ?? 0) / 10) },
     (_, index) => index + 1
   );
 

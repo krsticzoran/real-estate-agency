@@ -158,7 +158,7 @@ const AddProperty: FC = () => {
         const formData = new FormData();
         formData.append("file", file);
 
-        await axios.post("http://localhost:8000/upload", formData);
+        await axios.post("https://www.real-estate-react.com/upload", formData);
       }
     } catch (error) {
       console.error("Error uploading file:", error);
