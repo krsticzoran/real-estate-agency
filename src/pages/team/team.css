@@ -157,9 +157,6 @@
   line-height: 43px;
 }
 
-.property-card-member:hover h4 {
-  color: #fff;
-}
 @media (max-width: 768px) {
   .staff-property {
     margin-bottom: 20px !important;
