@@ -14,7 +14,7 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
         <div className="search-rent-sale-card">
           <div className="search-rent-sale-card-img-box">
             <img src={property.img} alt="restaurant" />
-            <h4>{property.place}</h4>
+            <h4 className="search-rent-sale-card-place">{property.place}</h4>
           </div>
           <div className="search-rent-sale-featured">
             <h3 className="search-rent-sale-title">

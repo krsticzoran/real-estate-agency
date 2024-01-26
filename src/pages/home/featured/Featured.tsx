@@ -6,6 +6,7 @@ import "./featured.css";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { Property } from "../../../types";
+import PropertyCard from "../../../components/property/PropertyCard";
 
 import Carousel from "react-bootstrap/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -94,26 +95,7 @@ const Featured: FC = () => {
                                 className="col-md-4 col-12 featured-card"
                                 key={property.num}
                               >
-                                <Link to={`/property/${property.num}`}>
-                                  <Card className="featured-box mb-1 mt-1">
-                                    <Card.Body>
-                                      <img
-                                        src={property.img}
-                                        alt={property.img}
-                                      />
-                                      <h3 className="featured-h3-title">
-                                        {`${
-                                          property.property
-                                            .charAt(0)
-                                            .toUpperCase() +
-                                          property.property.slice(1)
-                                        }`}
-                                      </h3>
-                                      <p className="featured-price">{`€${property.price}/mo`}</p>
-                                      <p className="featured-day">{`${property.date}`}</p>
-                                    </Card.Body>
-                                  </Card>
-                                </Link>
+                                <PropertyCard property={property} />
                               </div>
                             )
                           )}
@@ -128,29 +110,10 @@ const Featured: FC = () => {
                           {propertySet.map(
                             (property: Property, subIndex: number) => (
                               <div
-                                className="col-md-4 col-12 featured-card"
+                                className="col-md-4 col-12 "
                                 key={property.num}
                               >
-                                <Link to={`/property/${property.num}`}>
-                                  <Card className="featured-box mb-1 mt-1">
-                                    <Card.Body>
-                                      <img
-                                        src={property.img}
-                                        alt={property.img}
-                                      />
-                                      <h3 className="featured-h3-title">
-                                        {`${
-                                          property.property
-                                            .charAt(0)
-                                            .toUpperCase() +
-                                          property.property.slice(1)
-                                        }`}
-                                      </h3>
-                                      <p className="featured-price">{`€${property.price}/mo`}</p>
-                                      <p className="featured-day">{`${property.date}`}</p>
-                                    </Card.Body>
-                                  </Card>
-                                </Link>
+                                <PropertyCard property={property} />
                               </div>
                             )
                           )}
