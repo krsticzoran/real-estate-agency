@@ -84,6 +84,11 @@
   margin-top: 25px !important;
 }
 
+.agent-card-details a {
+  list-style: none;
+  text-decoration: none;
+}
+
 .agent-card-details h5 {
   font-size: 10px;
   color: #fff;

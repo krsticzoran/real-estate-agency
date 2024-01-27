@@ -80,19 +80,21 @@ const PropertyItem: FC = () => {
           </Row>
           <hr />
           <div className="agent-card-details">
-            <h5>Specialist information</h5>
-            <div className="d-flex">
-              <div className="agent-photo">
-                <img src={user.img} alt={user.user} />
+            <Link to={`/team/${user.user}`}>
+              <h5>Specialist information</h5>
+              <div className="d-flex">
+                <div className="agent-photo">
+                  <img src={user.img} alt={user.user} />
+                </div>
+                <div className="agent-name-language">
+                  <h3>{user.name}</h3>
+                  <h4>
+                    10 Nikole Tesle Boulevard, New Belgrade, 5th floor,
+                    Apartment 23
+                  </h4>
+                </div>
               </div>
-              <div className="agent-name-language">
-                <h3>{user.name}</h3>
-                <h4>
-                  10 Nikole Tesle Boulevard, New Belgrade, 5th floor, Apartment
-                  23
-                </h4>
-              </div>
-            </div>
+            </Link>
           </div>
           <div className="agent-phone-email-container">
             <p className="agent-phone-email">
