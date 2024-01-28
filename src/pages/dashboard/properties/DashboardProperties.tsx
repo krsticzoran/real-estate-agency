@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-bootstrap/Pagination";
@@ -119,82 +119,96 @@ const DashboardProperties: FC = () => {
 
   return (
     <div>
-      <BackToTheDashboard />
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>
-              <div className="d-flex justify-content-between">
-                #ID
-                <FontAwesomeIcon
-                  icon={faSort}
-                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
-                  onClick={handleSort}
-                  data-position="id"
-                />
-              </div>
-            </th>
-            <th>Property</th>
-            <th>
-              <div className="d-flex justify-content-between">
-                Position
-                <FontAwesomeIcon
-                  icon={faSort}
-                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
-                  onClick={handleSort}
-                  data-position="place"
-                />
-              </div>
-            </th>
-            <th>
-              <div className="d-flex justify-content-between">
-                Square
-                <FontAwesomeIcon
-                  icon={faSort}
-                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
-                  onClick={handleSort}
-                  data-position="square"
-                />
-              </div>
-            </th>
-            <th>
-              <div className="d-flex justify-content-between">
-                Prices
-                <FontAwesomeIcon
-                  icon={faSort}
-                  style={{ color: "rgba(0, 0, 0, 0.05)" }}
-                  onClick={handleSort}
-                  data-position="price"
-                />
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {newData &&
-            newData.map((item: PropertyType, index: number) => (
-              <tr key={index} data-parent-key={item.num}>
-                <td>{item.num}</td>
-                <td>{item.property}</td>
-                <td>{item.place}</td>
-                <td>{`${item.square} m\u00B2`}</td>
-                <td>{`${item.price.toLocaleString()} €`}</td>
-                <Button onClick={deleteProperties}>Delete</Button>
-              </tr>
-            ))}
-        </tbody>
-      </Table>
-      <Pagination size="sm">
-        {numbersArray.map((num) => (
-          <Pagination.Item
-            key={num}
-            active={num === active}
-            onClick={() => setActive(num)}
-          >
-            {num}
-          </Pagination.Item>
-        ))}
-      </Pagination>
+      <Container>
+        <BackToTheDashboard />
+        <Table striped bordered hover size="sm">
+          <thead>
+            <tr>
+              <th>
+                <div className="d-flex justify-content-between">
+                  #ID
+                  <FontAwesomeIcon
+                    icon={faSort}
+                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    onClick={handleSort}
+                    data-position="id"
+                  />
+                </div>
+              </th>
+              <th>Property</th>
+              <th>
+                <div className="d-flex justify-content-between">
+                  Position
+                  <FontAwesomeIcon
+                    icon={faSort}
+                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    onClick={handleSort}
+                    data-position="place"
+                  />
+                </div>
+              </th>
+              <th>
+                <div className="d-flex justify-content-between">
+                  Square
+                  <FontAwesomeIcon
+                    icon={faSort}
+                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    onClick={handleSort}
+                    data-position="square"
+                  />
+                </div>
+              </th>
+              <th>
+                <div className="d-flex justify-content-between">
+                  Prices
+                  <FontAwesomeIcon
+                    icon={faSort}
+                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    onClick={handleSort}
+                    data-position="price"
+                  />
+                </div>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {newData &&
+              newData.map((item: PropertyType, index: number) => (
+                <tr key={index} data-parent-key={item.num}>
+                  <td style={{ width: "20%" }}>{item.num}</td>
+                  <td style={{ width: "20%" }}>{item.property}</td>
+                  <td style={{ width: "20%" }}>{item.place}</td>
+                  <td style={{ width: "15%" }}>{`${item.square} m\u00B2`}</td>
+                  <td
+                    style={{ width: "15%" }}
+                  >{`${item.price.toLocaleString()} €`}</td>
+                  <td
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button onClick={deleteProperties}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+        <Pagination size="sm" className="d-flex justify-content-center ">
+          {numbersArray.map((num) => (
+            <Pagination.Item
+              key={num}
+              active={num === active}
+              onClick={() => setActive(num)}
+              className="mt-3"
+            >
+              {num}
+            </Pagination.Item>
+          ))}
+        </Pagination>
+      </Container>
     </div>
   );
 };

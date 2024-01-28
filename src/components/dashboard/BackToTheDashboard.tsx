@@ -8,7 +8,7 @@ const BackToTheDashboard: FC = () => {
     margin: "15px",
     textDecoration: "none",
     padding: "10px 15px",
-    backgroundColor: " rgba(0, 0, 0, 0.4)",
+    backgroundColor: " rgba(0, 0, 0, 0.3)",
     color: "#fff",
     borderRadius: "5px",
     display: "flex",
