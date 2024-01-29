@@ -118,7 +118,7 @@ const DashboardProperties: FC = () => {
   };
 
   return (
-    <div>
+    <div className="p-3">
       <Container>
         <BackToTheDashboard />
         <Table striped bordered hover size="sm">

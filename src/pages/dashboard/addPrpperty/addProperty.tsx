@@ -1,5 +1,5 @@
 import { FC, useRef, useState } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -213,120 +213,137 @@ const AddProperty: FC = () => {
   };
 
   return (
-    <>
-      <BackToTheDashboard />
-      <Form onSubmit={handleSubmit}>
-        <Row>
-          <Col>
-            <Form.Select
-              aria-label="Default select example"
-              name="sale"
-              value={formData.sale}
-              onChange={handleInputChange}
-            >
-              <option value="sale">Sale</option>
-              <option value="rent">Rent</option>
-            </Form.Select>
-          </Col>
-          <Col>
-            <Form.Select
-              aria-label="Default select example"
-              name="property"
-              value={formData.property}
-              onChange={handleInputChange}
-            >
-              <option value="offices">Office</option>
-              <option value="shops">Shop</option>
-              <option value="warehouses">Warehouse</option>
-              <option value="catering">Catering</option>
-            </Form.Select>
-          </Col>
-          <Col>
-            <Form.Select
-              aria-label="Default select example"
-              name="place"
-              value={formData.place}
-              onChange={handleInputChange}
-            >
-              <option value="Zvezdara">Zvezdara</option>
-              <option value="Novi Beograd">Novi Beograd</option>
-              <option value="Savski venac">Savski venac</option>
-              <option value="Palilula">Palilula</option>
-              <option value="Stari grad">Stari grad</option>
-              <option value="Mladenovac">Mladenovac</option>
-            </Form.Select>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Label htmlFor="inputPrice">Price</Form.Label>
-            <Form.Control
-              type="text"
-              id="inputPrice"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-            />
-          </Col>
-          <Col>
-            <Form.Label htmlFor="inputSquare">Square</Form.Label>
-            <Form.Control
-              type="text"
-              id="inputSquare"
-              name="square"
-              value={formData.square}
-              onChange={handleInputChange}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form.Group controlId="img" className="mb-3">
-              <Form.Label>Upload photo 1</Form.Label>
+    <div className="p-3">
+      <Container>
+        <BackToTheDashboard />
+        <Form
+          onSubmit={handleSubmit}
+          className="mt-5 p-5 border w-75 mx-auto "
+          style={{ backgroundColor: "#f7f7f7" }}
+        >
+          <h2 className="text-center">Add Property</h2>
+
+          <Form.Label htmlFor="assetType" className="pt-2">
+            Asset Type
+          </Form.Label>
+          <Form.Select
+            id="assetType"
+            aria-label="Default select example"
+            name="sale"
+            value={formData.sale}
+            onChange={handleInputChange}
+          >
+            <option value="sale">Sale</option>
+            <option value="rent">Rent</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="propertyType" className="pt-4">
+            Property Type
+          </Form.Label>
+          <Form.Select
+            id="propertyType"
+            aria-label="Default select example"
+            name="property"
+            value={formData.property}
+            onChange={handleInputChange}
+          >
+            <option value="offices">Office</option>
+            <option value="shops">Shop</option>
+            <option value="warehouses">Warehouse</option>
+            <option value="catering">Catering</option>
+          </Form.Select>
+
+          <Form.Label htmlFor="location" className="pt-4">
+            Location
+          </Form.Label>
+          <Form.Select
+            id="location"
+            aria-label="Default select example"
+            name="place"
+            value={formData.place}
+            onChange={handleInputChange}
+          >
+            <option value="Zvezdara">Zvezdara</option>
+            <option value="Novi Beograd">Novi Beograd</option>
+            <option value="Savski venac">Savski venac</option>
+            <option value="Palilula">Palilula</option>
+            <option value="Stari grad">Stari grad</option>
+            <option value="Mladenovac">Mladenovac</option>
+          </Form.Select>
+
+          <Row className="pt-4">
+            <Col>
+              <Form.Label htmlFor="inputPrice">Price</Form.Label>
               <Form.Control
-                type="file"
-                ref={file1Ref}
-                onChange={handleFileChange}
+                type="text"
+                id="inputPrice"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
               />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId="img1" className="mb-3">
-              <Form.Label>upload photo 2</Form.Label>
+            </Col>
+            <Col>
+              <Form.Label htmlFor="inputSquare">Square</Form.Label>
               <Form.Control
-                type="file"
-                ref={file2Ref}
-                onChange={handleFileChange}
+                type="text"
+                id="inputSquare"
+                name="square"
+                value={formData.square}
+                onChange={handleInputChange}
               />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId="img2" className="mb-3">
-              <Form.Label>Upload photo 3</Form.Label>
-              <Form.Control
-                type="file"
-                ref={file3Ref}
-                onChange={handleFileChange}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId="img3" className="mb-3">
-              <Form.Label>Upload photo 4</Form.Label>
-              <Form.Control
-                type="file"
-                ref={file4Ref}
-                onChange={handleFileChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-      <p>{isSuccess ? "Property added successfully!" : ""}</p>
-    </>
+            </Col>
+          </Row>
+          <Row className="pt-4">
+            <Col>
+              <Form.Group controlId="img" className="mb-3">
+                <Form.Label>Upload photo 1</Form.Label>
+                <Form.Control
+                  type="file"
+                  ref={file1Ref}
+                  onChange={handleFileChange}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="img1" className="mb-3">
+                <Form.Label>upload photo 2</Form.Label>
+                <Form.Control
+                  type="file"
+                  ref={file2Ref}
+                  onChange={handleFileChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="img2" className="mb-3">
+                <Form.Label>Upload photo 3</Form.Label>
+                <Form.Control
+                  type="file"
+                  ref={file3Ref}
+                  onChange={handleFileChange}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="img3" className="mb-3">
+                <Form.Label>Upload photo 4</Form.Label>
+                <Form.Control
+                  type="file"
+                  ref={file4Ref}
+                  onChange={handleFileChange}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Button variant="primary" type="submit" className="mt-3">
+            Submit
+          </Button>
+        </Form>
+        <p>{isSuccess ? "Property added successfully!" : ""}</p>
+      </Container>
+    </div>
   );
 };
 
