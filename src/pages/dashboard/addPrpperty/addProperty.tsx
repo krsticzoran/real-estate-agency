@@ -218,7 +218,7 @@ const AddProperty: FC = () => {
         <BackToTheDashboard />
         <Form
           onSubmit={handleSubmit}
-          className="mt-5 p-5 border w-75 mx-auto "
+          className="mt-5 p-5 border col-lg-9 col-xll-10 mx-auto "
           style={{ backgroundColor: "#f7f7f7" }}
         >
           <h2 className="text-center">Add Property</h2>
@@ -296,7 +296,7 @@ const AddProperty: FC = () => {
           <Row className="pt-4">
             <Col>
               <Form.Group controlId="img" className="mb-3">
-                <Form.Label>Upload photo 1</Form.Label>
+                <Form.Label>Upload Photo 1</Form.Label>
                 <Form.Control
                   type="file"
                   ref={file1Ref}
@@ -306,7 +306,7 @@ const AddProperty: FC = () => {
             </Col>
             <Col>
               <Form.Group controlId="img1" className="mb-3">
-                <Form.Label>upload photo 2</Form.Label>
+                <Form.Label>Upload Photo 2</Form.Label>
                 <Form.Control
                   type="file"
                   ref={file2Ref}
@@ -318,7 +318,7 @@ const AddProperty: FC = () => {
           <Row>
             <Col>
               <Form.Group controlId="img2" className="mb-3">
-                <Form.Label>Upload photo 3</Form.Label>
+                <Form.Label>Upload Photo 3</Form.Label>
                 <Form.Control
                   type="file"
                   ref={file3Ref}
@@ -328,7 +328,7 @@ const AddProperty: FC = () => {
             </Col>
             <Col>
               <Form.Group controlId="img3" className="mb-3">
-                <Form.Label>Upload photo 4</Form.Label>
+                <Form.Label>Upload Photo 4</Form.Label>
                 <Form.Control
                   type="file"
                   ref={file4Ref}
