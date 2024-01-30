@@ -24,6 +24,11 @@ const DashboardProperties = lazy(
 const AddProperty = lazy(
   () => import("./pages/dashboard/addPrpperty/AddProperty")
 );
+
+const DashboardPropertiesAll = lazy(
+  () => import("./pages/dashboard/properties/DashboardPropertiesAll")
+);
+
 function App() {
   return (
     <>
@@ -32,6 +37,11 @@ function App() {
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/items" element={<DashboardProperties />} />
+            <Route
+              path="/dashboard/items-all"
+              element={<DashboardPropertiesAll />}
+            />
+
             <Route path="/dashboard/add-property" element={<AddProperty />} />
             <Route
               path="/*"
