@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import { FC } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { useQuery } from "@apollo/client";
-import { Card, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "../dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import "react-circular-progressbar/dist/styles.css";
 import CircularRent from "./Circular";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const GET_PROPERTIES = gql`
   query GetProperties($sale: String!) {
@@ -37,6 +38,7 @@ interface PropertyType {
 }
 
 const CustomProgressBar: FC = () => {
+  const navigate = useNavigate();
   const { data } = useQuery(GET_PROPERTIES, {
     variables: { sale: "rent" },
     context: { clientName: "endpoint2" },
@@ -90,7 +92,10 @@ const CustomProgressBar: FC = () => {
 
   return (
     <div>
-      <div className="progress-bar-container d-flex justify-content-center align-items-center">
+      <Link
+        to={"/dashboard/items-all"}
+        className="progress-bar-container d-flex justify-content-center align-items-center"
+      >
         <Row className="w-100">
           <div className="d-flex  ">
             <div className="col-sm-1 h-100">
@@ -120,7 +125,7 @@ const CustomProgressBar: FC = () => {
             </div>
           </div>
         </Row>
-      </div>
+      </Link>
 
       <div className="circular-rent">
         <Row>
