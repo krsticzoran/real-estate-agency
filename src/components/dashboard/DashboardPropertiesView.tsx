@@ -30,6 +30,8 @@ interface DashboardPropertiesViewProps {
   data?: PropertyType[];
 }
 
+const style = { color: "rgba(0, 0, 0, 0.05)", cursor: "pointer" };
+
 const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
   data = [],
 }) => {
@@ -113,7 +115,7 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
                   #ID
                   <FontAwesomeIcon
                     icon={faSort}
-                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    style={style}
                     onClick={handleSort}
                     data-position="id"
                   />
@@ -125,7 +127,7 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
                   Position
                   <FontAwesomeIcon
                     icon={faSort}
-                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    style={style}
                     onClick={handleSort}
                     data-position="place"
                   />
@@ -136,7 +138,7 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
                   Square
                   <FontAwesomeIcon
                     icon={faSort}
-                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    style={style}
                     onClick={handleSort}
                     data-position="square"
                   />
@@ -147,7 +149,7 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
                   Prices
                   <FontAwesomeIcon
                     icon={faSort}
-                    style={{ color: "rgba(0, 0, 0, 0.05)" }}
+                    style={style}
                     onClick={handleSort}
                     data-position="price"
                   />
@@ -187,6 +189,7 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
               active={num === active}
               onClick={() => setActive(num)}
               className="mt-3"
+              style={style}
             >
               {num}
             </Pagination.Item>
