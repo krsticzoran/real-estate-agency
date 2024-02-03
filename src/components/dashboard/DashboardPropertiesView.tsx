@@ -32,6 +32,20 @@ interface DashboardPropertiesViewProps {
 
 const style = { color: "rgba(0, 0, 0, 0.05)", cursor: "pointer" };
 
+const buttonStyle = {
+  margin: "15px",
+  textDecoration: "none",
+  padding: "10px 15px",
+  backgroundColor: " rgba(0, 0, 0, 0.3)",
+  color: "#fff",
+  borderRadius: "5px",
+  display: "flex",
+  alignItems: "center",
+  cursor: "pointer",
+  transition: "background-color 0.3s ease",
+  width: "fit-content",
+};
+
 const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
   data = [],
 }) => {
