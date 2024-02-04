@@ -29,7 +29,10 @@ const Dashboard = () => {
   return (
     <>
       {isAdminAuthenticated ? (
-        <Container className={isChecked ? "bg-dark" : "bg-light"}>
+        <Container
+          className={isChecked ? "bg-dark" : "bg-light"}
+          style={{ paddingBottom: "20px" }}
+        >
           <Row>
             <Menu logout={logout} />
             <div className="col-lg-10 col-sm-12">
