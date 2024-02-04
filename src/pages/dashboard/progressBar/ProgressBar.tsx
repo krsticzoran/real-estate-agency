@@ -9,7 +9,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import "react-circular-progressbar/dist/styles.css";
 import CircularRent from "./Circular";
-import { useNavigate } from "react-router";
+
 import { Link } from "react-router-dom";
 
 const GET_PROPERTIES = gql`
@@ -38,7 +38,6 @@ interface PropertyType {
 }
 
 const CustomProgressBar: FC = () => {
-  const navigate = useNavigate();
   const { data } = useQuery(GET_PROPERTIES, {
     variables: { sale: "rent" },
     context: { clientName: "endpoint2" },
@@ -97,11 +96,14 @@ const CustomProgressBar: FC = () => {
         className="progress-bar-container d-flex justify-content-center align-items-center"
       >
         <Row className="w-100">
-          <div className="d-flex  ">
-            <div className="col-sm-1 h-100">
-              <FontAwesomeIcon className="progress-bar-icon" icon={faHouse} />
+          <div className="d-flex ">
+            <div
+              className="col-sm-2 col-md-1 h-100 "
+              style={{ marginRight: "10px" }}
+            >
+              <FontAwesomeIcon className="progress-bar-icon " icon={faHouse} />
             </div>
-            <div className="col-sm-11 ">
+            <div className="col-sm-10 col-md-11 flex-grow-1">
               <h4>
                 Total Properties {propertyRent.length + propertySale.length}
               </h4>
