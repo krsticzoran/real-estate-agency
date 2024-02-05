@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { useQuery } from "@apollo/client";
 import { Row } from "react-bootstrap";
@@ -38,7 +38,8 @@ interface PropertyType {
 }
 
 const CustomProgressBar: FC = () => {
-  const { data } = useQuery(GET_PROPERTIES, {
+  const [load, setLoad] = useState(false);
+  const { data, refetch } = useQuery(GET_PROPERTIES, {
     variables: { sale: "rent" },
     context: { clientName: "endpoint2" },
   });
@@ -63,6 +64,18 @@ const CustomProgressBar: FC = () => {
     variables: { sale: "sale" },
     context: { clientName: "endpoint2" },
   });
+
+  useEffect(() => {
+    if (load) {
+      refetch();
+      propertyS.refetch();
+      setLoad(false);
+    }
+  }, [load, refetch, propertyS]);
+
+  useEffect(() => {
+    setLoad(true);
+  }, []);
 
   const propertySale = propertyS.data?.propertyAll ?? [];
 
