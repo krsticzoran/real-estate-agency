@@ -44,14 +44,14 @@ const NavbarComponent: React.FC = () => {
             <Link className="navbar--color-white nav-link" to="/blog">
               Blog
             </Link>
-            <Link className="navbar--color-white nav-link" to="/contact">
+            <Link className="navbar--color-white nav-link " to="/contact">
               Contact
             </Link>
           </Nav>
           {isAuthenticated === true ? (
             <Link
               className={`navbar--color-white nav-link  ${
-                isSmallScreen ? "navbar-login" : ""
+                isSmallScreen ? "navbar-login" : "dashboard-login-btn"
               }`}
               to="/dashboard"
             >
@@ -60,7 +60,7 @@ const NavbarComponent: React.FC = () => {
           ) : (
             <Link
               className={`navbar--color-white nav-link  ${
-                isSmallScreen ? "navbar-login" : ""
+                isSmallScreen ? "navbar-login" : "dashboard-login-btn"
               }`}
               to="/login"
             >
