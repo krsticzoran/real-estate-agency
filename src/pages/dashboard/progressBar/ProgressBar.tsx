@@ -103,7 +103,7 @@ const CustomProgressBar: FC = () => {
   );
 
   return (
-    <div>
+    <div className="mt-1">
       <Link
         to={"/dashboard/items-all"}
         className="progress-bar-container d-flex justify-content-center align-items-center"

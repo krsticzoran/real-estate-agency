@@ -51,14 +51,14 @@ const Menu: FC<ChildProps> = ({ logout }) => {
           </Container>
         </Navbar>
       ) : (
-        <div className="dashboard-menu col-lg-2 col-sm-12">
+        <div className="dashboard-menu col-lg-2 col-sm-12 ">
           <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
 
           <Link
             to={"/dashboard/add-property"}
-            className="btn border border-secondary mt-3"
+            className="btn border border-secondary mt-4"
           >
             Add Property
           </Link>
