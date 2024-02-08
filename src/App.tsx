@@ -4,6 +4,7 @@ import "./App.css";
 import ScrollToTop from "./components/ScrollToTop/ScrolllToTop";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Loader from "./components/loader/Loader";
 
 // Lazy-loaded components
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -33,7 +34,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/items" element={<DashboardProperties />} />
