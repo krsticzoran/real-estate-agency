@@ -10,7 +10,7 @@ const mockProperty = {
   place: "mock place",
   price: 2000,
   square: 1000,
-  time: 2,
+  date: "15. 12. 2023",
   specialist: "mock Specialist",
   img: "image1.jpg",
 };
@@ -39,5 +39,5 @@ test("render property card", () => {
 
   expect(screen.getByText(/1000 m²/i)).toBeInTheDocument();
 
-  expect(screen.getByText(/2 day ago/i)).toBeInTheDocument();
+  expect(screen.getByText(/15. 12. 2023/i)).toBeInTheDocument();
 });
