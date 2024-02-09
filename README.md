@@ -6,7 +6,7 @@
 
 Welcome to the Real Estate Agency App, a showcase of my frontend development skills using technologies like React, TypeScript, and GraphQL. This project demonstrates my expertise in creating a dynamic and visually engaging website.
 <br /><br />
-By clicking on the login button, you will be redirected to the dashboard, which is still under construction, but functionalities such as deleting ads, adding new ads, and visually displaying statistics of currently published ads are already completed. In the upcoming period, the majority of time will be dedicated to styling the dashboard.
+This website contains all the functionalities that a real estate agency website should have. Properties are categorized, and you can also search them based on specific characteristics. Additionally, the website includes many other features, along with a dashboard accessed by clicking the login button, which allows you to add or delete a property listing
 <br /><br />
 
 ## Key Features
