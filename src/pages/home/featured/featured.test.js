@@ -19,7 +19,7 @@ jest.mock("@apollo/client", () => {
             property: "offices",
             sale: "rent",
             square: 25,
-            time: 2,
+            date: "15.12.2023.",
           },
           {
             img: "img1.jpg",
@@ -29,7 +29,7 @@ jest.mock("@apollo/client", () => {
             property: "offices",
             sale: "rent",
             square: 25,
-            time: 1,
+            date: "14.12.2023.",
           },
         ],
       },
@@ -45,7 +45,7 @@ test("render Featured component", () => {
       <Featured />
     </MemoryRouter>
   );
-
+  screen.logTestingPlaygroundURL();
   expect(
     screen.getByRole("heading", {
       name: /Featured properties for rent/i,
@@ -53,12 +53,11 @@ test("render Featured component", () => {
     })
   ).toBeInTheDocument();
 
-  expect(screen.getByText(/2 days ago/i)).toBeInTheDocument();
-  expect(screen.getByText(/1 days ago/i)).toBeInTheDocument();
+  expect(screen.getByText(/15.12.2023./i)).toBeInTheDocument();
+  expect(screen.getByText(/14.12.2023./i)).toBeInTheDocument();
 
-  expect(screen.getByText(/3000\/mo/i)).toBeInTheDocument();
+  expect(screen.getByText(/3,000\/mo/i)).toBeInTheDocument();
   expect(screen.getByText(/300\/mo/i)).toBeInTheDocument();
 
-  expect(screen.getByAltText(/img.jpg/i)).toBeInTheDocument();
-  expect(screen.getByAltText(/img1.jpg/i)).toBeInTheDocument();
+  expect(screen.getAllByRole("img", { name: /restaurant/i })).toHaveLength(2);
 });
