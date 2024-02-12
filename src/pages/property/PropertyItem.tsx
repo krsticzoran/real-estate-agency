@@ -60,11 +60,11 @@ const PropertyItem: FC = () => {
           </h2>
           <hr />
           <Row>
-            <div className="col-6">
+            <div className="col-5">
               <h5 className="property-size-price-title">SIZE AVAILABLE</h5>
               <h2 className="property-size-price">{`${properties.square} m\u00B2`}</h2>
             </div>
-            <div className="col-6">
+            <div className="col-7">
               <h5 className="property-size-price-title">PRICE</h5>
 
               {properties.sale === "rent" ? (
