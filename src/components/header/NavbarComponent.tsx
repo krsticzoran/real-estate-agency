@@ -38,34 +38,35 @@ const NavbarComponent: React.FC = () => {
           >
             <DropdownMenu onData={menuList} page="Rent" />
             <DropdownMenu onData={menuList} page="Sale" />
-            <Link className="navbar--color-white nav-link" to="/team">
+
+            <Nav.Link className="navbar--color-white nav-link" href="/team">
               Team
-            </Link>
-            <Link className="navbar--color-white nav-link" to="/blog">
+            </Nav.Link>
+            <Nav.Link className="navbar--color-white nav-link" href="/blog">
               Blog
-            </Link>
-            <Link className="navbar--color-white nav-link " to="/contact">
+            </Nav.Link>
+            <Nav.Link className="navbar--color-white nav-link " href="/contact">
               Contact
-            </Link>
+            </Nav.Link>
           </Nav>
           {isAuthenticated === true ? (
-            <Link
+            <Nav.Link
               className={`navbar--color-white nav-link  ${
                 isSmallScreen ? "navbar-login" : "dashboard-login-btn"
               }`}
-              to="/dashboard"
+              href="/dashboard"
             >
               Dashboard
-            </Link>
+            </Nav.Link>
           ) : (
-            <Link
+            <Nav.Link
               className={`navbar--color-white nav-link  ${
                 isSmallScreen ? "navbar-login" : "dashboard-login-btn"
               }`}
-              to="/login"
+              href="/login"
             >
               Login
-            </Link>
+            </Nav.Link>
           )}
         </Navbar.Collapse>
       </Container>
