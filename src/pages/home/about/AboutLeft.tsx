@@ -14,7 +14,7 @@ const AboutLeft: FC = () => {
         extensively trained commercial specialists, we are the best choice for
         your business!
       </p>
-      <Link className="navbar--color-white nav-link" to="/team">
+      <Link className="navbar--color-white nav-link" to="/about-us">
         <Button className="btn btn-about">Read more..</Button>
       </Link>
     </div>
