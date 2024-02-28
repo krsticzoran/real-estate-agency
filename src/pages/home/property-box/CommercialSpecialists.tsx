@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import "./property-box.css";
 import AnimatedText from "../../../components/animated/AnimatedText";
 
-const CommercialSpecialists: React.FC = () => {
+const CommercialSpecialists: FC = () => {
   return (
     <div className="col-md-6 col-sm-12 col-xs-12 d-flex align-content-sm-start align-content-md-center  flex-wrap">
       <div>
