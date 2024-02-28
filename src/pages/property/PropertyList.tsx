@@ -32,16 +32,17 @@ const GET_PROPERTIES = gql`
 const fadeInAnimationVariants = {
   initial: {
     opacity: 0,
-    y: -50,
-    x: -50,
+    y: -30,
   },
   animate: (index: number) => ({
     opacity: 1,
     y: 0,
-    x: 0,
     transition: {
-      duration: 0.3,
-      delay: 0.5 * index,
+      duration: 0.2,
+      delay: 0.3 * index,
+      type: "spring",
+      damping: 12,
+      stiffness: 35,
     },
   }),
 };
