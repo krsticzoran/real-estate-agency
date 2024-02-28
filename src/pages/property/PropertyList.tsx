@@ -12,6 +12,7 @@ import { gql } from "graphql-tag";
 
 import PropertyCard from "../../components/property/PropertyCard";
 import { Property } from "../../types";
+import { motion } from "framer-motion";
 
 const GET_PROPERTIES = gql`
   query GetProperties($property: String!, $sale: String!) {
@@ -27,6 +28,23 @@ const GET_PROPERTIES = gql`
     }
   }
 `;
+
+const fadeInAnimationVariants = {
+  initial: {
+    opacity: 0,
+    y: -50,
+    x: -50,
+  },
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      delay: 0.5 * index,
+    },
+  }),
+};
 
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();
@@ -58,9 +76,19 @@ const PropertyList: FC = () => {
             </>
           ) : (
             properties.map((property: Property, index: number) => (
-              <div className="col-md-4 col-12" key={property.num}>
+              <motion.div
+                className="col-md-4 col-12"
+                key={property.num}
+                variants={fadeInAnimationVariants}
+                initial="initial"
+                whileInView="animate"
+                viewport={{
+                  once: true,
+                }}
+                custom={index}
+              >
                 <PropertyCard property={property} />
-              </div>
+              </motion.div>
             ))
           )}
         </Row>
