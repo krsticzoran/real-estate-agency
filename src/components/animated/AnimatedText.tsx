@@ -40,7 +40,10 @@ const AnimatedText: FC<AnimatedTextProps> = ({ text }) => {
       style={{ overflow: "hidden", display: "flex" }}
       variants={container}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{
+        once: true,
+      }}
     >
       {letters.map((letter, index) => (
         <motion.span key={index} variants={child}>
