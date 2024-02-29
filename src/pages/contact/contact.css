@@ -81,6 +81,9 @@
   .contact-img-box img {
     max-width: 100%;
   }
+  .contact-title {
+    font-size: 22px !important;
+  }
 }
 
 @media (max-width: 972px) {

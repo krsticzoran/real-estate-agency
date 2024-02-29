@@ -31,7 +31,6 @@ const BlogList: FC = () => {
 
   return (
     <>
-      
       <div className="blog-cover-img-container">
         <img src={dataBlog[0]?.img} alt="cover" className="blog-cover-img" />
         <div className="img-overlay" />
@@ -61,7 +60,6 @@ const BlogList: FC = () => {
           )}
         </Row>
       </Container>
-     
     </>
   );
 };
