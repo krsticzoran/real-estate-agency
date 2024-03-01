@@ -2,6 +2,7 @@ import { FC } from "react";
 import "./propertycard.css";
 import { Link } from "react-router-dom";
 import { Property } from "../../types";
+import AnimatedHoverCard from "../animated/AnimatedHoverCard";
 
 interface PropertyCardProps {
   property: Property;
@@ -9,7 +10,7 @@ interface PropertyCardProps {
 
 const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
   return (
-    <div className="search-rent-sale-link">
+    <AnimatedHoverCard>
       <Link to={`/property/${property.num}`}>
         <div className="search-rent-sale-card">
           <div className="search-rent-sale-card-img-box">
@@ -34,7 +35,7 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
           </div>
         </div>
       </Link>
-    </div>
+    </AnimatedHoverCard>
   );
 };
 
