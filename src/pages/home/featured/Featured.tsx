@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
+import AnimatedText from "../../../components/animated/AnimatedText";
+import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
 
 const GET_PROPERTIES = gql`
   query GetProperties(
@@ -73,55 +75,61 @@ const Featured: FC = () => {
       <Container>
         <Row>
           <div className="col-12">
-            <h4 className="about-us">FEATURED</h4>
-            <h2 className="about-title">Featured properties for rent</h2>
+            <h4 className="about-us">
+              <AnimatedText text="FEATURED" />
+            </h4>
+            <h2 className="about-title">
+              <AnimatedText text="Featured properties for rent" />
+            </h2>
           </div>
           <div className="col-12 featured-container">
-            <Carousel
-              className="caurosel-prev-icon"
-              interval={null}
-              indicators={false}
-              prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
-              nextIcon={<FontAwesomeIcon icon={faRightLong} />}
-            >
-              {isMobile
-                ? chunk(properties, 1).map(
-                    (propertySet: Property[], index: number) => (
-                      <Carousel.Item key={index}>
-                        <Row>
-                          {propertySet.map(
-                            (property: Property, subIndex: number) => (
-                              <div
-                                className="col-md-4 col-12 featured-card"
-                                key={property.num}
-                              >
-                                <PropertyCard property={property} />
-                              </div>
-                            )
-                          )}
-                        </Row>
-                      </Carousel.Item>
+            <AnimatedComponentList index={2}>
+              <Carousel
+                className="caurosel-prev-icon"
+                interval={null}
+                indicators={false}
+                prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
+                nextIcon={<FontAwesomeIcon icon={faRightLong} />}
+              >
+                {isMobile
+                  ? chunk(properties, 1).map(
+                      (propertySet: Property[], index: number) => (
+                        <Carousel.Item key={index}>
+                          <Row>
+                            {propertySet.map(
+                              (property: Property, subIndex: number) => (
+                                <div
+                                  className="col-md-4 col-12 featured-card"
+                                  key={property.num}
+                                >
+                                  <PropertyCard property={property} />
+                                </div>
+                              )
+                            )}
+                          </Row>
+                        </Carousel.Item>
+                      )
                     )
-                  )
-                : chunk(properties, 3).map(
-                    (propertySet: Property[], index: number) => (
-                      <Carousel.Item key={index}>
-                        <Row>
-                          {propertySet.map(
-                            (property: Property, subIndex: number) => (
-                              <div
-                                className="col-md-4 col-12 "
-                                key={property.num}
-                              >
-                                <PropertyCard property={property} />
-                              </div>
-                            )
-                          )}
-                        </Row>
-                      </Carousel.Item>
-                    )
-                  )}
-            </Carousel>
+                  : chunk(properties, 3).map(
+                      (propertySet: Property[], index: number) => (
+                        <Carousel.Item key={index}>
+                          <Row>
+                            {propertySet.map(
+                              (property: Property, subIndex: number) => (
+                                <div
+                                  className="col-md-4 col-12 "
+                                  key={property.num}
+                                >
+                                  <PropertyCard property={property} />
+                                </div>
+                              )
+                            )}
+                          </Row>
+                        </Carousel.Item>
+                      )
+                    )}
+              </Carousel>
+            </AnimatedComponentList>
           </div>
         </Row>
       </Container>

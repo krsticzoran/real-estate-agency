@@ -97,7 +97,7 @@ const PropertySearch: React.FC = () => {
 
   return (
     <div className="col-md-6 col-sm-12 col-xs-12  property-input-box ">
-      <AnimatedComponentList index={1}>
+      <AnimatedComponentList index={3}>
         <div className="d-flex align-content-center flex-wrap">
           <div className="property-input-box-background ">
             <Tabs
