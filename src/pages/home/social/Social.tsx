@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import "./social.css";
 import img1 from "../../../assets/images/home/social-photo.png";
 import SocialData from "./SocialData";
+import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
 
 const Social: FC = () => {
   return (
@@ -11,13 +12,17 @@ const Social: FC = () => {
         <div className="social-box">
           <Row>
             <div className="col-md-6">
-              <div className="social-img-box">
-                <img src={img1} alt="social" />
-              </div>
+              <AnimatedComponentList index={2}>
+                <div className="social-img-box">
+                  <img src={img1} alt="social" />
+                </div>
+              </AnimatedComponentList>
             </div>
 
             <div className="col-md-6">
-              <SocialData />
+              <AnimatedComponentList index={3}>
+                <SocialData />
+              </AnimatedComponentList>
             </div>
           </Row>
         </div>
