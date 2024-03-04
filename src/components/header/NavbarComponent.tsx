@@ -1,7 +1,6 @@
 import React from "react";
 import DropdownMenu from "./DropdownMenu";
 import { menuList } from "../../assets/data/myData";
-import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import "./header.css";
 import { useMediaQuery } from "react-responsive";
