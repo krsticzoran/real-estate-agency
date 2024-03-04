@@ -22,6 +22,10 @@
   background-color: #272727 !important;
   min-height: 74px;
 }
+.dropdown-menu {
+  background-color: #272727 !important;
+}
+
 #navbarScrollingDropdown::after {
   color: #5c0282;
 }
@@ -54,4 +58,14 @@
   border-radius: 2px !important;
   padding: 7px 14px !important;
   margin-right: 15px;
+}
+
+.navbar-dropdown-menu {
+  color: #d3d3d3 !important;
+  background-color: #272727 !important;
+  padding-left: 1.5rem !important;
+}
+
+.navbar-dropdown-menu:hover {
+  color: #ffd800 !important;
 }

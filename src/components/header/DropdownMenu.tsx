@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./header.css";
@@ -32,10 +31,10 @@ const DropdownMenu: React.FC<MyComponentProps> = ({ onData, page }) => {
       {onData.map((item) => (
         <Nav.Link
           key={item}
-          className="dropdown-item "
+          className="dropdown-item navbar-dropdown-menu"
           href={`/${page.toLowerCase()}/${item.toLowerCase()}`}
         >
-          {item}
+          {item.charAt(0).toUpperCase() + item.slice(1)}
         </Nav.Link>
       ))}
     </NavDropdown>
