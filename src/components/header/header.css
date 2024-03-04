@@ -16,7 +16,7 @@
 
 .navbar--color-white:hover {
   color: #ffd800 !important;
-  font-size: 1.05em;
+  scale: 1.05 !important;
 }
 
 .header-background {
