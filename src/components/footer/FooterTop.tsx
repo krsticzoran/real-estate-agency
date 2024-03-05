@@ -40,13 +40,13 @@ const FooterTop: FC = () => {
               </p>
             </address>
             <div>
-              <p>
+              <p className="footer-top-p-style">
                 <FontAwesomeIcon icon={faPhone} />{" "}
                 <Link to="tel:+381652088283">+381652088283</Link>
               </p>
             </div>
             <div>
-              <p>
+              <p className="footer-top-p-style">
                 <FontAwesomeIcon icon={faEnvelope} />{" "}
                 <Link to="mailto:zorankrstic81@gmail.com">
                   zorankrstic81@gmail.com
@@ -60,8 +60,13 @@ const FooterTop: FC = () => {
                 <h5 className="footer-title mb-3">Rent</h5>
               </li>
               {menuList.map((item) => (
-                <li key={item}>
-                  <Link to={`/rent/${item.toLowerCase()}`}>{item}</Link>
+                <li key={item} className="footer-top-link-style">
+                  <Link
+                    to={`/rent/${item.toLowerCase()}`}
+                    className="footer-top-link-style"
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -72,8 +77,13 @@ const FooterTop: FC = () => {
                 <h5 className="footer-title mb-3">Sale</h5>
               </li>
               {menuList.map((item) => (
-                <li key={item}>
-                  <Link to={`/sale/${item.toLowerCase()}`}>{item}</Link>
+                <li key={item} className="footer-top-link-style">
+                  <Link
+                    to={`/sale/${item.toLowerCase()}`}
+                    className="footer-top-link-style"
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -83,11 +93,15 @@ const FooterTop: FC = () => {
               <li>
                 <h5 className="footer-title mb-3">Other</h5>
               </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
+              <li className="footer-top-link-style">
+                <Link to="/contact" className="footer-top-link-style">
+                  Contact Us
+                </Link>
               </li>
-              <li>
-                <Link to="/about-us">About Us</Link>
+              <li className="footer-top-link-style">
+                <Link to="/about-us" className="footer-top-link-style">
+                  About Us
+                </Link>
               </li>
             </ul>
           </div>
@@ -97,7 +111,11 @@ const FooterTop: FC = () => {
                 <h5 className="footer-title mb-3">Blog</h5>
               </li>
               {dataBlog.slice(0, 4).map((blog: Blog) => (
-                <li key={blog.title} className="blog-li">
+                <li
+                  key={blog.title}
+                  className="blog-li footer-top-p-style"
+                  title={blog.title}
+                >
                   <Link
                     to={`/blog/${blog.title.replace(/\s+/g, "-")}`}
                     className="d-flex"
