@@ -150,6 +150,26 @@
   color: #fff;
 }
 
+.caurosel-prev-icon .carousel-control-prev {
+  left: auto !important;
+  right: 65px !important;
+}
+
+.caurosel-prev-icon .carousel-control-prev,
+.caurosel-prev-icon .carousel-control-next {
+  background-color: #fff !important;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #ccc;
+  color: #212529 !important;
+  height: 40px;
+  margin-top: 10px;
+  opacity: 1 !important;
+
+  width: 40px;
+
+  top: -85px !important;
+}
+
 @media (max-width: 1024px) {
   .property-card-member {
     width: 85% !important;
@@ -191,5 +211,12 @@
 @media (max-width: 576px) {
   .staff-property h2 {
     font-size: 16px;
+  }
+
+  .caurosel-prev-icon .carousel-control-prev {
+    right: 55px !important;
+  }
+  .caurosel-prev-icon .carousel-control-next {
+    right: 10px;
   }
 }
