@@ -116,23 +116,6 @@
   color: #ffd82e;
 }
 
-@media (max-width: 991px) {
-  .team {
-    margin: 100px 0 50px 0;
-  }
-
-  .team-card {
-    margin-bottom: 50px;
-  }
-  .member-name {
-    font-size: 20px;
-  }
-
-  .staff-card h2 {
-    margin-bottom: 0px;
-  }
-}
-
 .staff-property {
   margin-top: 50px !important;
   margin-bottom: 40px !important;
@@ -159,14 +142,32 @@
 .property-card-member h4 {
   color: #fff;
 }
+
+@media (max-width: 991px) {
+  .team {
+    margin: 100px 0 50px 0 !important;
+  }
+
+  .team-card {
+    margin-bottom: 100px !important;
+  }
+
+  .member-name {
+    font-size: 20px;
+  }
+
+  .staff-card h2 {
+    margin-bottom: 0px;
+  }
+
+  .staff-property h2 {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .staff-property {
     margin-bottom: 20px !important;
-  }
-}
-@media (max-width: 992px) {
-  .staff-property h2 {
-    font-size: 24px;
   }
 }
 
