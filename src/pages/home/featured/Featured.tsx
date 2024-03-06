@@ -57,7 +57,7 @@ const Featured: FC = () => {
 
   const properties = data?.search ?? [];
 
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
 
   const chunk = (arr: any[], size: number) => {
     return arr.reduce((chunks, el, i) => {
