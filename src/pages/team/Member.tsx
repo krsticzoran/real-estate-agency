@@ -45,7 +45,7 @@ const Member: FC = () => {
 
   const properties = data?.staff ?? [];
 
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
 
   const chunk = (arr: any[], size: number) => {
     return arr.reduce((chunks, el, i) => {
@@ -130,7 +130,10 @@ const Member: FC = () => {
                       <Row>
                         {propertySet.map(
                           (property: Property, subIndex: number) => (
-                            <div className="col-md-4 col-12" key={property.num}>
+                            <div
+                              className="col-md-4 col-12 property-card-member"
+                              key={property.num}
+                            >
                               <PropertyCard property={property} />
                             </div>
                           )
@@ -146,7 +149,7 @@ const Member: FC = () => {
                         {propertySet.map(
                           (property: Property, subIndex: number) => (
                             <div
-                              className="col-md-4 col-12  property-card-member"
+                              className="col-md-4 col-12  property-card-member "
                               key={property.num}
                             >
                               <PropertyCard property={property} />

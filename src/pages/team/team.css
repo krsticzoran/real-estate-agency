@@ -139,8 +139,21 @@
   font-weight: 400;
   line-height: 43px;
 }
+
+.property-card-member {
+  width: calc(33.33% - 20px) !important;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
 .property-card-member h4 {
   color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .property-card-member {
+    width: 85% !important;
+  }
 }
 
 @media (max-width: 991px) {
@@ -168,6 +181,10 @@
 @media (max-width: 768px) {
   .staff-property {
     margin-bottom: 20px !important;
+  }
+
+  .property-card-member {
+    width: calc(100% - 30px) !important;
   }
 }
 
