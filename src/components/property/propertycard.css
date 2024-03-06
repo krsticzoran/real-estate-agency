@@ -1,7 +1,6 @@
 .search-rent-sale-link a {
-  list-style: none;
-
-  text-decoration: none;
+  list-style: none !important;
+  text-decoration: none !important;
 }
 
 .search-rent-sale-card {

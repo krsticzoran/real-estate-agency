@@ -99,7 +99,7 @@ const Featured: FC = () => {
                             {propertySet.map(
                               (property: Property, subIndex: number) => (
                                 <div
-                                  className="col-md-4 col-12 featured-card"
+                                  className="col-md-4 col-12 featured-card carousel-item-property-card"
                                   key={property.num}
                                 >
                                   <PropertyCard property={property} />
@@ -117,7 +117,7 @@ const Featured: FC = () => {
                             {propertySet.map(
                               (property: Property, subIndex: number) => (
                                 <div
-                                  className="col-md-4 col-12 "
+                                  className="col-md-4 col-12  carousel-item-property-card"
                                   key={property.num}
                                 >
                                   <PropertyCard property={property} />
