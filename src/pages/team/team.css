@@ -28,6 +28,8 @@
   object-fit: cover;
   border-radius: 4px 4px 0 0;
   margin-bottom: 20px;
+
+  object-position: top;
 }
 
 .team-card-title {
@@ -182,7 +184,11 @@
   }
 
   .team-card {
-    margin-bottom: 100px !important;
+    height: 510px !important;
+  }
+
+  .team-card img {
+    height: 340px !important;
   }
 
   .member-name {
@@ -218,5 +224,13 @@
   }
   .caurosel-prev-icon .carousel-control-next {
     right: 10px;
+  }
+
+  .team-card {
+    height: 460px !important;
+  }
+
+  .team-card img {
+    height: 300px !important;
   }
 }
