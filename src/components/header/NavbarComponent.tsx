@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const NavbarComponent: React.FC = () => {
   const { isAuthenticated } = useAuth();
@@ -39,32 +40,37 @@ const NavbarComponent: React.FC = () => {
             <DropdownMenu onData={menuList} page="Sale" />
 
             <Nav.Link
+              as={Link}
+              to="/team"
               className="navbar--color-white nav-link nav-link-hover-mobile"
-              href="/team"
             >
               Team
             </Nav.Link>
             <Nav.Link
+              as={Link}
+              to="/blog"
               className="navbar--color-white nav-link nav-link-hover-mobile"
-              href="/blog"
             >
               Blog
             </Nav.Link>
             <Nav.Link
+              as={Link}
+              to="/contact"
               className="navbar--color-white nav-link nav-link-hover-mobile"
-              href="/contact"
             >
               Contact
             </Nav.Link>
           </Nav>
+
           {isAuthenticated === true ? (
             <Nav.Link
+              as={Link}
+              to="/dashboard"
               className={`navbar--color-white nav-link  ${
                 isSmallScreen
                   ? "navbar-login nav-link-hover-mobile"
                   : "dashboard-login-btn"
               }`}
-              href="/dashboard"
             >
               Dashboard
             </Nav.Link>
@@ -75,7 +81,8 @@ const NavbarComponent: React.FC = () => {
                   ? "navbar-login nav-link-hover-mobile"
                   : "dashboard-login-btn"
               }`}
-              href="/login"
+              as={Link}
+              to="/login"
             >
               Login
             </Nav.Link>

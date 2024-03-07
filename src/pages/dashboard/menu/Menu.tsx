@@ -33,10 +33,14 @@ const Menu: FC<ChildProps> = ({ logout }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="/dashboard/add-property" className="mt-3">
+                <Nav.Link
+                  as={Link}
+                  to="/dashboard/add-property"
+                  className="mt-3"
+                >
                   Add Property
                 </Nav.Link>
-                <Nav.Link href="/dashboard/items-all">
+                <Nav.Link as={Link} to="/dashboard/items-all">
                   {" "}
                   Delete Property
                 </Nav.Link>
