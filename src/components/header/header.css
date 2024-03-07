@@ -11,7 +11,7 @@
 .navbar--color-white {
   color: #d3d3d3 !important;
   font-weight: 600 !important;
-  margin-left: 1.5rem;
+  margin-left: 1.5rem !important;
 }
 
 .navbar--color-white:hover {
@@ -70,4 +70,22 @@
 .navbar-dropdown-menu:hover {
   color: #ffd800 !important;
   font-size: 1.05em;
+}
+
+@media (max-width: 991px) {
+  .nav-link-hover-mobile:hover {
+    padding-left: 1.2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-link-hover-mobile:hover {
+    padding-left: 0.9rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-link-hover-mobile:hover {
+    padding-left: 0.5rem !important;
+  }
 }
