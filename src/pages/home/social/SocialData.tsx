@@ -9,6 +9,7 @@ import t1 from "../../../assets/images/home/t1.jpeg";
 import t2 from "../../../assets/images/home/t2.jpeg";
 import t3 from "../../../assets/images/home/t3.jpeg";
 import t4 from "../../../assets/images/home/t4.jpeg";
+import LazyImage from "../../../components/optimization/LazyImage";
 
 const SocialData: FC = () => {
   return (
@@ -23,7 +24,7 @@ const SocialData: FC = () => {
             <Card.Body>
               <Row>
                 <div className="col-2">
-                  <img src={t1} alt="testimonial" />
+                  <LazyImage src={t1} alt="testimonial" />
                 </div>
                 <div className="col-10 testimonial-box">
                   <p>Maja Markovic</p>
@@ -45,7 +46,7 @@ const SocialData: FC = () => {
             <Card.Body>
               <Row>
                 <div className="col-2 ">
-                  <img src={t2} alt="testimonial" />
+                  <LazyImage src={t2} alt="testimonial" />
                 </div>
                 <div className="col-10 testimonial-box">
                   <p>Milos Milosevic</p>
@@ -66,7 +67,7 @@ const SocialData: FC = () => {
             <Card.Body>
               <Row>
                 <div className="col-2">
-                  <img src={t3} alt="testimonial" />
+                  <LazyImage src={t3} alt="testimonial" />
                 </div>
                 <div className="col-10 testimonial-box">
                   <p>Stefan Stefanovic</p>
@@ -90,7 +91,7 @@ const SocialData: FC = () => {
             <Card.Body>
               <Row>
                 <div className="col-2">
-                  <img src={t4} alt="testimonial" />
+                  <LazyImage src={t4} alt="testimonial" />
                 </div>
                 <div className="col-10 testimonial-box">
                   <p>Milos Markovic</p>

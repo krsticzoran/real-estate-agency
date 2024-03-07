@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { menuList } from "../../assets/data/myData";
 import { Blog } from "../../types";
 import { gql, useQuery } from "@apollo/client";
+import LazyImage from "../optimization/LazyImage";
 
 const GET_BLOGS = gql`
   query {
@@ -120,7 +121,8 @@ const FooterTop: FC = () => {
                     to={`/blog/${blog.title.replace(/\s+/g, "-")}`}
                     className="d-flex"
                   >
-                    <img src={blog.img} alt={blog.title} />
+                    <LazyImage src={blog.img} alt={blog.title} />
+
                     <p className="truncate-text">{blog.title}</p>
                   </Link>
                 </li>

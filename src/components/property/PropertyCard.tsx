@@ -3,6 +3,7 @@ import "./propertycard.css";
 import { Link } from "react-router-dom";
 import { Property } from "../../types";
 import AnimatedHoverCard from "../animated/AnimatedHoverCard";
+import LazyImage from "../optimization/LazyImage";
 
 interface PropertyCardProps {
   property: Property;
@@ -14,7 +15,8 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
       <Link to={`/property/${property.num}`}>
         <div className="search-rent-sale-card">
           <div className="search-rent-sale-card-img-box">
-            <img src={property.img} alt="restaurant" />
+            <LazyImage src={property.img} alt="restaurant" />
+
             <h4 className="search-rent-sale-card-place">{property.place}</h4>
           </div>
           <div className="search-rent-sale-featured">

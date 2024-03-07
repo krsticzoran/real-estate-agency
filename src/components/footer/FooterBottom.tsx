@@ -17,7 +17,10 @@ const FooterBottom: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faFacebookSquare} />
+              <FontAwesomeIcon
+                icon={faFacebookSquare}
+                aria-label="Facebook icon"
+              />
             </Link>
           </li>
           <li key="linkedin">
@@ -26,7 +29,7 @@ const FooterBottom: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faLinkedin} />
+              <FontAwesomeIcon icon={faLinkedin} aria-label="LinkedIn icon" />
             </Link>
           </li>
         </ul>
