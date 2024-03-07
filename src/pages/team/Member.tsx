@@ -47,6 +47,9 @@ const Member: FC = () => {
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 
+  const oveviewMember = user.overview?.split(".");
+  console.log(oveviewMember);
+
   const chunk = (arr: any[], size: number) => {
     return arr.reduce((chunks, el, i) => {
       if (i % size === 0) {
@@ -69,7 +72,12 @@ const Member: FC = () => {
           </div>
           <div className="col-12 col-lg-4">
             <h3 className="member-name">Overview</h3>
-            <p>{user.overview}</p>
+            {user.overview
+              ?.split(".")
+              .slice(0, -1)
+              .map((sentence) => (
+                <p>{sentence}.</p>
+              ))}
           </div>
           <div className="col-12 col-lg-4 mb-5">
             <div className="staff-card ">
