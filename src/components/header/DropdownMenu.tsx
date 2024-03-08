@@ -8,9 +8,14 @@ import { Link } from "react-router-dom";
 interface MyComponentProps {
   onData: string[];
   page: string;
+  eventKey: number[];
 }
 
-const DropdownMenu: React.FC<MyComponentProps> = ({ onData, page }) => {
+const DropdownMenu: React.FC<MyComponentProps> = ({
+  onData,
+  page,
+  eventKey,
+}) => {
   const [show, setShow] = useState(false);
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
 
@@ -29,8 +34,9 @@ const DropdownMenu: React.FC<MyComponentProps> = ({ onData, page }) => {
       onClick={handleToggle}
       show={show}
     >
-      {onData.map((item) => (
+      {onData.map((item, index) => (
         <Nav.Link
+          eventKey={eventKey[index]}
           as={Link}
           key={item}
           className="dropdown-item navbar-dropdown-menu"

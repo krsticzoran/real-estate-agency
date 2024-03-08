@@ -15,6 +15,7 @@ const NavbarComponent: React.FC = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (
     <Navbar
+      collapseOnSelect // Add collapseOnSelect prop here
       expand="lg"
       className={`w-100   ${
         isSmallScreen ? "navbar-container" : "navbar-padding"
@@ -36,10 +37,19 @@ const NavbarComponent: React.FC = () => {
             }`}
             navbarScroll
           >
-            <DropdownMenu onData={menuList} page="Rent" />
-            <DropdownMenu onData={menuList} page="Sale" />
+            <DropdownMenu
+              onData={menuList}
+              page="Rent"
+              eventKey={[6, 7, 8, 9]}
+            />
+            <DropdownMenu
+              onData={menuList}
+              page="Sale"
+              eventKey={[10, 11, 12, 13]}
+            />
 
             <Nav.Link
+              eventKey="1"
               as={Link}
               to="/team"
               className="navbar--color-white nav-link nav-link-hover-mobile"
@@ -47,6 +57,7 @@ const NavbarComponent: React.FC = () => {
               Team
             </Nav.Link>
             <Nav.Link
+              eventKey="2"
               as={Link}
               to="/blog"
               className="navbar--color-white nav-link nav-link-hover-mobile"
@@ -54,6 +65,7 @@ const NavbarComponent: React.FC = () => {
               Blog
             </Nav.Link>
             <Nav.Link
+              eventKey="3"
               as={Link}
               to="/contact"
               className="navbar--color-white nav-link nav-link-hover-mobile"
@@ -64,6 +76,7 @@ const NavbarComponent: React.FC = () => {
 
           {isAuthenticated === true ? (
             <Nav.Link
+              eventKey="4"
               as={Link}
               to="/dashboard"
               className={`navbar--color-white nav-link  ${
@@ -76,6 +89,7 @@ const NavbarComponent: React.FC = () => {
             </Nav.Link>
           ) : (
             <Nav.Link
+              eventKey="5"
               className={`navbar--color-white nav-link  ${
                 isSmallScreen
                   ? "navbar-login nav-link-hover-mobile"
