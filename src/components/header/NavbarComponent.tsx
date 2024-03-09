@@ -15,7 +15,7 @@ const NavbarComponent: React.FC = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (
     <Navbar
-      collapseOnSelect // Add collapseOnSelect prop here
+      collapseOnSelect
       expand="lg"
       className={`w-100   ${
         isSmallScreen ? "navbar-container" : "navbar-padding"
