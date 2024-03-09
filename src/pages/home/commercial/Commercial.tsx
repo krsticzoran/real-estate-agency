@@ -54,8 +54,7 @@ const Commercial: FC = () => {
                         duration={2}
                         delay={2}
                       />
-                    )}{" "}
-                    available
+                    )}
                   </p>
                 </div>
               </Link>
@@ -77,8 +76,7 @@ const Commercial: FC = () => {
                         duration={2}
                         delay={2}
                       />
-                    )}{" "}
-                    available
+                    )}
                   </p>
                 </div>
               </Link>
@@ -100,8 +98,7 @@ const Commercial: FC = () => {
                         duration={2}
                         delay={2}
                       />
-                    )}{" "}
-                    available
+                    )}
                   </p>
                 </div>
               </Link>
@@ -125,8 +122,7 @@ const Commercial: FC = () => {
                         duration={3}
                         delay={2}
                       />
-                    )}{" "}
-                    available
+                    )}
                   </p>
                 </div>
               </Link>
