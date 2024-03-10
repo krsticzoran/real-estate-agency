@@ -20,6 +20,7 @@ import DashboardProperties from "./pages/dashboard/properties/DashboardPropertie
 import AddProperty from "./pages/dashboard/addPrpperty/AddProperty";
 import DashboardPropertiesAll from "./pages/dashboard/properties/DashboardPropertiesAll";
 import Loader from "./components/loader/Loader";
+import CustomCursor from "./components/animated/cursor/Cursor";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           }
         />
       </Routes>
+      <CustomCursor />
     </BrowserRouter>
   );
 }
