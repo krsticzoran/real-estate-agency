@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop/ScrolllToTop";
 import Header from "./components/header/Header";
@@ -51,6 +51,7 @@ function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
               <Footer />
             </>
