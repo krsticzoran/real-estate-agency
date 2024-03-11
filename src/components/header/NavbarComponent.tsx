@@ -37,6 +37,19 @@ const NavbarComponent: React.FC = () => {
             }`}
             navbarScroll
           >
+            {isSmallScreen ? (
+              <Nav.Link
+                eventKey="1"
+                as={Link}
+                to="/"
+                className="navbar--color-white nav-link nav-link-hover-mobile"
+              >
+                Home
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+
             <DropdownMenu
               onData={menuList}
               page="Rent"
