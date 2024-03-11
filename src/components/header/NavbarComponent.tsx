@@ -39,7 +39,7 @@ const NavbarComponent: React.FC = () => {
           >
             {isSmallScreen ? (
               <Nav.Link
-                eventKey="1"
+                eventKey="14"
                 as={Link}
                 to="/"
                 className="navbar--color-white nav-link nav-link-hover-mobile"
