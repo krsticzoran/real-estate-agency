@@ -18,7 +18,7 @@ const AboutLeft: FC = () => {
         </p>
       </AnimatedComponentList>
       <AnimatedComponentList index={2}>
-        <Link className="navbar--color-white nav-link" to="/about-us">
+        <Link to="/about-us">
           <Button className="btn btn-about">Read more..</Button>
         </Link>
       </AnimatedComponentList>

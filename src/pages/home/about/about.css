@@ -9,10 +9,11 @@
   border: 1px solid #5c0282 !important;
   color: #fff;
   margin-top: 10px !important;
+  margin-left: 1.5rem !important;
 }
-.btn-about:hover,
-.btn-active:active {
-  background-color: #5c0282 !important;
+
+.btn-about:hover {
+  scale: 1.05;
 }
 
 .about-us {
