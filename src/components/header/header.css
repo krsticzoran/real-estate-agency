@@ -18,6 +18,9 @@
   color: #ffd800 !important;
   scale: 1.05 !important;
 }
+.navbar--active-link-classes {
+  color: #c0b600 !important;
+}
 
 .header-background {
   background-color: #272727 !important;
@@ -70,6 +73,10 @@
 .navbar-dropdown-menu:hover {
   color: #ffd800 !important;
   font-size: 1.05em;
+}
+
+.dropdown-item.active {
+  color: #c0b600 !important;
 }
 
 @media (max-width: 991px) {

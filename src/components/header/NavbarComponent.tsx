@@ -7,9 +7,11 @@ import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavbarComponent: React.FC = () => {
+  const location = useLocation();
+  const { pathname } = location;
   const { isAuthenticated } = useAuth();
 
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
@@ -65,7 +67,9 @@ const NavbarComponent: React.FC = () => {
               eventKey="1"
               as={Link}
               to="/team"
-              className="navbar--color-white nav-link nav-link-hover-mobile"
+              className={`navbar--color-white nav-link nav-link-hover-mobile ${
+                pathname === "/team" ? "navbar--active-link-classes" : ""
+              }`}
             >
               Team
             </Nav.Link>
@@ -73,7 +77,9 @@ const NavbarComponent: React.FC = () => {
               eventKey="2"
               as={Link}
               to="/blog"
-              className="navbar--color-white nav-link nav-link-hover-mobile"
+              className={`navbar--color-white nav-link nav-link-hover-mobile ${
+                pathname === "/blog" ? "navbar--active-link-classes" : ""
+              }`}
             >
               Blog
             </Nav.Link>
@@ -81,7 +87,9 @@ const NavbarComponent: React.FC = () => {
               eventKey="3"
               as={Link}
               to="/contact"
-              className="navbar--color-white nav-link nav-link-hover-mobile"
+              className={`navbar--color-white nav-link nav-link-hover-mobile ${
+                pathname === "/contact" ? "navbar--active-link-classes" : ""
+              }`}
             >
               Contact
             </Nav.Link>
@@ -107,7 +115,7 @@ const NavbarComponent: React.FC = () => {
                 isSmallScreen
                   ? "navbar-login nav-link-hover-mobile"
                   : "dashboard-login-btn"
-              }`}
+              } ${pathname === "/login" ? "navbar--active-link-classes" : ""}`}
               as={Link}
               to="/login"
             >

@@ -1,0 +1,6 @@
+.paralex-container {
+  height: 400px;
+  background-size: cover;
+  background-attachment: fixed !important;
+  z-index: -1;
+}

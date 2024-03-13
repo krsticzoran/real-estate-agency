@@ -16,7 +16,6 @@ const PropertyCard: FC<PropertyCardProps> = ({ property }) => {
         <div className="search-rent-sale-card">
           <div className="search-rent-sale-card-img-box">
             <LazyImage src={property.img} alt="restaurant" />
-
             <h4 className="search-rent-sale-card-place">{property.place}</h4>
           </div>
           <div className="search-rent-sale-featured">
