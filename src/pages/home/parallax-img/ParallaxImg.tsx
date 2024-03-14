@@ -1,4 +1,4 @@
-import { Children, FC, ReactNode } from "react";
+import { FC } from "react";
 import background from "../../../assets/images/home/home2.png";
 import "./parallax.css";
 
