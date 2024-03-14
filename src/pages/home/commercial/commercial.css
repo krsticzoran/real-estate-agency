@@ -1,6 +1,8 @@
 .commercial {
   position: relative;
   background-color: #f5f5f5;
+  padding-top: 50px !important;
+  padding-bottom: 80px;
 }
 
 .commercial a {
@@ -55,9 +57,10 @@
   .commercial .col {
     flex: 1 0 50%;
   }
-}
-
-@media (max-width: 768px) {
+  .commercial {
+    padding-top: 30px !important;
+    padding-bottom: 50px;
+  }
   .commercial-big-title {
     font-size: 20px;
     line-height: 25px;

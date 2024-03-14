@@ -1,11 +1,1 @@
-.parallax-container {
-  height: 400px;
-  background-size: cover;
-  background-attachment: fixed !important;
-}
 
-.parallax-container h5 {
-  background-color: #f5f5f5;
-  padding: 8px 24px;
-  border-radius: 16px;
-}

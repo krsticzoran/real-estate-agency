@@ -28,7 +28,7 @@ const Commercial: FC = () => {
     useGePropertyAviable(arr[3]),
   ];
   return (
-    <div className="commercial pt-1 pt-md-2 pb-2 pb-md-4 ">
+    <div className="commercial  ">
       <div className="d-flex justify-content-center ">
         <h2 className=" mb-md-3 commercial-big-title">
           <AnimatedText text=" Commercial Property to Rent" />

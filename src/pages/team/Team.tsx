@@ -39,8 +39,6 @@ const GET_USERS = gql`
 const Team: FC = () => {
   const { data } = useQuery(GET_USERS);
 
-  console.log(data);
-
   const staff: User[] = data?.staff?.users ?? [];
 
   return (

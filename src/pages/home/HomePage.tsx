@@ -12,8 +12,9 @@ const HomePage: React.FC = () => {
     <>
       <PropertyBox />
       <About />
-      <ParalexImg />
+
       <Commercial />
+      <ParalexImg />
       <Social />
       <Featured />
     </>
