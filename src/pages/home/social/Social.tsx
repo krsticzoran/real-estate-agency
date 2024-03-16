@@ -5,6 +5,7 @@ import img1 from "../../../assets/images/home/social-photo.png";
 import SocialData from "./SocialData";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
 import LazyImage from "../../../components/optimization/LazyImage";
+import SvgLines from "../../../components/svg/SvgLines";
 
 const Social: FC = () => {
   return (
@@ -20,8 +21,11 @@ const Social: FC = () => {
               </AnimatedComponentList>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-6 position-relative">
               <AnimatedComponentList index={3}>
+                <SvgLines />
+              </AnimatedComponentList>
+              <AnimatedComponentList index={4}>
                 <SocialData />
               </AnimatedComponentList>
             </div>

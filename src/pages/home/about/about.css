@@ -1,25 +1,36 @@
 .about {
   position: relative;
-  padding: 70px 0 120px 0;
+  padding: 90px 0;
+  background-color: #fff;
 }
 
 .btn-about {
-  background-color: #5c0282 !important;
-  box-shadow: 0px 0px 10px #ccc;
-  border: 1px solid #5c0282 !important;
-  color: #fff;
+  background: transparent;
+
+  border: 1px solid #1c314e !important;
+  color: #1c314e;
   margin-top: 10px !important;
-  margin-left: 1.5rem !important;
+  font-size: 12px;
+  min-width: 200px;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  margin: 24px 12px 0 !important;
+  transition: all 0.2s;
 }
 
 .btn-about:hover {
-  scale: 1.05;
+  border: 1px solid #ec946c !important;
+  background-color: #ec946c !important;
+  color: #fff;
 }
 
 .about-us {
   font-size: 12px;
   font-weight: 400 !important;
-  color: #5c0282;
+  color: #ec946c;
   letter-spacing: 2px;
   padding: 0;
   margin: 0;
@@ -27,7 +38,7 @@
 }
 .about-title {
   font-size: 36px;
-  color: #1f1f1f;
+  color: #1c314e;
   padding: 0;
   margin: 0;
   font-weight: 400;
@@ -41,7 +52,8 @@
   padding: 0;
   margin: 30px 0 0 0;
   line-height: 28px;
-  color: #6a6a6a;
+  color: #1c314e;
+  opacity: 0.4;
   font-weight: 100;
 }
 
@@ -63,14 +75,15 @@
 .right-title {
   font-size: 15px;
   font-weight: 400;
-  color: #5c0282;
+  color: #1c314e;
   padding: 0;
   margin: 0;
   line-height: 20px;
 }
 .right-text {
   font-size: 12px;
-  color: #6a6a6a;
+  color: #1c314e;
+  opacity: 0.4;
   font-weight: 100;
   padding: 0;
   margin: 0;
@@ -110,5 +123,14 @@
   .right-img {
     height: 40px !important;
     width: 40px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .btn-about {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 30px !important;
   }
 }

@@ -3,8 +3,13 @@
   padding: 110px 0 120px 0;
 }
 
+.social .carousel-control-next,
+.social .carousel-control-prev {
+  visibility: hidden !important;
+}
+
 .social-box {
-  background-color: #5c0282;
+  background-color: rgba(28, 49, 78, 0.4);
 }
 
 .social-img-box {
@@ -28,6 +33,15 @@
   min-height: 400px;
 }
 
+.social-data p {
+  color: #1c314e;
+  opacity: 0.7 !important;
+}
+
+.testimonial-box p {
+  opacity: 1 !important;
+}
+
 .carousel-control-next,
 .carousel-control-prev {
   box-shadow: 1px 1px 1px #ccc;
@@ -47,7 +61,7 @@
 }
 
 .testimonial-small-text {
-  color: #707070;
+  color: rgba(28, 49, 78, 0.4) !important;
   margin-top: -20px !important;
 }
 
@@ -58,11 +72,17 @@
     padding-left: 0;
     margin-top: 0;
     overflow: visible;
-    padding-bottom: 50px;
+    padding-bottom: 0;
   }
   .social {
     position: relative;
     padding: 55px 0 60px 0;
+  }
+
+  .social-data {
+    padding: 30px 10px;
+
+    min-height: 300px;
   }
 
   .carousel-control-next,

@@ -1,8 +1,10 @@
 .commercial {
   position: relative;
-  background-color: #f5f5f5;
+  background-position: center;
+  background-size: cover;
   padding-top: 50px !important;
   padding-bottom: 80px;
+  background-color: #fff;
 }
 
 .commercial a {
@@ -11,22 +13,24 @@
 
 .commercial-big-title {
   font-size: 36px;
-  color: #1f1f1f;
-  padding: 20px;
+  color: #1c314e;
+  padding-top: 20px;
   margin: 0;
   font-weight: 400;
   line-height: 43px;
   text-align: center !important;
+  margin-bottom: 15px !important;
 }
 
 .commercial-item {
-  border-top: solid 3px #5c0282;
   position: relative;
   min-height: 230px;
-  background-color: #fff;
-  box-shadow: 0 2px 0px #e6e6e9;
+  background-color: transparent;
+
   padding: 0 5px;
   text-align: center !important;
+  border: 3px solid rgba(28, 49, 78, 0.4);
+  margin: 10px 0;
 }
 
 .commercial-item figure {
@@ -35,11 +39,13 @@
 
 .commercial-item img {
   max-width: 100%;
+  filter: brightness(1) invert(0.2) sepia(1) saturate(4) hue-rotate(180deg);
 }
 
 .commercial-item h5 {
   font-size: 17px;
-  color: #5c0282;
+  color: #1c314e;
+  opacity: 0.6;
   font-weight: 400;
   padding: 0;
   margin: 0;
@@ -48,7 +54,7 @@
 
 .commercial-item p {
   font-size: 28px;
-  color: #535353;
+  color: #1c314e;
   padding-top: 5px;
   margin: 0;
 }
@@ -61,6 +67,9 @@
     padding-top: 30px !important;
     padding-bottom: 50px;
   }
+}
+
+@media (max-width: 560px) {
   .commercial-big-title {
     font-size: 20px;
     line-height: 25px;

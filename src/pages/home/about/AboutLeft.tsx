@@ -19,7 +19,7 @@ const AboutLeft: FC = () => {
       </AnimatedComponentList>
       <AnimatedComponentList index={2}>
         <Link to="/about-us">
-          <Button className="btn btn-about">Read more..</Button>
+          <button className="btn-about">Read more</button>
         </Link>
       </AnimatedComponentList>
     </div>

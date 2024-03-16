@@ -12,6 +12,7 @@ import CountUp from "react-countup";
 import { useInView } from "framer-motion";
 
 import { useGePropertyAviable } from "../../../hook/useGetPropertyAviable";
+import background from "../../../assets/images/home/background-02.jpeg";
 
 const arr = ["shops", "catering", "warehouses", "offices"];
 
@@ -28,7 +29,7 @@ const Commercial: FC = () => {
     useGePropertyAviable(arr[3]),
   ];
   return (
-    <div className="commercial  ">
+    <div className="commercial">
       <div className="d-flex justify-content-center ">
         <h2 className=" mb-md-3 commercial-big-title">
           <AnimatedText text=" Commercial Property to Rent" />
@@ -41,7 +42,7 @@ const Commercial: FC = () => {
             <AnimatedComponentList index={2}>
               <Link to={"/rent/shops"}>
                 <div className="commercial-item" ref={ref}>
-                  <figure className="pt-5">
+                  <figure className="pt-5 d-flex align-items-center justify-content-center">
                     <img src={img1} alt="retail" />
                   </figure>
                   <h5>Retails</h5>
@@ -64,7 +65,7 @@ const Commercial: FC = () => {
             <AnimatedComponentList index={2}>
               <Link to={"/rent/catering"}>
                 <div className="commercial-item">
-                  <figure className="pt-5">
+                  <figure className="pt-5 d-flex align-items-center justify-content-center">
                     <img src={img2} alt="restaurant" />
                   </figure>
                   <h5>Restaurants</h5>
@@ -86,7 +87,7 @@ const Commercial: FC = () => {
             <AnimatedComponentList index={2}>
               <Link to={"/rent/warehouses"}>
                 <div className="commercial-item" ref={refTwo}>
-                  <figure className="pt-5">
+                  <figure className="pt-5 d-flex align-items-center justify-content-center">
                     <img src={img3} alt="industrial" />
                   </figure>
                   <h5>Industrials</h5>
@@ -109,7 +110,7 @@ const Commercial: FC = () => {
             <AnimatedComponentList index={2}>
               <Link to={"/rent/offices"}>
                 <div className="commercial-item">
-                  <figure className="pt-5">
+                  <figure className="pt-5 d-flex align-items-center justify-content-center">
                     <img src={img4} alt="offices" />
                   </figure>
 

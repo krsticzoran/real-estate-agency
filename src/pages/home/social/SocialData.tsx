@@ -21,7 +21,7 @@ const SocialData: FC = () => {
       >
         <Carousel.Item>
           <Card>
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: "rgba(242, 235, 232, 0.8)" }}>
               <Row>
                 <div className="col-2">
                   <LazyImage src={t1} alt="testimonial" />
@@ -43,7 +43,7 @@ const SocialData: FC = () => {
         </Carousel.Item>
         <Carousel.Item>
           <Card>
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: "rgba(242, 235, 232, 0.8)" }}>
               <Row>
                 <div className="col-2 ">
                   <LazyImage src={t2} alt="testimonial" />
@@ -64,7 +64,7 @@ const SocialData: FC = () => {
         </Carousel.Item>
         <Carousel.Item>
           <Card>
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: "rgba(242, 235, 232, 0.8)" }}>
               <Row>
                 <div className="col-2">
                   <LazyImage src={t3} alt="testimonial" />
@@ -88,7 +88,7 @@ const SocialData: FC = () => {
         </Carousel.Item>
         <Carousel.Item>
           <Card>
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: "rgba(242, 235, 232, 0.8)" }}>
               <Row>
                 <div className="col-2">
                   <LazyImage src={t4} alt="testimonial" />
