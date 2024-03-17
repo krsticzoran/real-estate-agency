@@ -39,15 +39,33 @@
   padding: 0;
   margin: 20px 0 0 0;
   font-weight: 400;
-  color: #525252;
+  color: #1c314e;
 }
 
 .featured-day {
   font-size: 13px;
   padding: 0;
   font-weight: 400;
-  color: #525252;
+  color: #1c314e;
 }
+
+.featured .caurosel-prev-icon .carousel-control-prev,
+.featured .caurosel-prev-icon .carousel-control-next {
+  color: #1c314e !important;
+  background-color: transparent !important; /* Remove background color */
+  box-shadow: none;
+  border: 1px solid rgba(28, 49, 78, 0.4);
+  transition: all 0.2s;
+}
+
+.featured .caurosel-prev-icon .carousel-control-prev:hover,
+.featured .caurosel-prev-icon .carousel-control-next:hover {
+  color: #fff !important;
+  background-color: rgba(28, 49, 78, 0.6) !important;
+
+  border: none;
+}
+
 @media (max-width: 768px) {
   .featured {
     margin: 45px 0 20px 0 !important;

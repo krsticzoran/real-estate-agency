@@ -5,16 +5,12 @@
 
 .search-rent-sale-card {
   margin-bottom: 30px;
-  border: solid 1px #ccc;
+  border: solid 1px rgba(28, 49, 78, 0.4);
   border-radius: 4px;
 }
 
-.search-rent-sale-card:hover {
-  border: solid 1px #5c0282 !important;
-}
-
 .search-rent-sale-card:hover h4 {
-  background-color: #5c0282 !important;
+  background-color: #ec946c !important;
 }
 .search-rent-sale-card-img-box {
   width: 100% !important;
@@ -35,7 +31,7 @@
   color: #fff !important;
   font-size: 10px;
   position: absolute !important;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(28, 49, 78, 0.4);
   min-width: 111px;
   bottom: 0 !important;
   font-weight: 400;
@@ -51,13 +47,13 @@
   padding: 0;
   margin: 10px 0 10px 0;
   font-size: 18px;
-  color: #000;
+  color: #1c314e;
   line-height: 18px;
 }
 
 .search-rent-sale-title span {
   font-size: 10px;
-  color: #5c0282;
+  color: #ec946c;
   float: right;
   letter-spacing: 2px;
 }
@@ -67,7 +63,7 @@
   padding: 0;
   margin: 20px 0 0 0;
   font-weight: 400;
-  color: #525252;
+  color: #1c314e;
 }
 
 .search-rent-sale-m {
@@ -75,12 +71,12 @@
   padding: 0;
   margin: 0 0 10px 0;
   font-weight: 100;
-  color: #000;
+  color: #1c314e;
 }
 
 .search-rent-sale-day {
   font-size: 13px;
   padding: 0;
   font-weight: 400;
-  color: #525252;
+  color: #1c314e;
 }

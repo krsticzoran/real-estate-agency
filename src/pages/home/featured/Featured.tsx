@@ -1,17 +1,18 @@
 import { FC } from "react";
-import { Container, Row, Card } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import "../about/about.css";
 import "./featured.css";
 
 import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+
 import { Property } from "../../../types";
 import PropertyCard from "../../../components/property/PropertyCard";
 
 import Carousel from "react-bootstrap/Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 import { useMediaQuery } from "react-responsive";
 import AnimatedText from "../../../components/animated/AnimatedText";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
@@ -88,8 +89,8 @@ const Featured: FC = () => {
                 className="caurosel-prev-icon"
                 interval={null}
                 indicators={false}
-                prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
-                nextIcon={<FontAwesomeIcon icon={faRightLong} />}
+                prevIcon={<FontAwesomeIcon icon={faChevronLeft} />}
+                nextIcon={<FontAwesomeIcon icon={faChevronRight} />}
               >
                 {isMobile
                   ? chunk(properties, 1).map(
