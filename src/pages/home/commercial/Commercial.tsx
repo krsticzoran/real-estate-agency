@@ -12,7 +12,6 @@ import CountUp from "react-countup";
 import { useInView } from "framer-motion";
 
 import { useGePropertyAviable } from "../../../hook/useGetPropertyAviable";
-import background from "../../../assets/images/home/background-02.jpeg";
 
 const arr = ["shops", "catering", "warehouses", "offices"];
 

@@ -9,7 +9,7 @@
 }
 
 .social-box {
-  background-color: rgba(28, 49, 78, 0.4);
+  background-color: #5c0282;
 }
 
 .social-img-box {
@@ -31,15 +31,15 @@
 .social-data {
   padding: 10% 50px 0 10px;
   min-height: 400px;
+  top: 0;
 }
 
 .social-data p {
-  color: #1c314e;
-  opacity: 0.7 !important;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .testimonial-box p {
-  opacity: 1 !important;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .carousel-control-next,
@@ -61,7 +61,7 @@
 }
 
 .testimonial-small-text {
-  color: rgba(28, 49, 78, 0.4) !important;
+  color: rgba(0, 0, 0, 0.5) !important;
   margin-top: -20px !important;
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Tab, Form, Button } from "react-bootstrap";
+import { Tabs, Tab, Form } from "react-bootstrap";
 import Select from "./Select";
 import MultiRangeSlider from "./PropertyRange";
 import { menuList, location } from "../../../assets/data/myData";
@@ -139,12 +139,12 @@ const PropertySearch: React.FC = () => {
                       step={1000}
                     />
                   </div>
-                  <Button
+                  <button
                     className="property-btn"
                     onClick={() => handleSearch("rent")}
                   >
                     Search
-                  </Button>
+                  </button>
                 </Form>
               </Tab>
               <Tab
@@ -180,12 +180,12 @@ const PropertySearch: React.FC = () => {
                       step={10000}
                     />
                   </div>
-                  <Button
+                  <button
                     className="property-btn"
                     onClick={() => handleSearch("sale")}
                   >
                     Search
-                  </Button>
+                  </button>
                 </Form>
               </Tab>
             </Tabs>

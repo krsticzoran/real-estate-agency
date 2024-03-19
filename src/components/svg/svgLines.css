@@ -1,0 +1,5 @@
+@media (max-width: 992px) {
+  .svg-lines-height {
+    max-height: 300px !important;
+  }
+}

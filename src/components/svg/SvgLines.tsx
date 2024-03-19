@@ -1,7 +1,11 @@
 import { FC } from "react";
+import "./svgLines.css";
 
 const SvgLines: FC = () => (
-  <div className="position-absolute  w-100 h-100 ">
+  <div
+    className=" w-100 h-100  svg-lines-height"
+    style={{ overflow: "hidden", maxHeight: "500px" }}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1000 600"

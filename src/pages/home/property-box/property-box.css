@@ -19,7 +19,7 @@
 }
 
 .commercial-h4-text {
-  color: #ec946c;
+  color: #ffd800;
   font-size: 12px;
   padding: 0;
   margin: 0;
@@ -41,27 +41,15 @@
   min-height: 400px !important;
 }
 
-.property-input-box .custom-select {
-  background-color: #d8dadb !important;
-
-  opacity: 0.5;
-}
-.property-input-box select:focus option {
-  background-color: #fff !important; /* Set white background color */
-  color: #495057; /* Set text color */
-}
-
 .property-input-box-background {
-  background-color: rgba(28, 49, 78, 0.6) !important;
-
-  background-color: transparent;
+  background-color: #fff;
   padding: 28px 42px 44px 42px;
   width: 100% !important;
   height: 100% !important;
 }
 
 .property-search-label {
-  color: #ec946c;
+  color: #5c0282;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -71,34 +59,45 @@
 }
 
 .property-active-tab {
-  color: rgba(28, 49, 78, 1);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .property-tab {
-  color: #d8dadb;
+  color: rgba(0, 0, 0, 0.4);
 }
 .property-tab:hover {
-  color: #d8dadb;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .custom-select {
-  background-color: #d8dadb;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8) !important;
+  font-size: 17px !important;
 }
 .custom-select:focus {
   outline: none !important;
   box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .property-btn {
   margin-top: 20px;
-  background-color: transparent !important;
-  color: #d8dadb;
-  border: solid 1px #d8dadb !important;
+  background: transparent !important;
+
+  border: 1px solid #5c0282 !important;
+  color: #5c0282 !important;
+
   width: 100%;
-  border-radius: 3px;
-  padding: 15px;
+
+  padding: 15px !important;
   letter-spacing: 2px;
   text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.property-btn:hover {
+  background-color: #5c0282 !important;
+  color: #fff !important;
 }
 
 .property-range {

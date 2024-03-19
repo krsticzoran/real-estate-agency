@@ -25,9 +25,8 @@ const Social: FC = () => {
               <AnimatedComponentList index={3}>
                 <SvgLines />
               </AnimatedComponentList>
-              <AnimatedComponentList index={4}>
-                <SocialData />
-              </AnimatedComponentList>
+
+              <SocialData />
             </div>
           </Row>
         </div>

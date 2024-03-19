@@ -8,7 +8,9 @@ const AboutLeft: FC = () => {
     <div className="col-md-5 col-sm-12">
       <AnimatedComponentList index={1}>
         <h4 className="about-us">ABOUT US</h4>
-        <h2>Transforming the Commercial Landscape of the City!</h2>
+        <h2 className="about-title">
+          Transforming the Commercial Landscape of the City!
+        </h2>
         <p className="about-left-paragraph">
           We strive to provide our clients with the best possible experience
           when starting up or relocating your business. With an extensive

@@ -1,12 +1,11 @@
 .footer-top {
-  background-color: rgba(28, 49, 78, 0.1);
+  background-color: #333;
   padding: 50px 0 25px 0;
 }
 
 .footer-top-link-style:hover {
-  color: #ec946c !important;
+  color: #ffd800 !important;
   scale: 1.05 !important;
-  opacity: 1;
 }
 
 .footer-top-p-style:hover {
@@ -18,19 +17,19 @@
 }
 
 .adress-box {
-  color: rgba(28, 49, 78, 0.5);
+  color: #b5b5b5;
 }
 
 .adress-box a {
   list-style: none;
-  color: rgba(28, 49, 78, 0.5);
+  color: #b5b5b5;
   text-decoration: none;
 }
 
 .footer-rent li,
 .footer-rent a {
   list-style: none;
-  color: rgba(28, 49, 78, 0.5);
+  color: #b5b5b5;
   text-decoration: none;
 }
 
@@ -47,13 +46,12 @@
 }
 
 .footer-bottom {
-  background-color: rgba(28, 49, 78, 0.8);
+  background-color: #101010;
   padding: 20px 0;
 }
 
 .copyright {
-  color: #d8dadb;
-  opacity: 0.5;
+  color: #b5b5b5;
 }
 
 .footer-social li {
@@ -67,8 +65,7 @@
 .footer-social a {
   width: 30px;
   height: 30px;
-  background-color: #d8dadb;
-  opacity: 0.5;
+  background-color: #b5b5b5;
   border-radius: 50%;
   line-height: 32px;
   text-align: center;
@@ -81,22 +78,18 @@
   scale: 1.1 !important;
 }
 
-.footer-space {
-  color: #d8dadb;
-  opacity: 0.5;
+.footer-privacy {
+  color: #b5b5b5;
 }
 
 .footer-privacy a {
   list-style: none;
-  color: #d8dadb;
-  opacity: 0.5;
-
+  color: #b5b5b5;
   text-decoration: none;
 }
 
 .footer-privacy a:hover {
-  color: #ec946c !important;
-  opacity: 1;
+  color: #ffd800 !important;
 }
 
 .footer-privacy li {

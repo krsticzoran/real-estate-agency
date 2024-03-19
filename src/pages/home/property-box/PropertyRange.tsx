@@ -39,8 +39,7 @@ const PriceRangeSlider: FC<PriceRangeSliderProps> = ({
             <div
               style={{
                 height: "100%",
-                background: "rgba(28, 49, 78, 1)",
-                opacity: 0.5,
+                background: "#5c0282",
                 position: "absolute",
                 left: `${(rangeValues[0] / max) * 100}%`,
                 width: `${((rangeValues[1] - rangeValues[0]) / max) * 100}%`,
@@ -58,7 +57,7 @@ const PriceRangeSlider: FC<PriceRangeSliderProps> = ({
               width: "16px",
               borderRadius: "50%",
               backgroundColor: "#ccc",
-              border: "1px solid  #d8dadb",
+              border: "1px solid rgba(0, 0, 0, 0.4)",
               boxShadow: "0px 2px 6px #aaa",
             }}
           />

@@ -5,10 +5,11 @@
 }
 
 .btn-about {
-  background: transparent;
+  background: transparent !important;
 
-  border: 1px solid #1c314e !important;
-  color: #1c314e;
+  border: 1px solid #5c0282 !important;
+  color: #5c0282 !important;
+
   margin-top: 10px !important;
   font-size: 12px;
   min-width: 200px;
@@ -22,15 +23,14 @@
 }
 
 .btn-about:hover {
-  border: 1px solid #ec946c !important;
-  background-color: #ec946c !important;
-  color: #fff;
+  background-color: #5c0282 !important;
+  color: #fff !important;
 }
 
 .about-us {
   font-size: 12px;
   font-weight: 400 !important;
-  color: #ec946c;
+  color: #5c0282;
   letter-spacing: 2px;
   padding: 0;
   margin: 0;
@@ -38,7 +38,8 @@
 }
 .about-title {
   font-size: 36px;
-  color: #1c314e;
+  color: rgba(0, 0, 0, 0.9);
+  opacity: 0.8;
   padding: 0;
   margin: 0;
   font-weight: 400;
@@ -51,8 +52,8 @@
   font-size: 16px;
   padding: 0;
   margin: 30px 0 0 0;
-  line-height: 28px;
-  color: #1c314e;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.9);
   opacity: 0.4;
   font-weight: 100;
 }
@@ -75,7 +76,7 @@
 .right-title {
   font-size: 15px;
   font-weight: 400;
-  color: #1c314e;
+  color: #5c0282;
   padding: 0;
   margin: 0;
   line-height: 20px;

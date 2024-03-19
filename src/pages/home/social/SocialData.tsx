@@ -10,10 +10,37 @@ import t2 from "../../../assets/images/home/t2.jpeg";
 import t3 from "../../../assets/images/home/t3.jpeg";
 import t4 from "../../../assets/images/home/t4.jpeg";
 import LazyImage from "../../../components/optimization/LazyImage";
+import { motion } from "framer-motion";
+
+const fadeInAnimationVariants = {
+  hidden: {
+    opacity: 0,
+    y: -30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      delay: 2,
+      type: "spring",
+      damping: 12,
+      stiffness: 35,
+    },
+  },
+};
 
 const SocialData: FC = () => {
   return (
-    <div className="social-data">
+    <motion.div
+      className="social-data position-absolute"
+      variants={fadeInAnimationVariants}
+      initial="hidden"
+      whileInView="animate"
+      viewport={{
+        once: true,
+      }}
+    >
       <Carousel
         indicators={false}
         prevIcon={<FontAwesomeIcon icon={faLeftLong} />}
@@ -111,7 +138,7 @@ const SocialData: FC = () => {
           </Card>
         </Carousel.Item>
       </Carousel>
-    </div>
+    </motion.div>
   );
 };
 
