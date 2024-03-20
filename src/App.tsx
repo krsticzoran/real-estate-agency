@@ -31,7 +31,7 @@ import AnimatedWrapper from "./components/animated/AnimatedWrapper";
 
 function App() {
   return (
-    <AnimatedWrapper>
+    <AnimatedWrapper delay={0.1}>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>

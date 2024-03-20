@@ -1,28 +1,29 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 
-const fadeInAnimationVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-
-    transition: {
-      duration: 0.2,
-      delay: 0.1,
-      type: "spring",
-      damping: 12,
-      stiffness: 35,
-    },
-  },
-};
-
 interface AnimatedCardChildren {
   children: React.ReactNode;
+  delay: number;
 }
 
-const AnimatedWrapper: FC<AnimatedCardChildren> = ({ children }) => {
+const AnimatedWrapper: FC<AnimatedCardChildren> = ({ children, delay }) => {
+  const fadeInAnimationVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+
+      transition: {
+        duration: 0.2,
+        delay,
+        type: "spring",
+        damping: 12,
+        stiffness: 35,
+      },
+    },
+  };
+
   return (
     <motion.div
       variants={fadeInAnimationVariants}
