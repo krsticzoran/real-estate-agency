@@ -4,7 +4,6 @@ import banner from "../../../assets/images/home/header-banner-mobile.jpg";
 import CommercialSpecialists from "./CommercialSpecialists";
 import PropertySearch from "./PropertySearch";
 import "./property-box.css";
-import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
 
 const PropertyBox: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);

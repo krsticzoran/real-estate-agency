@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import PropertyBox from "./property-box/PropertyBox";
 import About from "./about/About";
@@ -8,15 +8,29 @@ import Featured from "./featured/Featured";
 import ParalexImg from "./parallax-img/ParallaxImg";
 
 const HomePage: React.FC = () => {
+  const [showComponents, setShowComponents] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowComponents(true);
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       <PropertyBox />
-      <About />
-      <Commercial />
-      <ParalexImg />
-      <Social />
-      <Featured />
-    </>
+      {showComponents && (
+        <>
+          <About />
+          <Commercial />
+          <ParalexImg />
+          <Social />
+          <Featured />
+        </>
+      )}
+    </div>
   );
 };
 
