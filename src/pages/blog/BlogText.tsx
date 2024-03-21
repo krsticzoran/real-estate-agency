@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { Container } from "react-bootstrap";
 import "./blog.css";
+import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 
 const GET_BLOGTEXT = gql`
   query GetBlogText($title: String!) {
@@ -29,23 +30,25 @@ const BlogText: FC = () => {
   const blog = data?.blogText ?? {};
 
   return (
-    <>
-      <Container>
-        <div className="blog-title-section">
-          <h4>{blog.property}</h4>
-          <h1>{blog.title}</h1>
-          <p>{blog.author}</p>
-        </div>
-        <div>
-          <div className="blog-img-section">
-            <img src={blog.img} alt="img" />
+    <AnimatedWrapper delay={0.5}>
+      <div className="blog-text-container-height">
+        <Container>
+          <div className="blog-title-section">
+            <h4>{blog.property}</h4>
+            <h1>{blog.title}</h1>
+            <p>{blog.author}</p>
           </div>
-          <div className="blog-content-section">
-            <ReactMarkdown children={blog.content} />
+          <div>
+            <div className="blog-img-section">
+              <img src={blog.img} alt="img" />
+            </div>
+            <div className="blog-content-section">
+              <ReactMarkdown children={blog.content} />
+            </div>
           </div>
-        </div>
-      </Container>
-    </>
+        </Container>
+      </div>
+    </AnimatedWrapper>
   );
 };
 

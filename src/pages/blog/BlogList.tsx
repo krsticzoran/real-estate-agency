@@ -8,6 +8,7 @@ import BlogCard from "./BlogCard";
 
 import { Blog } from "../../types";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
+import AnimatedHoverCard from "../../components/animated/AnimatedHoverCard";
 
 const GET_BLOGS = gql`
   query {
@@ -41,7 +42,7 @@ const BlogList: FC = () => {
                   <h5>{dataBlog[0]?.author}</h5>
                   <h1>{dataBlog[0]?.title}</h1>
                   <Link to={`/blog/${dataBlog[0]?.title.replace(/\s+/g, "-")}`}>
-                    Read Article
+                    <button> Read Article</button>
                   </Link>
                 </div>
               </Row>
@@ -54,7 +55,9 @@ const BlogList: FC = () => {
               (blog: Blog) =>
                 blog.num !== 1 && (
                   <div className="col-md-4 col-12" key={blog.num}>
-                    <BlogCard blog={blog} />
+                    <AnimatedHoverCard>
+                      <BlogCard blog={blog} />
+                    </AnimatedHoverCard>
                   </div>
                 )
             )}
