@@ -70,7 +70,7 @@ const Member: FC = () => {
             <h3 className="member-name">{user.name}</h3>
             <p>Speaks: {user.language}</p>
           </div>
-          <div className="col-12 col-lg-4">
+          <div className="col-12 col-lg-4 member-overview">
             <h3 className="member-name">Overview</h3>
             {user.overview
               ?.split(".")

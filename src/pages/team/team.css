@@ -1,11 +1,13 @@
 .team {
   margin: 150px 0 100px 0;
+  min-height: 464px !important;
 }
 
 .team-title {
   font-size: 36px;
   margin-bottom: 20px;
   color: #5c0282;
+  opacity: 0.9 !important;
 }
 
 .team h4 {
@@ -16,6 +18,7 @@
   margin-top: -15px;
   margin-bottom: 40px;
   line-height: 16px;
+  opacity: 0.9 !important;
 }
 
 .team-card {
@@ -37,6 +40,7 @@
   color: #5c0282;
   line-height: 22px;
   margin-bottom: 10px;
+  opacity: 0.9 !important;
 }
 
 .team-card strong {
@@ -55,14 +59,23 @@
   object-fit: cover;
 }
 
+.member-data-box p {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
 .member-name {
   margin-top: 20px;
   font-size: 34px;
   font-weight: 400;
   margin-bottom: 4px;
   color: #5c0282;
+  opacity: 0.9 !important;
 
   line-height: 42px;
+}
+
+.member-overview {
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .staff-card {
@@ -74,6 +87,7 @@
 
 .staff-card h2 {
   color: #000 !important;
+  opacity: 0.9 !important;
   font-size: 24px;
   margin-bottom: 25px;
 }
@@ -81,12 +95,14 @@
 .staff-phone h5 {
   font-size: 10px !important;
   color: #5c0282;
+  opacity: 0.9 !important;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 .staff-card a {
   text-decoration: none;
   color: #000 !important;
+  opacity: 0.9 !important;
 }
 
 .staff-card a:hover {
@@ -157,19 +173,21 @@
   right: 65px !important;
 }
 
-.caurosel-prev-icon .carousel-control-prev,
-.caurosel-prev-icon .carousel-control-next {
-  background-color: #fff !important;
-  border-radius: 50%;
-  box-shadow: 1px 1px 1px #ccc;
-  color: #212529 !important;
-  height: 40px;
-  margin-top: 10px;
-  opacity: 1 !important;
+.team .caurosel-prev-icon .carousel-control-prev,
+.team .caurosel-prev-icon .carousel-control-next {
+  color: rgba(0, 0, 0, 0.9) !important;
+  background-color: transparent !important;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  transition: all 0.2s;
+}
 
-  width: 40px;
+.team .caurosel-prev-icon .carousel-control-prev:hover,
+.team .caurosel-prev-icon .carousel-control-next:hover {
+  color: #fff !important;
+  background-color: #5c0282 !important;
 
-  top: -85px !important;
+  border: none;
 }
 
 @media (max-width: 1024px) {
