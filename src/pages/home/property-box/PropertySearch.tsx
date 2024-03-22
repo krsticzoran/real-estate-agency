@@ -68,7 +68,7 @@ const PropertySearch: React.FC = () => {
 
   const { data: rentData } = useQuery(GET_PROPERTIES, {
     variables: {
-      property: selectedProperty,
+      property: selectedProperty?.toLowerCase(),
       sale: "rent",
       place: selectedLocation,
       minPrice: rentRangeValues[0],
@@ -78,7 +78,7 @@ const PropertySearch: React.FC = () => {
   });
   const { data: saleData } = useQuery(GET_PROPERTIES, {
     variables: {
-      property: selectedPropertySale,
+      property: selectedPropertySale?.toLowerCase(),
       sale: "sale",
       place: selectedLocationSale,
       minPrice: saleRangeValues[0],

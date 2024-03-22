@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const menuList = ["offices", "shops", "warehouses", "catering"];
+export const menuList = ["Offices", "Shops", "Warehouses", "Catering"];
 
 export const location = [
   "Zvezdara",
