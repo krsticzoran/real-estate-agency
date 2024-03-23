@@ -1,0 +1,4 @@
+.privacy-policy p,
+.privacy-policy li {
+  opacity: 0.5 !important;
+}

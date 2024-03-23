@@ -28,6 +28,7 @@ import DashboardPropertiesAll from "./pages/dashboard/properties/DashboardProper
 
 import CustomCursor from "./components/animated/cursor/Cursor";
 import AnimatedWrapper from "./components/animated/AnimatedWrapper";
+import PrivacyPolicy from "./pages/privacy/PrivacyPolicy";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/about-us" element={<AboutUs />} />
                   <Route path="/login" element={<LoginPage />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
                 <Footer />
