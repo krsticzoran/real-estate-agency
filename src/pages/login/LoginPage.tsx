@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./login.css";
-import Button from "react-bootstrap/Button";
+
 import Form from "react-bootstrap/Form";
 
 import { gql } from "graphql-tag";
@@ -9,6 +9,7 @@ import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
 import { useAuth } from "../../context/AuthContext";
+import LoginWrapper from "./LoginWrapper";
 
 const GET_USER = gql`
   query GetUser($user: String!, $password: String!) {
@@ -60,56 +61,45 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="login-container">
-      <div className="container">
-        <div className="row justify-content-center ">
-          <div className="col-lg-5">
-            <div className="card">
-              <div className="card-body">
-                <Form onSubmit={handleSubmitform} className="login-form">
-                  <Form.Group className="mb-3">
-                    <Form.Label htmlFor="user">Username</Form.Label>
-                    <Form.Control
-                      type="text"
-                      id="user"
-                      name="user"
-                      value={formData.user}
-                      onChange={handleChange}
-                      placeholder="Enter username"
-                    />
-                  </Form.Group>
+    <LoginWrapper>
+      <Form onSubmit={handleSubmitform} className="login-form">
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="user">Username</Form.Label>
+          <Form.Control
+            type="text"
+            id="user"
+            name="user"
+            value={formData.user}
+            onChange={handleChange}
+            placeholder="Enter username"
+          />
+        </Form.Group>
 
-                  <Form.Group className="mb-3">
-                    <Form.Label htmlFor="password">Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      id="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="Password"
-                    />
-                  </Form.Group>
-
-                  <Button
-                    className="login-button"
-                    variant="primary"
-                    type="submit"
-                  >
-                    Submit
-                  </Button>
-                  {authError && (
-                    <p className="text-danger mt-2">
-                      Please choose a valid username and password.
-                    </p>
-                  )}
-                </Form>
-              </div>
-            </div>
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+          />
+        </Form.Group>
+        {authError && (
+          <div className="d-flex justify-content-center">
+            <p className="text-danger mt-2">
+              Please choose a valid username and password.
+            </p>
           </div>
+        )}
+        <div className="d-flex justify-content-center">
+          <button className="login-button" type="submit">
+            Submit
+          </button>
         </div>
-      </div>
-    </div>
+      </Form>
+    </LoginWrapper>
   );
 };
 
