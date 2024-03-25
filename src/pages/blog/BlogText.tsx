@@ -30,7 +30,7 @@ const BlogText: FC = () => {
   const blog = data?.blogText ?? {};
 
   return (
-    <AnimatedWrapper delay={0.5}>
+    <AnimatedWrapper delay={0.7}>
       <div className="blog-text-container-height">
         <Container>
           <div className="blog-title-section">
