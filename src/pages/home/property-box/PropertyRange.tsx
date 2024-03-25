@@ -3,7 +3,7 @@ import { Range } from "react-range";
 
 interface PriceRangeSliderProps {
   setRangeValues: React.Dispatch<React.SetStateAction<[number, number]>>;
-  rangeValues: [number, number];
+  rangeValues: number[];
   max: number;
   step: number;
 }

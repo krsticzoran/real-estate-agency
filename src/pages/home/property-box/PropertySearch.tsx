@@ -4,96 +4,45 @@ import Select from "./Select";
 import MultiRangeSlider from "./PropertyRange";
 import { menuList, location } from "../../../assets/data/myData";
 import "./property-box.css";
-import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
+import { useSearchProperty } from "../../../hook/useSearchProperty";
 
-const GET_PROPERTIES = gql`
-  query GetProperties(
-    $property: String!
-    $sale: String!
-    $minPrice: Int!
-    $maxPrice: Int!
-    $place: String!
-  ) {
-    search(
-      property: $property
-      sale: $sale
-      place: $place
-      minPrice: $minPrice
-      maxPrice: $maxPrice
-    ) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      date
-      img
-    }
-  }
-`;
+type valueType =
+  | string
+  | [number, number]
+  | ((prevRange: [number, number]) => [number, number]);
 
 const PropertySearch: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<string>("rent");
-  const [selectedLocation, setSelectedLocaction] = useState<string>("All");
-  const [selectedProperty, setSelectedProperty] = useState<string>("All");
-  const [selectedLocationSale, setSelectedLocactionSale] =
-    useState<string>("All");
-  const [selectedPropertySale, setSelectedPropertySale] =
-    useState<string>("All");
-  const [rentRangeValues, setRentRangeValues] = useState<[number, number]>([
-    0, 100000,
-  ]);
-  const [saleRangeValues, setSaleRangeValues] = useState<[number, number]>([
-    0, 1000000,
-  ]);
 
-  const handleLocationChange = (value: string) => {
-    setSelectedLocaction(value);
-  };
-  const handlePropertyChange = (value: string) => {
-    setSelectedProperty(value);
-  };
-
-  const handleLocationChangeSale = (value: string) => {
-    setSelectedLocactionSale(value);
-  };
-  const handlePropertyChangeSale = (value: string) => {
-    setSelectedPropertySale(value);
-  };
-
-  const { data: rentData } = useQuery(GET_PROPERTIES, {
-    variables: {
-      property: selectedProperty?.toLowerCase(),
-      sale: "rent",
-      place: selectedLocation,
-      minPrice: rentRangeValues[0],
-      maxPrice: rentRangeValues[1],
-    },
-    context: { clientName: "endpoint2" },
+  const [formData, setFormData] = useState({
+    activeTab: "rent",
+    selectedLocation: "All",
+    selectedProperty: "All",
+    slelectedRangeValues: [0, 5000],
+    selectedLocationSale: "All",
+    selectedPropertySale: "All",
+    slelectedRangeValuesSale: [0, 2000000],
   });
-  const { data: saleData } = useQuery(GET_PROPERTIES, {
-    variables: {
-      property: selectedPropertySale?.toLowerCase(),
-      sale: "sale",
-      place: selectedLocationSale,
-      minPrice: saleRangeValues[0],
-      maxPrice: saleRangeValues[1],
-    },
-    context: { clientName: "endpoint2" },
-  });
-  let data = rentData;
 
-  function handleSearch(activeTab: string): void {
-    if (activeTab === "sale") {
-      data = saleData;
-    }
+  const formDataHandler = (identifier: string, value: valueType) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [identifier]: value,
+    }));
+  };
+
+  const rentData = useSearchProperty(formData, "rent");
+  const saleData = useSearchProperty(formData, "sale");
+
+  const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = formData.activeTab === "rent" ? rentData : saleData;
+
     navigate("/search", { state: { data } });
-  }
+  };
 
   return (
     <div className="col-md-6 col-sm-12 col-xs-12  property-input-box ">
@@ -103,13 +52,15 @@ const PropertySearch: React.FC = () => {
             <Tabs
               defaultActiveKey="rent"
               id="property-tabs"
-              activeKey={activeTab}
-              onSelect={(tab) => setActiveTab(tab as string)}
+              activeKey={formData.activeTab}
+              onSelect={(value: string | null) =>
+                formDataHandler("activeTab", value as string)
+              }
             >
               <Tab
                 eventKey="rent"
                 title={
-                  activeTab === "rent" ? (
+                  formData.activeTab === "rent" ? (
                     <div className="property-active-tab">
                       <i className="fa fa-check" /> For rent
                     </div>
@@ -118,39 +69,41 @@ const PropertySearch: React.FC = () => {
                   )
                 }
               >
-                <Form>
+                <Form onSubmit={formSubmit}>
                   <Select
                     selectionData={location}
                     onData="Select Desired Locality"
                     labelValue="LOCATION"
-                    onValueChange={handleLocationChange}
+                    onValueChange={(value) =>
+                      formDataHandler("selectedLocation", value)
+                    }
                   />
                   <Select
                     selectionData={menuList}
                     onData="Select Property Type"
                     labelValue="PROPERTY TYPE"
-                    onValueChange={handlePropertyChange}
+                    onValueChange={(value) =>
+                      formDataHandler("selectedProperty", value)
+                    }
                   />
+
                   <div className="property-range">
                     <MultiRangeSlider
-                      rangeValues={rentRangeValues}
-                      setRangeValues={setRentRangeValues}
-                      max={100000}
-                      step={1000}
+                      rangeValues={formData.slelectedRangeValues}
+                      setRangeValues={(value) =>
+                        formDataHandler("slelectedRangeValues", value)
+                      }
+                      max={5000}
+                      step={50}
                     />
                   </div>
-                  <button
-                    className="property-btn"
-                    onClick={() => handleSearch("rent")}
-                  >
-                    Search
-                  </button>
+                  <button className="property-btn">Search</button>
                 </Form>
               </Tab>
               <Tab
                 eventKey="sale"
                 title={
-                  activeTab === "sale" ? (
+                  formData.activeTab === "sale" ? (
                     <div className="property-active-tab">
                       <i className="fa fa-check" /> For sale
                     </div>
@@ -159,33 +112,36 @@ const PropertySearch: React.FC = () => {
                   )
                 }
               >
-                <Form>
+                <Form onSubmit={formSubmit}>
                   <Select
                     selectionData={location}
                     onData="Select Desired Locality"
                     labelValue="LOCATION"
-                    onValueChange={handleLocationChangeSale}
+                    onValueChange={(value) =>
+                      formDataHandler("selectedLocationSale", value)
+                    }
                   />
                   <Select
                     selectionData={menuList}
                     onData="Select Property Type"
                     labelValue="PROPERTY TYPE"
-                    onValueChange={handlePropertyChangeSale}
+                    onValueChange={(value) =>
+                      formDataHandler("selectedPropertySale", value)
+                    }
                   />
+
                   <div className="property-range">
+                    {" "}
                     <MultiRangeSlider
-                      rangeValues={saleRangeValues}
-                      setRangeValues={setSaleRangeValues}
-                      max={1000000}
+                      rangeValues={formData.slelectedRangeValuesSale}
+                      setRangeValues={(value) =>
+                        formDataHandler("slelectedRangeValuesSale", value)
+                      }
+                      max={2000000}
                       step={10000}
                     />
                   </div>
-                  <button
-                    className="property-btn"
-                    onClick={() => handleSearch("sale")}
-                  >
-                    Search
-                  </button>
+                  <button className="property-btn">Search</button>
                 </Form>
               </Tab>
             </Tabs>
