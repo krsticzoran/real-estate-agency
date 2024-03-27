@@ -31,6 +31,7 @@ const LoginPage = () => {
   const [authError, setAuthError] = useState(false);
 
   const handleChange = (event: { target: { name: any; value: any } }) => {
+    setAuthError(false);
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
@@ -72,6 +73,8 @@ const LoginPage = () => {
             value={formData.user}
             onChange={handleChange}
             placeholder="Enter username"
+            required
+            minLength={5}
           />
         </Form.Group>
 
@@ -84,6 +87,7 @@ const LoginPage = () => {
             value={formData.password}
             onChange={handleChange}
             placeholder="Password"
+            required
           />
         </Form.Group>
         {authError && (
