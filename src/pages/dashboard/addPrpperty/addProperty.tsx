@@ -3,101 +3,23 @@ import { Col, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/client";
 import axios from "axios";
 import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
-
-interface FormData {
-  sale: string;
-  property: string;
-  place: string;
-  price: number;
-  square: number;
-  img: string;
-  num: number;
-  img1: string;
-  img2: string;
-  img3: string;
-  date: string;
-}
-
-const currentDate = new Date();
-
-const day = currentDate.getDate().toString().padStart(2, "0");
-const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
-const year = currentDate.getFullYear();
-
-const formattedDate = `${day}.${month}.${year}`;
-
-const defaultFormData = {
-  sale: "sale",
-  property: "offices",
-  place: "Zvezdara",
-  price: 0,
-  square: 0,
-  img: "",
-  img1: "",
-  img2: "",
-  img3: "",
-  num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
-  date: formattedDate,
-  specialist: "marko",
-};
-
-const ADD_PROPERTY = gql`
-  mutation AddProperty(
-    $sale: String!
-    $specialist: String!
-    $property: String!
-    $place: String!
-    $price: Int!
-    $square: Int!
-    $img: String!
-    $img1: String!
-    $img2: String!
-    $img3: String!
-    $date: String!
-    $num: Int!
-  ) {
-    addProperty(
-      sale: $sale
-      property: $property
-      place: $place
-      price: $price
-      square: $square
-      img: $img
-      img1: $img1
-      img2: $img2
-      img3: $img3
-      num: $num
-      date: $date
-      specialist: $specialist
-    ) {
-      sale
-      property
-      place
-      price
-      square
-      img
-      num
-      specialist
-    }
-  }
-`;
+import useAddPropertyMutation from "../../../hook/useAddproperty";
+import { location } from "../../../assets/data/myData";
+import { menuList as propertyTypes } from "../../../assets/data/myData";
+import { addPropertydefaultData as defaultFormData } from "../../../assets/data/myData";
 
 const AddProperty: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const [formData, setFormData] = useState<FormData>(defaultFormData);
+  const [formData, setFormData] = useState(defaultFormData);
   const file1Ref = useRef<HTMLInputElement>(null);
   const file2Ref = useRef<HTMLInputElement>(null);
   const file3Ref = useRef<HTMLInputElement>(null);
   const file4Ref = useRef<HTMLInputElement>(null);
 
-  const [executeMutation] = useMutation(ADD_PROPERTY, {
-    context: { clientName: "endpoint2" },
-  });
+  const executeMutation = useAddPropertyMutation();
 
   const handleInputChange = (
     event: React.ChangeEvent<
@@ -184,7 +106,6 @@ const AddProperty: FC = () => {
     }
 
     try {
-      console.log(formData);
       const { data } = await executeMutation({ variables: formData });
 
       // Check if the data object has the expected structure indicating success
@@ -247,10 +168,11 @@ const AddProperty: FC = () => {
             value={formData.property}
             onChange={handleInputChange}
           >
-            <option value="offices">Office</option>
-            <option value="shops">Shop</option>
-            <option value="warehouses">Warehouse</option>
-            <option value="catering">Catering</option>
+            {propertyTypes.map((property, index) => (
+              <option key={index} value={property.toLocaleLowerCase()}>
+                {property}
+              </option>
+            ))}
           </Form.Select>
 
           <Form.Label htmlFor="location" className="pt-4">
@@ -263,12 +185,11 @@ const AddProperty: FC = () => {
             value={formData.place}
             onChange={handleInputChange}
           >
-            <option value="Zvezdara">Zvezdara</option>
-            <option value="Novi Beograd">Novi Beograd</option>
-            <option value="Savski venac">Savski venac</option>
-            <option value="Palilula">Palilula</option>
-            <option value="Stari grad">Stari grad</option>
-            <option value="Mladenovac">Mladenovac</option>
+            {location.map((location, index) => (
+              <option key={index} value={location}>
+                {location}
+              </option>
+            ))}
           </Form.Select>
 
           <Row className="pt-4">
@@ -301,6 +222,7 @@ const AddProperty: FC = () => {
                   type="file"
                   ref={file1Ref}
                   onChange={handleFileChange}
+                  required
                 />
               </Form.Group>
             </Col>
@@ -311,6 +233,7 @@ const AddProperty: FC = () => {
                   type="file"
                   ref={file2Ref}
                   onChange={handleFileChange}
+                  required
                 />
               </Form.Group>
             </Col>
@@ -323,6 +246,7 @@ const AddProperty: FC = () => {
                   type="file"
                   ref={file3Ref}
                   onChange={handleFileChange}
+                  required
                 />
               </Form.Group>
             </Col>
@@ -333,6 +257,7 @@ const AddProperty: FC = () => {
                   type="file"
                   ref={file4Ref}
                   onChange={handleFileChange}
+                  required
                 />
               </Form.Group>
             </Col>

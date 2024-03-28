@@ -40,3 +40,26 @@ export interface User {
   propreties: number;
   img: string;
 }
+
+const currentDate = new Date();
+
+const day = currentDate.getDate().toString().padStart(2, "0");
+const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+const year = currentDate.getFullYear();
+
+const formattedDate = `${day}.${month}.${year}`;
+
+export const addPropertydefaultData = {
+  sale: "sale",
+  property: "offices",
+  place: "Zvezdara",
+  price: 0,
+  square: 0,
+  img: "",
+  img1: "",
+  img2: "",
+  img3: "",
+  num: parseInt(Date.now().toString().substring(6, 12), 10) || 1000,
+  date: formattedDate,
+  specialist: "marko",
+};
