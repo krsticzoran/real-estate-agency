@@ -8,7 +8,7 @@ const { schemaRealEstate } = require("./schema/realestate");
 const { schemaBlog } = require("./schema/blog");
 const { schemaAuth } = require("./schema/auth");
 const multer = require("multer");
-const path = require("path"); // Import the 'path' module
+const path = require("path");
 
 dotenv.config();
 
@@ -17,11 +17,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "../public_html"))); // Serve static files
+app.use(express.static(path.join(__dirname, "../public")));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    return cb(null, "../public_html/img/property");
+    return cb(null, "../public/img/property");
   },
   filename: function (req, file, cb) {
     return cb(null, file.originalname);
@@ -100,7 +100,7 @@ async function connectToMongoDB() {
     );
 
     app.get("*", function (req, res) {
-      res.sendFile(path.join(__dirname, "../public_html", "index.html"));
+      res.sendFile(path.join(__dirname, "../public", "index.html"));
     });
 
     const port = 8000;

@@ -1,5 +1,8 @@
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = require("graphql");
 const { Collection, Db } = require("mongodb");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const secretKey = process.env.SECRET_KEY;
 
 const AuthType = new GraphQLObjectType({
   name: "Auth",
@@ -23,10 +26,13 @@ function schemaAuth(database) {
           password: { type: GraphQLString },
         },
         resolve(parentValue, args) {
-          return collection.findOne({
+          const token = jwt.sign({ user: args.user }, secretKey);
+
+          return {
             user: args.user,
             password: args.password,
-          });
+            id: token,
+          };
         },
       },
     },
