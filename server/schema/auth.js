@@ -25,7 +25,17 @@ function schemaAuth(database) {
           user: { type: GraphQLString },
           password: { type: GraphQLString },
         },
-        resolve(parentValue, args) {
+        async resolve(parentValue, args) {
+          const userRecord = await collection.findOne({ user: args.user });
+
+          if (!userRecord) {
+            throw new Error("User is not found!");
+          }
+
+          if (args.password !== userRecord.password) {
+            throw new Error("Wrong password!");
+          }
+
           const token = jwt.sign({ user: args.user }, secretKey);
 
           return {
