@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./dashboard.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
-import { useAuth } from "../../context/AuthContext";
 import Menu from "./menu/Menu";
 import Header from "./header/Header";
 import UnauthorizedAccess from "./unauthorizedAccess/UnauthorizedAccess";
 import { Container, Row } from "react-bootstrap";
 import ProgressBar from "./progressBar/ProgressBar";
+import { useIsValidToken } from "../../hook/useIsAdmin";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const isAdminAuthenticated = Cookies.get("admin") === "admin123456";
-  const { setAuthenticated } = useAuth();
+  const isAdminAuthenticated = useIsValidToken();
 
   const logout = () => {
     Cookies.remove("admin");
-    setAuthenticated(false);
+
     navigate("/");
   };
 

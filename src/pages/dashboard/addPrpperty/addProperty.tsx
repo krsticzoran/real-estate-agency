@@ -90,13 +90,12 @@ const AddProperty: FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     console.log(event);
     event.preventDefault();
-    if (
-      !formData.price ||
-      !formData.square ||
-      isNaN(Number(formData.price)) ||
-      isNaN(Number(formData.square))
-    ) {
-      alert("Please insert valid data");
+    if (!formData.square || isNaN(Number(formData.square))) {
+      alert("Please insert valid square");
+      return;
+    }
+    if (!formData.price || isNaN(Number(formData.price))) {
+      alert("Please insert valid price");
       return;
     }
 

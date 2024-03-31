@@ -8,7 +8,7 @@ import { gql } from "graphql-tag";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router";
 import Cookies from "js-cookie";
-import { useAuth } from "../../context/AuthContext";
+
 import LoginWrapper from "./LoginWrapper";
 
 const GET_USER = gql`
@@ -23,7 +23,6 @@ const GET_USER = gql`
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { setAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     user: "admin",
     password: "admin81",
@@ -45,7 +44,7 @@ const LoginPage = () => {
       if (result.data?.findUser.user) {
         setFormData({ user: "", password: "" });
         Cookies.set("admin", result.data?.findUser.id, { expires: 7 });
-        setAuthenticated(true);
+
         navigate("/dashboard");
       } else {
         console.log("nooo");

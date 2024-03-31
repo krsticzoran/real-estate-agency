@@ -6,13 +6,13 @@ import "./header.css";
 import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { useAuth } from "../../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
+import { useIsValidToken } from "../../hook/useIsAdmin";
 
 const NavbarComponent: React.FC = () => {
   const location = useLocation();
   const { pathname } = location;
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useIsValidToken();
 
   const isSmallScreen = useMediaQuery({ maxWidth: 991 });
   return (

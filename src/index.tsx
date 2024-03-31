@@ -12,7 +12,6 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
-import { AuthProvider } from "./context/AuthContext";
 
 const endpoint1 = new HttpLink({
   uri: "https://www.real-estate-react.com/graphql",
@@ -27,7 +26,7 @@ const endpoint3 = new HttpLink({
 });
 
 const endpoint4 = new HttpLink({
-  uri: "https://www.real-estate-react.com/auth",
+  uri: "http://localhost:8000/auth",
 });
 
 const client = new ApolloClient({
@@ -55,9 +54,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <App />
     </ApolloProvider>
   </React.StrictMode>
 );
