@@ -1,4 +1,10 @@
-const { GraphQLObjectType, GraphQLString, GraphQLSchema } = require("graphql");
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLSchema,
+  GraphQLNonNull,
+} = require("graphql");
+
 const { Collection, Db } = require("mongodb");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -10,6 +16,15 @@ const AuthType = new GraphQLObjectType({
     user: { type: GraphQLString },
     password: { type: GraphQLString },
     id: { type: GraphQLString },
+  }),
+});
+
+const UserType = new GraphQLObjectType({
+  name: "User",
+  fields: () => ({
+    id: { type: GraphQLString },
+    user: { type: GraphQLString },
+    token: { type: GraphQLString },
   }),
 });
 
@@ -43,6 +58,25 @@ function schemaAuth(database) {
             password: args.password,
             id: token,
           };
+        },
+      },
+      verifyToken: {
+        type: UserType,
+        args: {
+          token: { type: new GraphQLNonNull(GraphQLString) },
+        },
+        resolve(parentValue, args) {
+          try {
+            const decoded = jwt.verify(args.token, secretKey);
+
+            return {
+              id: decoded.user,
+              user: decoded.user,
+              token: args.token,
+            };
+          } catch (error) {
+            throw new Error("Invalid or expired token");
+          }
         },
       },
     },
