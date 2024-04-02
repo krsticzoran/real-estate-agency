@@ -26,7 +26,7 @@ const endpoint3 = new HttpLink({
 });
 
 const endpoint4 = new HttpLink({
-  uri: "http://localhost:8000/auth",
+  uri: "https://www.real-estate-react.com/auth",
 });
 
 const client = new ApolloClient({

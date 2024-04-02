@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 import DashboardPropertiesView from "../../../components/dashboard/DashboardPropertiesView";
+import { useIsValidToken } from "../../../hook/useIsAdmin";
+import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
 
 const GET_PROPERTIES = gql`
   query GetProperties($property: String!, $sale: String!) {
@@ -20,13 +22,20 @@ const GET_PROPERTIES = gql`
 `;
 
 const DashboardProperties: FC = () => {
+  const isAdmin = useIsValidToken();
   const location = useLocation();
-  const { property, sale } = location.state?.data[0];
+  const propertyData = location.state?.data[0] || [];
 
-  const { data } = useQuery(GET_PROPERTIES, {
+  const { property = "", sale = "" } = propertyData;
+
+  const { data, error } = useQuery(GET_PROPERTIES, {
     variables: { property, sale },
     context: { clientName: "endpoint2" },
   });
+
+  if (error || !isAdmin) {
+    return <UnauthorizedAccess />;
+  }
 
   return <DashboardPropertiesView data={data?.property} />;
 };

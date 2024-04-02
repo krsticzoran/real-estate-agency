@@ -16,6 +16,7 @@ export function useIsValidToken() {
 
   useEffect(() => {
     const token = Cookies.get("admin");
+
     if (token) {
       validateToken({ variables: { token } });
     }
@@ -25,7 +26,7 @@ export function useIsValidToken() {
     onCompleted: (data) => {
       setIsValidToken(data.verifyToken.user === "admin");
     },
-    onError: () => {
+    onError: (error) => {
       setIsValidToken(false);
     },
     context: { clientName: "endpoint4" },
