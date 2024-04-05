@@ -6,9 +6,13 @@ import Commercial from "./commercial/Commercial";
 import Social from "./social/Social";
 import Featured from "./featured/Featured";
 import ParalexImg from "./parallax-img/ParallaxImg";
+import BackToTopButton from "./backToTopButton/BackToTopButton";
+import { Container } from "react-bootstrap";
+import { useMediaQuery } from "react-responsive";
 
 const HomePage: React.FC = () => {
   const [showComponents, setShowComponents] = useState(false);
+  const isLargeScreen = useMediaQuery({ minWidth: 1200 });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,7 +23,7 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh", position: "relative" }}>
       <PropertyBox />
       {showComponents && (
         <>
@@ -28,6 +32,7 @@ const HomePage: React.FC = () => {
           <ParalexImg />
           <Social />
           <Featured />
+          {isLargeScreen && <BackToTopButton />}
         </>
       )}
     </div>
