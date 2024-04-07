@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import AboutLeft from "./AboutLeft";
 import { MemoryRouter } from "react-router";
+import "intersection-observer";
 
 test("render AboutLeft component", () => {
   render(
@@ -28,7 +29,7 @@ test("render AboutLeft component", () => {
 
   expect(
     screen.getByRole("button", {
-      name: /Read more./i,
+      name: /Read more/i,
     })
   ).toBeInTheDocument();
 });

@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import BlogList from "./BlogList";
+import "intersection-observer";
 
-// Mock the Apollo Client functions/hooks
 jest.mock("@apollo/client", () => {
   const actualApolloClient = jest.requireActual("@apollo/client");
 

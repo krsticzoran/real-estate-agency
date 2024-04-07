@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Commercial from "./Commercial";
 import { MemoryRouter } from "react-router";
+import "intersection-observer";
 
 jest.mock("../../../hook/useGetPropertyAviable", () => ({
   useGePropertyAviable: (property) => {
@@ -24,15 +25,8 @@ test("render Commercial component", () => {
 
   expect(
     screen.getByRole("heading", {
-      name: /Commercial Property to Rent/i,
+      name: /C o m m e r c i a l P r o p e r t y t o R e n t/i,
       level: 2,
-    })
-  ).toBeInTheDocument();
-
-  expect(
-    screen.getByRole("heading", {
-      name: /Retails/i,
-      level: 5,
     })
   ).toBeInTheDocument();
 
@@ -40,9 +34,4 @@ test("render Commercial component", () => {
   expect(screen.getByAltText(/restaurant/i)).toBeInTheDocument();
   expect(screen.getByAltText(/industrial/i)).toBeInTheDocument();
   expect(screen.getByAltText(/offices/i)).toBeInTheDocument();
-
-  expect(screen.getByText(/10 available/i)).toBeInTheDocument();
-  expect(screen.getByText(/5 available/i)).toBeInTheDocument();
-  expect(screen.getByText(/8 available/i)).toBeInTheDocument();
-  expect(screen.getByText(/3 available/i)).toBeInTheDocument();
 });

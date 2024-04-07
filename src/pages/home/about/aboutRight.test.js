@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import AboutRight from "./AboutRight";
+import "intersection-observer";
 
 test("render AboutRight component", () => {
   render(<AboutRight />);

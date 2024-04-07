@@ -2,6 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import Team from "./Team";
 import { MemoryRouter } from "react-router";
+import "intersection-observer";
 
 jest.mock("@apollo/client", () => {
   const actualApolloClient = jest.requireActual("@apollo/client");

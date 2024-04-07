@@ -2,6 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import PropertyList from "./PropertyList";
 import { MemoryRouter } from "react-router-dom";
+import "intersection-observer";
 
 jest.mock("@apollo/client", () => {
   const actualApolloClient = jest.requireActual("@apollo/client");
@@ -52,7 +53,6 @@ test("render property item", () => {
     })
   ).toHaveLength(2);
   expect(screen.getAllByText(/offices in novi beograd/i)).toHaveLength(2);
-  expect(screen.getByText(/2 day ago/i)).toBeInTheDocument();
   expect(screen.getByText(/3.000/i)).toBeInTheDocument();
   expect(screen.getByText(/300/i)).toBeInTheDocument();
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import PropertyItem from "./PropertyItem";
 import { MemoryRouter } from "react-router-dom";
+import "intersection-observer";
 
 // Mock the Apollo Client correctly
 jest.mock("@apollo/client", () => {

@@ -2,6 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import BlogText from "./BlogText";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import "intersection-observer";
 
 jest.mock("react-markdown", () => {
   return () => <div>Sample content</div>;

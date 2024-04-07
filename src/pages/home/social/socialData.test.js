@@ -1,6 +1,7 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import SocialData from "./SocialData";
+import "intersection-observer";
 
 test("render social data component", () => {
   render(<SocialData />);
