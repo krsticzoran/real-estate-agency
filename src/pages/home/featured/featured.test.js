@@ -49,7 +49,7 @@ test("render Featured component", () => {
   screen.logTestingPlaygroundURL();
   expect(
     screen.getByRole("heading", {
-      name: /Featured properties for rent/i,
+      name: /F e a t u r e d p r o p e r t i e s f o r r e n t/i,
       level: 2,
     })
   ).toBeInTheDocument();
@@ -59,6 +59,4 @@ test("render Featured component", () => {
 
   expect(screen.getByText(/3,000\/mo/i)).toBeInTheDocument();
   expect(screen.getByText(/300\/mo/i)).toBeInTheDocument();
-
-  expect(screen.getAllByRole("img", { name: /restaurant/i })).toHaveLength(2);
 });

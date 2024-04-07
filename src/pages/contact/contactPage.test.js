@@ -11,7 +11,7 @@ test("renders contact page", () => {
   expect(
     screen.getByRole("heading", {
       level: 1,
-      name: /Contact Real Estate Belgrade/i,
+      name: /C o n t a c t R e a l E s t a t e B e l g r a d e/i,
     })
   ).toBeInTheDocument();
 

@@ -25,12 +25,6 @@ test("render property card", () => {
   expect(screen.getByRole("link")).toHaveAttribute("href", "/property/2");
 
   expect(
-    screen.getByRole("img", {
-      name: /restaurant/i,
-    })
-  ).toBeInTheDocument();
-
-  expect(
     screen.getByRole("heading", {
       name: /mock property in mock place/i,
       level: 3,

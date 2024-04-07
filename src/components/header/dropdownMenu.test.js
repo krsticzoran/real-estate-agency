@@ -8,7 +8,11 @@ const menuList = ["offices", "shops", "warehouses", "catering"];
 test("render dropdown menu component", () => {
   render(
     <MemoryRouter>
-      <DropdownMenu onData={menuList} page="rent" />
+      <DropdownMenu
+        onData={menuList}
+        page="rent"
+        eventKey={menuList.map((_, index) => index)}
+      />
     </MemoryRouter>
   );
 

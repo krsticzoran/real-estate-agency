@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import { AuthProvider } from "../../context/AuthContext";
+import * as useIsAdminModule from "../../hook/useIsAdmin"; // Import the entire module
 import NavbarComponent from "./NavbarComponent";
 
 jest.mock("./DropdownMenu", () => {
@@ -11,10 +11,8 @@ jest.mock("./DropdownMenu", () => {
 });
 
 test("render navbar component with Login link when not authenticated", () => {
-  // Spy on the useAuth hook to return isAuthenticated as false
-  jest
-    .spyOn(require("../../context/AuthContext"), "useAuth")
-    .mockReturnValue({ isAuthenticated: false });
+  const mockUseIsValidToken = jest.spyOn(useIsAdminModule, "useIsValidToken");
+  mockUseIsValidToken.mockReturnValue(false);
 
   render(
     <MemoryRouter>
@@ -40,15 +38,12 @@ test("render navbar component with Login link when not authenticated", () => {
     })
   ).toBeInTheDocument();
 
-  // Restore the original implementation of useAuth
-  jest.restoreAllMocks();
+  mockUseIsValidToken.mockRestore();
 });
 
 test("render navbar component with Dashboard link when authenticated", () => {
-  // Spy on the useAuth hook to return isAuthenticated as true
-  jest
-    .spyOn(require("../../context/AuthContext"), "useAuth")
-    .mockReturnValue({ isAuthenticated: true });
+  const mockUseIsValidToken = jest.spyOn(useIsAdminModule, "useIsValidToken");
+  mockUseIsValidToken.mockReturnValue(true);
 
   render(
     <MemoryRouter>
@@ -56,13 +51,11 @@ test("render navbar component with Dashboard link when authenticated", () => {
     </MemoryRouter>
   );
 
-  // Ensure that the Dashboard link is rendered
   expect(
     screen.getByRole("link", {
       name: /dashboard/i,
     })
   ).toBeInTheDocument();
 
-  // Restore the original implementation of useAuth
-  jest.restoreAllMocks();
+  mockUseIsValidToken.mockRestore();
 });

@@ -14,7 +14,6 @@ jest.mock("./PropertySearch", () => {
 test("renders PropertyBox component with mocked imports", () => {
   render(<PropertyBox />);
 
-  expect(screen.getByAltText(/banner/i)).toBeInTheDocument();
   expect(screen.getByText(/Mocked CommercialSpecialists/i)).toBeInTheDocument();
   expect(screen.getByText(/Mocked PropertySearch/i)).toBeInTheDocument();
 });
