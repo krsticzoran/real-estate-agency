@@ -14,19 +14,19 @@ import {
 import { ApolloProvider } from "@apollo/client";
 
 const endpoint1 = new HttpLink({
-  uri: "https://www.real-estate-react.com/graphql",
+  uri: "http://localhost:3000/graphql",
 });
 
 const endpoint2 = new HttpLink({
-  uri: "https://www.real-estate-react.com/realestate",
+  uri: "http://localhost:3000/realestate",
 });
 
 const endpoint3 = new HttpLink({
-  uri: "https://www.real-estate-react.com/bloggraphql",
+  uri: "http://localhost:3000/bloggraphql",
 });
 
 const endpoint4 = new HttpLink({
-  uri: "https://www.real-estate-react.com/auth",
+  uri: "http://localhost:3000/auth",
 });
 
 const client = new ApolloClient({
