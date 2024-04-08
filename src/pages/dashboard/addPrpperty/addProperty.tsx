@@ -5,7 +5,10 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
-import useAddPropertyMutation from "../../../hook/useAddproperty";
+import useGraphQLMutation, {
+  ADD_PROPERTY,
+} from "../../../hook/useGraphQLMutation";
+
 import { location } from "../../../assets/data/myData";
 import { menuList as propertyTypes } from "../../../assets/data/myData";
 import { addPropertydefaultData as defaultFormData } from "../../../assets/data/myData";
@@ -23,7 +26,7 @@ const AddProperty: FC = () => {
   const file3Ref = useRef<HTMLInputElement>(null);
   const file4Ref = useRef<HTMLInputElement>(null);
 
-  const executeMutation = useAddPropertyMutation();
+  const executeMutation = useGraphQLMutation(ADD_PROPERTY);
 
   const handleInputChange = (
     event: React.ChangeEvent<

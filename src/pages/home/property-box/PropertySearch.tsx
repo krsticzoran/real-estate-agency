@@ -6,7 +6,10 @@ import { menuList, location } from "../../../assets/data/myData";
 import "./property-box.css";
 import { useNavigate } from "react-router-dom";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
-import { useSearchProperty } from "../../../hook/useSearchProperty";
+import useGraphQLQuery, {
+  GET_PROPERTIES_FROM_SEARCH,
+} from "../../../hook/useGraphQLQuery";
+import { searchDataFormat } from "../../../assets/data/myData";
 
 type valueType =
   | string
@@ -33,13 +36,21 @@ const PropertySearch: React.FC = () => {
     }));
   };
 
-  const rentData = useSearchProperty(formData, "rent");
-  const saleData = useSearchProperty(formData, "sale");
+  const rentData = useGraphQLQuery(
+    GET_PROPERTIES_FROM_SEARCH,
+    searchDataFormat(formData, "rent"),
+    "endpoint2"
+  );
+  const saleData = useGraphQLQuery(
+    GET_PROPERTIES_FROM_SEARCH,
+    searchDataFormat(formData, "sale"),
+    "endpoint2"
+  );
 
   const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const data = formData.activeTab === "rent" ? rentData : saleData;
+    const data = formData?.activeTab === "rent" ? rentData : saleData;
 
     navigate("/search", { state: { data } });
   };

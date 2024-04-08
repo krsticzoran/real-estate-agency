@@ -5,16 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-bootstrap/Pagination";
 import { useMutation } from "@apollo/client";
-import gql from "graphql-tag";
-import BackToTheDashboard from "./BackToTheDashboard";
-
-const DELETE_PROPERTY = gql`
-  mutation DeleteProperty($num: Int!) {
-    deleteProperty(num: $num) {
-      num
-    }
-  }
-`;
+import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
+import { DELETE_PROPERTY } from "../../../hook/useGraphQLMutation";
+import "../dashboard.css";
 
 interface PropertyType {
   property: string;
@@ -32,19 +25,6 @@ interface DashboardPropertiesViewProps {
 
 const style = { color: "rgba(0, 0, 0, 0.05)", cursor: "pointer" };
 
-const buttonStyle = {
-  margin: "15px",
-  textDecoration: "none",
-  padding: "10px 15px",
-  backgroundColor: " rgba(0, 0, 0, 0.3)",
-  color: "#fff",
-  borderRadius: "5px",
-  display: "flex",
-  alignItems: "center",
-  cursor: "pointer",
-  transition: "background-color 0.3s ease",
-  width: "fit-content",
-};
 
 const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
   data = [],

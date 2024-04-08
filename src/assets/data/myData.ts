@@ -63,3 +63,33 @@ export const addPropertydefaultData = {
   date: formattedDate,
   specialist: "marko",
 };
+
+interface formDatatype {
+  activeTab: string;
+  selectedLocation: string;
+  selectedProperty: string;
+  slelectedRangeValues: number[];
+  selectedLocationSale: string;
+  selectedPropertySale: string;
+  slelectedRangeValuesSale: number[];
+}
+
+export function searchDataFormat(formData: formDatatype, value: string) {
+  const variables =
+    value === "rent"
+      ? {
+          property: formData.selectedProperty?.toLowerCase(),
+          sale: value,
+          place: formData.selectedLocation,
+          minPrice: formData.slelectedRangeValues[0],
+          maxPrice: formData.slelectedRangeValues[1],
+        }
+      : {
+          property: formData.selectedPropertySale?.toLowerCase(),
+          sale: value,
+          place: formData.selectedLocationSale,
+          minPrice: formData.slelectedRangeValuesSale[0],
+          maxPrice: formData.slelectedRangeValuesSale[1],
+        };
+  return variables;
+}

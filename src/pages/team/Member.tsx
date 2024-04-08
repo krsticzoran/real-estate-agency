@@ -6,9 +6,6 @@ import "./team.css";
 
 import { Link } from "react-router-dom";
 
-import { useGetUser } from "../../hook/useGetUser";
-import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
 import { Property } from "../../types";
 import PropertyCard from "../../components/property/PropertyCard";
 
@@ -18,33 +15,27 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-
-const GET_PROPERTIES = gql`
-  query GetProperties($specialist: String!) {
-    staff(specialist: $specialist) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      date
-      img
-    }
-  }
-`;
+import useGraphQLQuery, {
+  GET_USER,
+  GET_USERS_DATA,
+} from "../../hook/useGraphQLQuery";
 
 const Member: FC = () => {
   const { memberName } = useParams();
 
-  const user = useGetUser(memberName) ?? {};
+  const user = useGraphQLQuery(
+    GET_USERS_DATA,
+    { name: memberName },
+    "endpoint1"
+  );
 
-  const { data } = useQuery(GET_PROPERTIES, {
-    variables: { specialist: memberName },
-    context: { clientName: "endpoint2" },
-  });
+  const data = useGraphQLQuery(
+    GET_USER,
+    { specialist: memberName },
+    "endpoint2"
+  );
 
-  const properties = data?.staff ?? [];
+  const properties = data ?? [];
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 
@@ -77,7 +68,7 @@ const Member: FC = () => {
               {user.overview
                 ?.split(".")
                 .slice(0, -1)
-                .map((sentence) => (
+                .map((sentence: any) => (
                   <p>{sentence}.</p>
                 ))}
             </div>

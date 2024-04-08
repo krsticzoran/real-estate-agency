@@ -55,7 +55,7 @@ const LoginPage = () => {
     }
   };
 
-  const [getAuth, { data }] = useLazyQuery(GET_USER, {
+  const [getAuth] = useLazyQuery(GET_USER, {
     variables: { user: formData.user, password: formData.password },
     context: { clientName: "endpoint4" },
   });

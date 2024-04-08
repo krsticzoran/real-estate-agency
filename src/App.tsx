@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Routes,
-  BrowserRouter,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop/ScrolllToTop";
 import Header from "./components/header/Header";

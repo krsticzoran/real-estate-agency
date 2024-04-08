@@ -10,8 +10,7 @@ import AnimatedComponentList from "../../../components/animated/AnimatedComponen
 import AnimatedText from "../../../components/animated/AnimatedText";
 import CountUp from "react-countup";
 import { useInView } from "framer-motion";
-
-import { useGePropertyAviable } from "../../../hook/useGetPropertyAviable";
+import useGraphQLQuery, { GET_PROPERTIES } from "../../../hook/useGraphQLQuery";
 
 const arr = ["shops", "catering", "warehouses", "offices"];
 
@@ -22,11 +21,28 @@ const Commercial: FC = () => {
   const isInView = useInView(ref);
   const isInViewTwo = useInView(refTwo);
   const endValue = [
-    useGePropertyAviable(arr[0]),
-    useGePropertyAviable(arr[1]),
-    useGePropertyAviable(arr[2]),
-    useGePropertyAviable(arr[3]),
+    useGraphQLQuery(
+      GET_PROPERTIES,
+      { property: arr[0], sale: "rent" },
+      "endpoint2"
+    ).length,
+    useGraphQLQuery(
+      GET_PROPERTIES,
+      { property: arr[1], sale: "rent" },
+      "endpoint2"
+    ).length,
+    useGraphQLQuery(
+      GET_PROPERTIES,
+      { property: arr[2], sale: "rent" },
+      "endpoint2"
+    ).length,
+    useGraphQLQuery(
+      GET_PROPERTIES,
+      { property: arr[3], sale: "rent" },
+      "endpoint2"
+    ).length,
   ];
+
   return (
     <div className="commercial">
       <div className="d-flex justify-content-center ">

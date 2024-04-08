@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./dashboard.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";

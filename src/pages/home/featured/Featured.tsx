@@ -3,8 +3,6 @@ import { Container, Row } from "react-bootstrap";
 import "../about/about.css";
 import "./featured.css";
 
-import { gql, useQuery } from "@apollo/client";
-
 import { Property } from "../../../types";
 import PropertyCard from "../../../components/property/PropertyCard";
 
@@ -16,47 +14,18 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import AnimatedText from "../../../components/animated/AnimatedText";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
-
-const GET_PROPERTIES = gql`
-  query GetProperties(
-    $property: String!
-    $sale: String!
-    $minPrice: Int!
-    $maxPrice: Int!
-    $place: String!
-  ) {
-    search(
-      property: $property
-      sale: $sale
-      place: $place
-      minPrice: $minPrice
-      maxPrice: $maxPrice
-    ) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      img
-      date
-    }
-  }
-`;
+import useGraphQLQuery, {
+  GET_PROPERTIES_ALL,
+} from "../../../hook/useGraphQLQuery";
 
 const Featured: FC = () => {
-  const { data } = useQuery(GET_PROPERTIES, {
-    variables: {
-      property: "All",
-      sale: "rent",
-      place: "All",
-      minPrice: 0,
-      maxPrice: 1000000,
-    },
-    context: { clientName: "endpoint2" },
-  });
+  const data = useGraphQLQuery(
+    GET_PROPERTIES_ALL,
+    { sale: "rent" },
+    "endpoint2"
+  );
 
-  const properties = data?.search ?? [];
+  const properties = data ?? [];
 
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 

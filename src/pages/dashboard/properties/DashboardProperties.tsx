@@ -1,25 +1,10 @@
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-import DashboardPropertiesView from "../../../components/dashboard/DashboardPropertiesView";
+
+import DashboardPropertiesView from "./DashboardPropertiesView";
 import { useIsValidToken } from "../../../hook/useIsAdmin";
 import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
-
-const GET_PROPERTIES = gql`
-  query GetProperties($property: String!, $sale: String!) {
-    property(property: $property, sale: $sale) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      date
-      img
-    }
-  }
-`;
+import useGraphQLQuery, { GET_PROPERTIES } from "../../../hook/useGraphQLQuery";
 
 const DashboardProperties: FC = () => {
   const isAdmin = useIsValidToken();
@@ -28,16 +13,13 @@ const DashboardProperties: FC = () => {
 
   const { property = "", sale = "" } = propertyData;
 
-  const { data, error } = useQuery(GET_PROPERTIES, {
-    variables: { property, sale },
-    context: { clientName: "endpoint2" },
-  });
+  const data = useGraphQLQuery(GET_PROPERTIES, { property, sale }, "endpoint2");
 
-  if (error || !isAdmin) {
+  if (!isAdmin) {
     return <UnauthorizedAccess />;
   }
 
-  return <DashboardPropertiesView data={data?.property} />;
+  return <DashboardPropertiesView data={data} />;
 };
 
 export default DashboardProperties;

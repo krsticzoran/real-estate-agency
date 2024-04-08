@@ -13,7 +13,7 @@ import AnimatedComponentList from "../../components/animated/AnimatedComponentLi
 
 const Search: FC = () => {
   const location = useLocation();
-  const data = location.state?.data.search;
+  const data = location.state.data;
 
   return (
     <AnimatedWrapper delay={0.5}>

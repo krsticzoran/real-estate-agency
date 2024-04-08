@@ -7,7 +7,6 @@ import Social from "./social/Social";
 import Featured from "./featured/Featured";
 import ParalexImg from "./parallax-img/ParallaxImg";
 import BackToTopButton from "./backToTopButton/BackToTopButton";
-import { Container } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 
 const HomePage: React.FC = () => {

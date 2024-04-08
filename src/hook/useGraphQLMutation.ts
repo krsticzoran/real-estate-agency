@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 
-const ADD_PROPERTY = gql`
+export const ADD_PROPERTY = gql`
   mutation AddProperty(
     $sale: String!
     $specialist: String!
@@ -42,12 +42,20 @@ const ADD_PROPERTY = gql`
   }
 `;
 
-function useAddPropertyMutation() {
-  const [executeMutation] = useMutation(ADD_PROPERTY, {
+export const DELETE_PROPERTY = gql`
+  mutation DeleteProperty($num: Int!) {
+    deleteProperty(num: $num) {
+      num
+    }
+  }
+`;
+
+function useGraphQLMutation(query: any) {
+  const [executeMutation] = useMutation(query, {
     context: { clientName: "endpoint2" },
   });
 
   return executeMutation;
 }
 
-export default useAddPropertyMutation;
+export default useGraphQLMutation;

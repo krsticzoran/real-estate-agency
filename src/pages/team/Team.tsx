@@ -6,11 +6,11 @@ import { Card, Container, Row } from "react-bootstrap";
 import "./team.css";
 
 import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
 
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
 import AnimatedText from "../../components/animated/AnimatedText";
 import AnimatedHoverCard from "../../components/animated/AnimatedHoverCard";
+import { GET_USERS } from "../../hook/useGraphQLQuery";
 
 interface User {
   user: string;
@@ -20,21 +20,6 @@ interface User {
   language: string;
   img: string;
 }
-
-const GET_USERS = gql`
-  query {
-    staff {
-      users {
-        user
-        name
-        email
-        overview
-        language
-        img
-      }
-    }
-  }
-`;
 
 const Team: FC = () => {
   const { data } = useQuery(GET_USERS);

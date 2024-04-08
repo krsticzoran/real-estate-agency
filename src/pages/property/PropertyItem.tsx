@@ -1,10 +1,9 @@
-import { gql } from "@apollo/client";
 import { FC } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+
 import { Property } from "../../types";
 import { Container, Row } from "react-bootstrap";
-import { useGetUser } from "../../hook/useGetUser";
+
 import PropertyCarousel from "./PropertyCarousel";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,38 +11,28 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-
-const GET_PROPERTY = gql`
-  query GetProperty($num: Int!) {
-    item(num: $num) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      date
-      img
-      specialist
-      img1
-      img2
-      img3
-    }
-  }
-`;
+import useGraphQLQuery, {
+  GET_PROPERTY_BY_ID,
+  GET_USERS_DATA,
+} from "../../hook/useGraphQLQuery";
 
 const PropertyItem: FC = () => {
   const { item } = useParams();
   const num = parseInt(item ?? "0");
 
-  const { data: propertyData } = useQuery(GET_PROPERTY, {
-    variables: { num },
-    context: { clientName: "endpoint2" },
-  });
+  const propertyData = useGraphQLQuery(
+    GET_PROPERTY_BY_ID,
+    { num },
+    "endpoint2"
+  );
 
-  const properties: Property = propertyData?.item ?? {};
+  const properties: Property = propertyData ?? {};
 
-  const user = useGetUser(properties.specialist ?? "") ?? {};
+  const user = useGraphQLQuery(
+    GET_USERS_DATA,
+    { name: properties.specialist },
+    "endpoint2"
+  );
 
   return (
     <AnimatedWrapper delay={0.7}>

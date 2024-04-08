@@ -7,40 +7,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 import { Link, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
 
 import PropertyCard from "../../components/property/PropertyCard";
 import { Property } from "../../types";
 
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-
-const GET_PROPERTIES = gql`
-  query GetProperties($property: String!, $sale: String!) {
-    property(property: $property, sale: $sale) {
-      property
-      sale
-      num
-      place
-      price
-      square
-      date
-      img
-    }
-  }
-`;
+import useGraphQLQuery, { GET_PROPERTIES } from "../../hook/useGraphQLQuery";
 
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();
   let { sale } = useParams();
 
-  const { data } = useQuery(GET_PROPERTIES, {
-    variables: { property: rentproperty, sale },
-    context: { clientName: "endpoint2" },
-  });
+  const data = useGraphQLQuery(
+    GET_PROPERTIES,
+    { property: rentproperty, sale },
+    "endpoint2"
+  );
 
-  const properties = data?.property ?? [];
+  const properties = data ?? [];
 
   return (
     <AnimatedWrapper delay={0.5}>

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import "./blog.css";
-import { useQuery } from "@apollo/client";
-import { gql } from "graphql-tag";
+
 import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BlogCard from "./BlogCard";
@@ -9,25 +8,12 @@ import BlogCard from "./BlogCard";
 import { Blog } from "../../types";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 import AnimatedHoverCard from "../../components/animated/AnimatedHoverCard";
-
-const GET_BLOGS = gql`
-  query {
-    blogList {
-      title
-      author
-      property
-      num
-      img
-    }
-  }
-`;
+import useGraphQLQuery, { GET_BLOGS } from "../../hook/useGraphQLQuery";
 
 const BlogList: FC = () => {
-  const { data } = useQuery(GET_BLOGS, {
-    context: { clientName: "endpoint3" },
-  });
+  const data = useGraphQLQuery(GET_BLOGS, {}, "endpoint3");
 
-  const dataBlog = data?.blogList ?? [];
+  const dataBlog = data ?? [];
 
   return (
     <AnimatedWrapper delay={0.5}>

@@ -1,33 +1,22 @@
-import { gql, useQuery } from "@apollo/client";
 import { FC } from "react";
 import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { Container } from "react-bootstrap";
 import "./blog.css";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-
-const GET_BLOGTEXT = gql`
-  query GetBlogText($title: String!) {
-    blogText(title: $title) {
-      title
-      author
-      property
-      num
-      img
-      content
-    }
-  }
-`;
+import useGraphQLQuery, { GET_BLOGTEXT } from "../../hook/useGraphQLQuery";
 
 const BlogText: FC = () => {
   const { title } = useParams();
   const formattedTitle = title!.replace(/-/g, " ");
 
-  const { data } = useQuery(GET_BLOGTEXT, {
-    variables: { title: formattedTitle },
-    context: { clientName: "endpoint3" },
-  });
-  const blog = data?.blogText ?? {};
+  const data = useGraphQLQuery(
+    GET_BLOGTEXT,
+    { title: formattedTitle },
+    "endpoint3"
+  );
+
+  const blog = data ?? {};
 
   return (
     <AnimatedWrapper delay={0.7}>
