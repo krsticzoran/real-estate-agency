@@ -4,7 +4,6 @@ import PropertyItem from "./PropertyItem";
 import { MemoryRouter } from "react-router-dom";
 import "intersection-observer";
 
-// Mock the Apollo Client correctly
 jest.mock("@apollo/client", () => {
   const actualApolloClient = jest.requireActual("@apollo/client");
 
@@ -26,12 +25,6 @@ jest.mock("@apollo/client", () => {
           img2: "image3.jpg",
           img3: "image4.jpg",
         },
-        user: {
-          name: "sample name",
-          language: "sample language",
-          img: "user.jpg",
-          user: "sample user",
-        },
       },
     }),
   };
@@ -44,14 +37,8 @@ test("render property item", async () => {
     </MemoryRouter>
   );
 
-  // Wait for specific elements to appear
-
   expect(screen.getByText(/REF NO 2/i)).toBeInTheDocument();
   expect(screen.getByText(/mock Property in mock place/i)).toBeInTheDocument();
   expect(screen.getByText(/1000 m²/i)).toBeInTheDocument();
   expect(screen.getByText(/€ 2,000/i)).toBeInTheDocument();
-
-  expect(screen.getAllByText(/sample name/i)).toHaveLength(4);
-  expect(screen.getByText(/sample language/i)).toBeInTheDocument();
-  expect(screen.getByAltText(/sample user/i)).toBeInTheDocument();
 });

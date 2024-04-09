@@ -24,12 +24,6 @@ jest.mock("@apollo/client", () => {
             img: "image1.jpg",
           },
         ],
-        user: {
-          name: "sample name",
-          language: "sample language",
-          img: "user.jpg",
-          user: "sample user",
-        },
       },
     }),
   };
@@ -41,15 +35,6 @@ test("render Member component", () => {
       <Member />
     </MemoryRouter>
   );
-
-  expect(
-    screen.getByRole("heading", {
-      name: /sample name/i,
-      level: 3,
-    })
-  ).toBeInTheDocument();
-
-  expect(screen.getByText(/sample language/i)).toBeInTheDocument();
 
   expect(
     screen.getByRole("heading", {

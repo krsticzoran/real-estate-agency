@@ -3,24 +3,15 @@ import { render, screen } from "@testing-library/react";
 import Commercial from "./Commercial";
 import { MemoryRouter } from "react-router";
 import "intersection-observer";
-
-jest.mock("../../../hook/useGetPropertyAviable", () => ({
-  useGePropertyAviable: (property) => {
-    const propertyValues = {
-      shops: 10,
-      catering: 5,
-      warehouses: 8,
-      offices: 3,
-    };
-    return propertyValues[property] || 0;
-  },
-}));
+import { MockedProvider } from "@apollo/client/testing";
 
 test("render Commercial component", () => {
   render(
-    <MemoryRouter>
-      <Commercial />
-    </MemoryRouter>
+    <MockedProvider mocks={[]}>
+      <MemoryRouter>
+        <Commercial />
+      </MemoryRouter>
+    </MockedProvider>
   );
 
   expect(
