@@ -10,10 +10,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
+import useGraphQLQuery, {
+  GET_PROPERTIES_FROM_SEARCH,
+} from "../../hook/useGraphQLQuery";
+import { searchDataFormat } from "../../assets/data/myData";
 
 const Search: FC = () => {
   const location = useLocation();
-  const data = location.state.data;
+  const formData = location.state.data;
+
+  const data = useGraphQLQuery(
+    GET_PROPERTIES_FROM_SEARCH,
+    searchDataFormat(formData, formData.activeTab),
+    "endpoint2"
+  );
 
   return (
     <AnimatedWrapper delay={0.5}>
