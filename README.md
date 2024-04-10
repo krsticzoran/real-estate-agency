@@ -9,6 +9,9 @@ Welcome to the Real Estate Agency App, a showcase of my frontend development ski
 This website contains all the functionalities that a real estate agency website should have. Properties are categorized, and you can also search them based on specific characteristics. Additionally, the website includes many other features, along with a dashboard accessed by clicking the login button, which allows you to add or delete a property.
 <br /><br />
 
+Username: admin<br />
+Password: admin2009
+
 ## Key Features
 
 - **React and TypeScript:** The project leverages the power of React, coupled with TypeScript, to build a robust and maintainable frontend.
