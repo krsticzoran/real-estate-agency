@@ -10,7 +10,7 @@ import { useQuery } from "@apollo/client";
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
 import AnimatedText from "../../components/animated/AnimatedText";
 import AnimatedHoverCard from "../../components/animated/AnimatedHoverCard";
-import { GET_USERS } from "../../hook/useGraphQLQuery";
+import { GET_USERS } from "../../graphql/queries";
 
 interface User {
   user: string;

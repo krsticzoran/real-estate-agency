@@ -8,7 +8,8 @@ import BlogCard from "./BlogCard";
 import { Blog } from "../../types";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 import AnimatedHoverCard from "../../components/animated/AnimatedHoverCard";
-import useGraphQLQuery, { GET_BLOGS } from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import { GET_BLOGS } from "../../graphql/queries";
 
 const BlogList: FC = () => {
   const data = useGraphQLQuery(GET_BLOGS, {}, "endpoint3");

@@ -24,8 +24,8 @@ const GET_USER = gql`
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    user: "admin",
-    password: "admin81",
+    user: "",
+    password: "",
   });
   const [authError, setAuthError] = useState(false);
 

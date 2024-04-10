@@ -14,9 +14,8 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import AnimatedText from "../../../components/animated/AnimatedText";
 import AnimatedComponentList from "../../../components/animated/AnimatedComponentList";
-import useGraphQLQuery, {
-  GET_PROPERTIES_ALL,
-} from "../../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../../hook/useGraphQLQuery";
+import { GET_PROPERTIES_ALL } from "../../../graphql/queries";
 
 const Featured: FC = () => {
   const data = useGraphQLQuery(

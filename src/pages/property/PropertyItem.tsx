@@ -11,10 +11,8 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery, {
-  GET_PROPERTY_BY_ID,
-  GET_USERS_DATA,
-} from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import { GET_PROPERTY_BY_ID, GET_USERS_DATA } from "../../graphql/queries";
 
 const PropertyItem: FC = () => {
   const { item } = useParams();
@@ -31,7 +29,7 @@ const PropertyItem: FC = () => {
   const user = useGraphQLQuery(
     GET_USERS_DATA,
     { name: properties.specialist },
-    "endpoint2"
+    "endpoint"
   );
 
   return (

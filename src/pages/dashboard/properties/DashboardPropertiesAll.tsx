@@ -2,9 +2,8 @@ import { FC, useMemo } from "react";
 import DashboardPropertiesView from "./DashboardPropertiesView";
 import { useIsValidToken } from "../../../hook/useIsAdmin";
 import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
-import useGraphQLQuery, {
-  GET_PROPERTIES_ALL,
-} from "../../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../../hook/useGraphQLQuery";
+import { GET_PROPERTIES_ALL } from "../../../graphql/queries";
 
 const DashboardPropertiesAll: FC = () => {
   const isAdmin = useIsValidToken();

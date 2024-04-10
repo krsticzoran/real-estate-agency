@@ -24,51 +24,55 @@ import CustomCursor from "./components/animated/cursor/Cursor";
 import AnimatedWrapper from "./components/animated/AnimatedWrapper";
 import PrivacyPolicy from "./pages/privacy/PrivacyPolicy";
 import Terms from "./pages/terms/Terms";
+import { ApolloProvider } from "@apollo/client";
+import ApolloAppProvider from "./graphql/ApolloProvider";
 
 function App() {
   return (
     <AnimatedWrapper delay={0.1}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/items" element={<DashboardProperties />} />
-          <Route
-            path="/dashboard/items-all"
-            element={<DashboardPropertiesAll />}
-          />
-          <Route path="/dashboard/add-property" element={<AddProperty />} />
-          <Route
-            path="/*"
-            element={
-              <>
-                <Header />
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/team" element={<Team />} />
-                  <Route path="/team/:memberName" element={<Member />} />
-                  <Route path="/property/:item" element={<PropertyItem />} />
-                  <Route
-                    path="/:sale/:rentproperty"
-                    element={<PropertyList />}
-                  />
-                  <Route path="/search" element={<Search />} />
-                  <Route path="/blog" element={<BlogList />} />
-                  <Route path="/blog/:title" element={<BlogText />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/about-us" element={<AboutUs />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/terms" element={<Terms />} />
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-                <Footer />
-              </>
-            }
-          />
-        </Routes>
-        <CustomCursor />
-      </BrowserRouter>
+      <ApolloProvider client={ApolloAppProvider}>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/items" element={<DashboardProperties />} />
+            <Route
+              path="/dashboard/items-all"
+              element={<DashboardPropertiesAll />}
+            />
+            <Route path="/dashboard/add-property" element={<AddProperty />} />
+            <Route
+              path="/*"
+              element={
+                <>
+                  <Header />
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/team" element={<Team />} />
+                    <Route path="/team/:memberName" element={<Member />} />
+                    <Route path="/property/:item" element={<PropertyItem />} />
+                    <Route
+                      path="/:sale/:rentproperty"
+                      element={<PropertyList />}
+                    />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/blog" element={<BlogList />} />
+                    <Route path="/blog/:title" element={<BlogText />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/about-us" element={<AboutUs />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms" element={<Terms />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                  <Footer />
+                </>
+              }
+            />
+          </Routes>
+          <CustomCursor />
+        </BrowserRouter>
+      </ApolloProvider>
     </AnimatedWrapper>
   );
 }

@@ -13,7 +13,8 @@ import { Property } from "../../types";
 
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery, { GET_PROPERTIES } from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import { GET_PROPERTIES } from "../../graphql/queries";
 
 const PropertyList: FC = () => {
   const { rentproperty } = useParams();

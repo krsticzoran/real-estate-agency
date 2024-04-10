@@ -15,10 +15,8 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery, {
-  GET_USER,
-  GET_USERS_DATA,
-} from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import { GET_USER, GET_USERS_DATA } from "../../graphql/queries";
 
 const Member: FC = () => {
   const { memberName } = useParams();
@@ -40,7 +38,6 @@ const Member: FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 
   const oveviewMember = user.overview?.split(".");
-  console.log(oveviewMember);
 
   const chunk = (arr: any[], size: number) => {
     return arr.reduce((chunks, el, i) => {
