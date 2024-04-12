@@ -47,7 +47,7 @@ const LoginPage = () => {
 
         navigate("/dashboard");
       } else {
-        console.log("nooo");
+        setAuthError(true);
       }
     } catch (error) {
       setAuthError(true);
