@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 import AnimatedComponentList from "../../components/animated/AnimatedComponentList";
-import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../graphql/hook/useGraphQLQuery";
 import { GET_PROPERTIES_FROM_SEARCH } from "../../graphql/queries";
 import { searchDataFormat } from "../../assets/data/myData";
 

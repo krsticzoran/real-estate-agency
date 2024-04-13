@@ -5,14 +5,13 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
-import useGraphQLMutation, {
-  ADD_PROPERTY,
-} from "../../../hook/useGraphQLMutation";
+import useGraphQLMutation from "../../../graphql/hook/useGraphQLMutation";
+import { ADD_PROPERTY } from "../../../graphql/queries";
 
 import { location } from "../../../assets/data/myData";
 import { menuList as propertyTypes } from "../../../assets/data/myData";
 import { addPropertydefaultData as defaultFormData } from "../../../assets/data/myData";
-import { useIsValidToken } from "../../../hook/useIsAdmin";
+import { useIsValidToken } from "../../../graphql/hook/useIsAdmin";
 import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
 
 const AddProperty: FC = () => {

@@ -7,7 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useLocation } from "react-router-dom";
-import { useIsValidToken } from "../../hook/useIsAdmin";
+import { useIsValidToken } from "../../graphql/hook/useIsAdmin";
 
 const NavbarComponent: React.FC = () => {
   const location = useLocation();

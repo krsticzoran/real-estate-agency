@@ -15,7 +15,7 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../graphql/hook/useGraphQLQuery";
 import { GET_USER, GET_USERS_DATA } from "../../graphql/queries";
 
 const Member: FC = () => {

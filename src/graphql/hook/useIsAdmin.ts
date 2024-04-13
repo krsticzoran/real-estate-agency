@@ -1,15 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
-import gql from "graphql-tag";
+import { IS_ADMIN } from "../queries";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
-
-const IS_ADMIN = gql`
-  query verifyToken($token: String!) {
-    verifyToken(token: $token) {
-      user
-    }
-  }
-`;
 
 export function useIsValidToken() {
   const [isValidToken, setIsValidToken] = useState(false);

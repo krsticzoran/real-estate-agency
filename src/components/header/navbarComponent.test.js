@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import * as useIsAdminModule from "../../hook/useIsAdmin"; // Import the entire module
+import * as useIsAdminModule from "../../graphql/hook/useIsAdmin"; // Import the entire module
 import NavbarComponent from "./NavbarComponent";
 
 jest.mock("./DropdownMenu", () => {

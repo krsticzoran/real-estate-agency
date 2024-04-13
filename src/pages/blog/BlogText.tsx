@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { Container } from "react-bootstrap";
 import "./blog.css";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../graphql/hook/useGraphQLQuery";
 import { GET_BLOGTEXT } from "../../graphql/queries";
 
 const BlogText: FC = () => {

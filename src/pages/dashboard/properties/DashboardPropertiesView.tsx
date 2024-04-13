@@ -6,7 +6,7 @@ import { faSort } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "react-bootstrap/Pagination";
 import { useMutation } from "@apollo/client";
 import BackToTheDashboard from "../../../components/dashboard/BackToTheDashboard";
-import { DELETE_PROPERTY } from "../../../hook/useGraphQLMutation";
+import { DELETE_PROPERTY } from "../../../graphql/queries";
 import "../dashboard.css";
 
 interface PropertyType {
@@ -24,7 +24,6 @@ interface DashboardPropertiesViewProps {
 }
 
 const style = { color: "rgba(0, 0, 0, 0.05)", cursor: "pointer" };
-
 
 const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
   data = [],

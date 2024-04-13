@@ -10,7 +10,7 @@ import AnimatedComponentList from "../../../components/animated/AnimatedComponen
 import AnimatedText from "../../../components/animated/AnimatedText";
 import CountUp from "react-countup";
 import { useInView } from "framer-motion";
-import useGraphQLQuery from "../../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../../graphql/hook/useGraphQLQuery";
 import { GET_PROPERTIES } from "../../../graphql/queries";
 
 const arr = ["shops", "catering", "warehouses", "offices"];

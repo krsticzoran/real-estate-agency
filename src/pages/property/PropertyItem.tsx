@@ -11,7 +11,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
-import useGraphQLQuery from "../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../graphql/hook/useGraphQLQuery";
 import { GET_PROPERTY_BY_ID, GET_USERS_DATA } from "../../graphql/queries";
 
 const PropertyItem: FC = () => {

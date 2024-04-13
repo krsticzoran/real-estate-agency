@@ -7,7 +7,7 @@ import Header from "./header/Header";
 import UnauthorizedAccess from "./unauthorizedAccess/UnauthorizedAccess";
 import { Container, Row } from "react-bootstrap";
 import ProgressBar from "./progressBar/ProgressBar";
-import { useIsValidToken } from "../../hook/useIsAdmin";
+import { useIsValidToken } from "../../graphql/hook/useIsAdmin";
 
 const Dashboard = () => {
   const navigate = useNavigate();

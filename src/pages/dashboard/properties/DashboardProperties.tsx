@@ -2,9 +2,9 @@ import { FC } from "react";
 import { useLocation } from "react-router-dom";
 
 import DashboardPropertiesView from "./DashboardPropertiesView";
-import { useIsValidToken } from "../../../hook/useIsAdmin";
+import { useIsValidToken } from "../../../graphql/hook/useIsAdmin";
 import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
-import useGraphQLQuery from "../../../hook/useGraphQLQuery";
+import useGraphQLQuery from "../../../graphql/hook/useGraphQLQuery";
 import { GET_PROPERTIES } from "../../../graphql/queries";
 
 const DashboardProperties: FC = () => {
