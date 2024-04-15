@@ -8,6 +8,22 @@ const {
 
 const { Collection, Db } = require("mongodb");
 
+const UserType = new GraphQLObjectType({
+  name: "User",
+  fields: () => ({
+    user: { type: GraphQLString },
+    name: { type: GraphQLString },
+    language: { type: GraphQLString },
+    email: { type: GraphQLString },
+    overview: { type: GraphQLString },
+    phone: { type: GraphQLString },
+    listings: { type: GraphQLInt },
+    experience: { type: GraphQLString },
+    propreties: { type: GraphQLInt },
+    img: { type: GraphQLString },
+  }),
+});
+
 const RealEstateType = new GraphQLObjectType({
   name: "RealEstate",
   fields: () => ({
@@ -19,7 +35,7 @@ const RealEstateType = new GraphQLObjectType({
     square: { type: GraphQLInt },
     date: { type: GraphQLString },
     img: { type: GraphQLString },
-    specialist: { type: GraphQLString },
+    specialist: { type: UserType }, // Koristimo tip podataka UserType za polje "specialist"
     img1: { type: GraphQLString },
     img2: { type: GraphQLString },
     img3: { type: GraphQLString },
@@ -28,6 +44,7 @@ const RealEstateType = new GraphQLObjectType({
 
 function schemaRealEstate(database) {
   const collection = database.collection("realestate");
+  const specialistsCollection = database.collection("staff");
 
   const RealEstateMutation = new GraphQLObjectType({
     name: "RootMutationType",
@@ -85,8 +102,16 @@ function schemaRealEstate(database) {
       item: {
         type: RealEstateType,
         args: { num: { type: GraphQLInt } },
-        resolve(parentValue, args) {
-          return collection.findOne({ num: args.num });
+        async resolve(parentValue, args) {
+          const realEstateData = await collection.findOne({ num: args.num });
+
+          const specialistData = await specialistsCollection.findOne({
+            user: realEstateData.specialist,
+          });
+
+          const mergedData = { ...realEstateData, specialist: specialistData };
+
+          return mergedData;
         },
       },
       property: {
