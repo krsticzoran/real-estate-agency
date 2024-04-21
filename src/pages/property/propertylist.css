@@ -68,7 +68,7 @@
   color: #272727;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin: 15px 0 5px 0;
+  margin: 5px 0 5px 0;
 }
 .property-size-price {
   font-size: 28px !important;
@@ -81,7 +81,7 @@
   background-color: #5c0282;
   border-radius: 7px;
   padding: 30px 20px;
-  margin-top: 25px !important;
+  margin-top: 15px !important;
 }
 
 .agent-card-details a {
