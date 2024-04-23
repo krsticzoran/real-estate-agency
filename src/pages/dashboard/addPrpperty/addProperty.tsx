@@ -11,12 +11,8 @@ import { ADD_PROPERTY } from "../../../graphql/queries";
 import { location } from "../../../assets/data/myData";
 import { menuList as propertyTypes } from "../../../assets/data/myData";
 import { addPropertydefaultData as defaultFormData } from "../../../assets/data/myData";
-import { useIsValidToken } from "../../../graphql/hook/useIsAdmin";
-import UnauthorizedAccess from "../unauthorizedAccess/UnauthorizedAccess";
 
 const AddProperty: FC = () => {
-  const isAdmin = useIsValidToken();
-
   const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState(defaultFormData);
@@ -140,145 +136,141 @@ const AddProperty: FC = () => {
 
   return (
     <>
-      {isAdmin ? (
-        <div className="p-3">
-          <Container>
-            <BackToTheDashboard />
-            <Form
-              onSubmit={handleSubmit}
-              className="mt-5 p-5 border col-lg-9 col-xll-10 mx-auto "
-              style={{ backgroundColor: "#f7f7f7" }}
+      <div className="p-3">
+        <Container>
+          <BackToTheDashboard />
+          <Form
+            onSubmit={handleSubmit}
+            className="mt-5 p-5 border col-lg-9 col-xll-10 mx-auto "
+            style={{ backgroundColor: "#f7f7f7" }}
+          >
+            <h2 className="text-center">Add Property</h2>
+
+            <Form.Label htmlFor="assetType" className="pt-2">
+              Asset Type
+            </Form.Label>
+            <Form.Select
+              id="assetType"
+              aria-label="Default select example"
+              name="sale"
+              value={formData.sale}
+              onChange={handleInputChange}
             >
-              <h2 className="text-center">Add Property</h2>
+              <option value="sale">Sale</option>
+              <option value="rent">Rent</option>
+            </Form.Select>
 
-              <Form.Label htmlFor="assetType" className="pt-2">
-                Asset Type
-              </Form.Label>
-              <Form.Select
-                id="assetType"
-                aria-label="Default select example"
-                name="sale"
-                value={formData.sale}
-                onChange={handleInputChange}
-              >
-                <option value="sale">Sale</option>
-                <option value="rent">Rent</option>
-              </Form.Select>
+            <Form.Label htmlFor="propertyType" className="pt-4">
+              Property Type
+            </Form.Label>
+            <Form.Select
+              id="propertyType"
+              aria-label="Default select example"
+              name="property"
+              value={formData.property}
+              onChange={handleInputChange}
+            >
+              {propertyTypes.map((property, index) => (
+                <option key={index} value={property.toLocaleLowerCase()}>
+                  {property}
+                </option>
+              ))}
+            </Form.Select>
 
-              <Form.Label htmlFor="propertyType" className="pt-4">
-                Property Type
-              </Form.Label>
-              <Form.Select
-                id="propertyType"
-                aria-label="Default select example"
-                name="property"
-                value={formData.property}
-                onChange={handleInputChange}
-              >
-                {propertyTypes.map((property, index) => (
-                  <option key={index} value={property.toLocaleLowerCase()}>
-                    {property}
-                  </option>
-                ))}
-              </Form.Select>
+            <Form.Label htmlFor="location" className="pt-4">
+              Location
+            </Form.Label>
+            <Form.Select
+              id="location"
+              aria-label="Default select example"
+              name="place"
+              value={formData.place}
+              onChange={handleInputChange}
+            >
+              {location.map((location, index) => (
+                <option key={index} value={location}>
+                  {location}
+                </option>
+              ))}
+            </Form.Select>
 
-              <Form.Label htmlFor="location" className="pt-4">
-                Location
-              </Form.Label>
-              <Form.Select
-                id="location"
-                aria-label="Default select example"
-                name="place"
-                value={formData.place}
-                onChange={handleInputChange}
-              >
-                {location.map((location, index) => (
-                  <option key={index} value={location}>
-                    {location}
-                  </option>
-                ))}
-              </Form.Select>
-
-              <Row className="pt-4">
-                <Col>
-                  <Form.Label htmlFor="inputPrice">Price</Form.Label>
+            <Row className="pt-4">
+              <Col>
+                <Form.Label htmlFor="inputPrice">Price</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="inputPrice"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleInputChange}
+                />
+              </Col>
+              <Col>
+                <Form.Label htmlFor="inputSquare">Square</Form.Label>
+                <Form.Control
+                  type="text"
+                  id="inputSquare"
+                  name="square"
+                  value={formData.square}
+                  onChange={handleInputChange}
+                />
+              </Col>
+            </Row>
+            <Row className="pt-4">
+              <Col>
+                <Form.Group controlId="img" className="mb-3">
+                  <Form.Label>Upload Photo 1</Form.Label>
                   <Form.Control
-                    type="text"
-                    id="inputPrice"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleInputChange}
+                    type="file"
+                    ref={file1Ref}
+                    onChange={handleFileChange}
+                    required
                   />
-                </Col>
-                <Col>
-                  <Form.Label htmlFor="inputSquare">Square</Form.Label>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="img1" className="mb-3">
+                  <Form.Label>Upload Photo 2</Form.Label>
                   <Form.Control
-                    type="text"
-                    id="inputSquare"
-                    name="square"
-                    value={formData.square}
-                    onChange={handleInputChange}
+                    type="file"
+                    ref={file2Ref}
+                    onChange={handleFileChange}
+                    required
                   />
-                </Col>
-              </Row>
-              <Row className="pt-4">
-                <Col>
-                  <Form.Group controlId="img" className="mb-3">
-                    <Form.Label>Upload Photo 1</Form.Label>
-                    <Form.Control
-                      type="file"
-                      ref={file1Ref}
-                      onChange={handleFileChange}
-                      required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="img1" className="mb-3">
-                    <Form.Label>Upload Photo 2</Form.Label>
-                    <Form.Control
-                      type="file"
-                      ref={file2Ref}
-                      onChange={handleFileChange}
-                      required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Group controlId="img2" className="mb-3">
-                    <Form.Label>Upload Photo 3</Form.Label>
-                    <Form.Control
-                      type="file"
-                      ref={file3Ref}
-                      onChange={handleFileChange}
-                      required
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group controlId="img3" className="mb-3">
-                    <Form.Label>Upload Photo 4</Form.Label>
-                    <Form.Control
-                      type="file"
-                      ref={file4Ref}
-                      onChange={handleFileChange}
-                      required
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Button variant="primary" type="submit" className="mt-3">
-                Submit
-              </Button>
-            </Form>
-            <p>{isSuccess ? "Property added successfully!" : ""}</p>
-          </Container>
-        </div>
-      ) : (
-        <UnauthorizedAccess />
-      )}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group controlId="img2" className="mb-3">
+                  <Form.Label>Upload Photo 3</Form.Label>
+                  <Form.Control
+                    type="file"
+                    ref={file3Ref}
+                    onChange={handleFileChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="img3" className="mb-3">
+                  <Form.Label>Upload Photo 4</Form.Label>
+                  <Form.Control
+                    type="file"
+                    ref={file4Ref}
+                    onChange={handleFileChange}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Button variant="primary" type="submit" className="mt-3">
+              Submit
+            </Button>
+          </Form>
+          <p>{isSuccess ? "Property added successfully!" : ""}</p>
+        </Container>
+      </div>
     </>
   );
 };
