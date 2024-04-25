@@ -26,6 +26,7 @@ import PrivacyPolicy from "./pages/privacy/PrivacyPolicy";
 import Terms from "./pages/terms/Terms";
 import { ApolloProvider } from "@apollo/client";
 import ApolloAppProvider from "./graphql/ApolloProvider";
+import PrivateRoute from "./components/auth/PrivateRoute";
 
 function App() {
   return (
@@ -34,13 +35,22 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/items" element={<DashboardProperties />} />
+            <Route
+              path="/dashboard"
+              element={<PrivateRoute component={Dashboard} />}
+            />
+            <Route
+              path="/dashboard/items"
+              element={<PrivateRoute component={DashboardProperties} />}
+            />
             <Route
               path="/dashboard/items-all"
-              element={<DashboardPropertiesAll />}
+              element={<PrivateRoute component={DashboardPropertiesAll} />}
             />
-            <Route path="/dashboard/add-property" element={<AddProperty />} />
+            <Route
+              path="/dashboard/add-property"
+              element={<PrivateRoute component={AddProperty} />}
+            />
             <Route
               path="/*"
               element={

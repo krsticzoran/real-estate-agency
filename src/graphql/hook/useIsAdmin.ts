@@ -4,7 +4,10 @@ import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 
 export function useIsValidToken() {
-  const [isValidToken, setIsValidToken] = useState(false);
+  const [isValidToken, setIsValidToken] = useState(() => {
+    const token = Cookies.get("admin");
+    return !!token;
+  });
 
   useEffect(() => {
     const token = Cookies.get("admin");
