@@ -10,7 +10,6 @@ interface PrivateRouteProps {
 const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component }) => {
   const [loading, setLoading] = useState(true);
   const isAuthenticated = useIsValidToken();
-  console.log(isAuthenticated);
 
   useEffect(() => {
     setLoading(false);
