@@ -80,19 +80,23 @@ const DashboardPropertiesView: FC<DashboardPropertiesViewProps> = ({
   const deleteProperties = async (e: any) => {
     const parentTr = e.target.closest("tr");
     const parentKey = parentTr?.getAttribute("data-parent-key");
-    try {
-      const { data } = await deleteProperty({
-        variables: { num: +parentKey },
-        context: { clientName: "endpoint2" },
-      });
 
-      setRenderData((prevState) =>
-        prevState?.filter((item) => item.num !== +parentKey)
-      );
-      console.log(data);
-    } catch (error) {
-      console.error("Error deleting property:", error);
-      // Handle error state
+    const proceed = window.confirm("Do you really want to delete the ad?");
+
+    if (proceed) {
+      try {
+        const { data } = await deleteProperty({
+          variables: { num: +parentKey },
+          context: { clientName: "endpoint2" },
+        });
+
+        setRenderData((prevState) =>
+          prevState?.filter((item) => item.num !== +parentKey)
+        );
+        console.log(data);
+      } catch (error) {
+        console.error("Error deleting property:", error);
+      }
     }
   };
 
