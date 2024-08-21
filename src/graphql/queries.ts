@@ -41,14 +41,7 @@ export const GET_PROPERTY_BY_ID = gql`
       square
       date
       img
-      specialist {
-        user
-        img
-        name
-        phone
-        email
-        language
-      }
+      specialist
       img1
       img2
       img3

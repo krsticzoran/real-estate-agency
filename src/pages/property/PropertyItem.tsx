@@ -11,7 +11,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import AnimatedWrapper from "../../components/animated/AnimatedWrapper";
 import useGraphQLQuery from "../../graphql/hook/useGraphQLQuery";
-import { GET_PROPERTY_BY_ID } from "../../graphql/queries";
+import { GET_PROPERTY_BY_ID, GET_USERS_DATA } from "../../graphql/queries";
 
 const PropertyItem: FC = () => {
   const { item } = useParams();
@@ -24,6 +24,12 @@ const PropertyItem: FC = () => {
   );
 
   const properties = propertyData ?? {};
+
+  const user = useGraphQLQuery(
+    GET_USERS_DATA,
+    { name: properties?.specialist },
+    "endpoint1"
+  );
 
   return (
     <AnimatedWrapper delay={0.7}>
@@ -62,17 +68,14 @@ const PropertyItem: FC = () => {
             </Row>
             <hr />
             <div className="agent-card-details">
-              <Link to={`/team/${properties.specialist?.user}`}>
+              <Link to={`/team/${user?.user}`}>
                 <h5>Specialist information</h5>
                 <div className="d-flex">
                   <div className="agent-photo">
-                    <img
-                      src={properties.specialist?.img}
-                      alt={properties.specialist?.user}
-                    />
+                    <img src={user?.img} alt={user?.user} />
                   </div>
                   <div className="agent-name-language">
-                    <h3>{properties.specialist?.name}</h3>
+                    <h3>{user?.name}</h3>
                     <h4>
                       10 Nikole Tesle Boulevard, New Belgrade, 5th floor,
                       Apartment 23
@@ -84,28 +87,22 @@ const PropertyItem: FC = () => {
             <div className="agent-phone-email-container">
               <p className="agent-phone-email">
                 <FontAwesomeIcon icon={faPhone} className="phone-email-icon" />{" "}
-                <Link to={`tel:${properties.specialist?.phone}`}>
-                  Call {properties.specialist?.name}
-                </Link>
+                <Link to={`tel:${user?.phone}`}>Call {user?.name}</Link>
               </p>
               <p className="agent-phone-email">
                 <span className="phone-email-icon">
                   <FontAwesomeIcon icon={faEnvelope} className="icon" />{" "}
                 </span>
-                <Link to={`mailto:${properties.specialist?.email}`}>
-                  Email {properties.specialist?.name}
-                </Link>
+                <Link to={`mailto:${user?.email}`}>Email {user?.name}</Link>
               </p>
               <p className="agent-phone-email">
                 <FontAwesomeIcon
                   icon={faWhatsapp}
                   className="phone-email-icon"
                 />{" "}
-                <Link to={`tel:${properties.specialist?.phone}`}>
-                  Whatsapp {properties.specialist?.name}
-                </Link>
+                <Link to={`tel:${user?.phone}`}>Whatsapp {user?.name}</Link>
               </p>
-              <p>{properties.specialist?.language}</p>
+              <p>{user?.language}</p>
             </div>
           </div>
         </Row>

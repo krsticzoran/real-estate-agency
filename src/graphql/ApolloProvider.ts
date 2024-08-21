@@ -6,19 +6,19 @@ import {
 } from "@apollo/client";
 
 const endpoint1 = new HttpLink({
-  uri: "http://localhost:8000/graphql",
+  uri: "https://real.estate.zkrstic.com/graphql",
 });
 
 const endpoint2 = new HttpLink({
-  uri: "http://localhost:8000/realestate",
+  uri: "https://real.estate.zkrstic.com/realestate",
 });
 
 const endpoint3 = new HttpLink({
-  uri: "http://localhost:8000/bloggraphql",
+  uri: "https://real.estate.zkrstic.com/bloggraphql",
 });
 
 const endpoint4 = new HttpLink({
-  uri: "http://localhost:8000/auth",
+  uri: "https://real.estate.zkrstic.com/auth",
 });
 
 const ApolloAppProvider = new ApolloClient({
