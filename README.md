@@ -2,7 +2,7 @@
 
 </br>
 
-[DEMO](https://www.real-estate-react.com/)<br /><br />
+[DEMO](https://real.estate.zkrstic.com/)<br /><br />
 
 Welcome to the Real Estate Agency App, a showcase of my frontend development skills using technologies like React, TypeScript, and GraphQL. This project demonstrates my expertise in creating a dynamic and visually engaging website.
 <br /><br />
